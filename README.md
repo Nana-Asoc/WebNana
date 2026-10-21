@@ -28,6 +28,5 @@ Para verla, abre `index.html` en el navegador.
 
 - Clave de Web3Forms en el formulario (`PEGA_AQUI_TU_ACCESS_KEY`)
 - Foto de la portada
-- Cifras de «N.A.N.A. en Sant Boi» (familias acompañadas, actividades al año, año de fundación)
 - Eventos en `eventos.js`
 - NIF, nº de registro, domicilio social y fecha en el pie y en las páginas de privacidad
