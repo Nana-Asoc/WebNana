@@ -11,7 +11,7 @@
 //   es / ca: título del evento en castellano y en catalán
 
 // Perfil de Instagram de la asociación. Si se deja vacío, no se muestra el botón «Síguenos».
-var NANA_INSTAGRAM = '';
+var NANA_INSTAGRAM = 'https://www.instagram.com/nuclinana/';
 
 var NANA_EVENTOS = [
   // { imagen: 'img/eventos/taller-navidad.jpg', enlace: 'https://www.instagram.com/p/XXXXXXXXXXX/', fecha: 'Diciembre 2026', es: 'Taller de Navidad en familia', ca: 'Taller de Nadal en família' },

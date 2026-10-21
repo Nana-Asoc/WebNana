@@ -30,5 +30,5 @@ Para verla, abre `index.html` en el navegador.
 - Plazo de respuesta (`[X] días hábiles` / `[X] dies hàbils`)
 - Foto de la portada
 - Cifras de «N.A.N.A. en Sant Boi» (familias acompañadas, actividades al año, año de fundación)
-- Perfil de Instagram y eventos en `eventos.js`
+- Eventos en `eventos.js`
 - NIF, nº de registro, domicilio social y fecha en el pie y en las páginas de privacidad
