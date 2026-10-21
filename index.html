@@ -26,12 +26,14 @@ section[id]{scroll-margin-top:96px}
 @media (max-width:720px){
 header .wrap{flex-wrap:nowrap !important;padding-top:8px !important;padding-bottom:8px !important;gap:12px !important}
 .marca img{height:52px !important}
-.marca-texto{font-size:.75rem !important;max-width:11em !important}
+.marca-texto{font-size:.6875rem !important;max-width:none !important}
 .cta-cabecera{display:none !important}
 #inicio,#inici{padding:36px 0 56px !important}
 .hero-badge{font-size:.8125rem !important}
+.hero-title{font-size:2rem !important}
+.hero-lead{font-size:1.0625rem !important}
 section[id]{scroll-margin-top:80px}
-.barra-movil{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#FFFFFF;border-top:1px solid #E3ECF0;box-shadow:0 -4px 16px rgba(30,52,69,.08);transition:transform .25s}
+.barra-movil{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:1rem;background:#FFFFFF;border-top:1px solid #E3ECF0;box-shadow:0 -4px 16px rgba(30,52,69,.08);transition:transform .25s}
 .barra-movil.oculta{transform:translateY(110%)}
 .barra-movil a{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border-radius:999px;font-weight:700;text-decoration:none}
 body{padding-bottom:76px}
@@ -66,7 +68,7 @@ body{padding-bottom:76px}
 <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
 <span class="hero-badge" style="align-self: flex-start; background: #E3F6F4; color: #1D5F5B; font-weight: 700; font-size: 0.9375rem; padding: 8px 16px; border-radius: 999px">Familias con hijos e hijas con autismo · Sant Boi de Llobregat</span>
 <h1 class="hero-title" style="margin: 0; font-family: Nunito, sans-serif; font-weight: 800; font-size: 3.4rem; line-height: 1.1; color: #1E3445">No estáis solos. Os acompañamos en cada paso.</h1>
-<p style="margin: 0; font-size: 1.25rem; color: #3D5566; max-width: 34em">Os ayudamos a entender el diagnóstico, a pedir las ayudas a las que tenéis derecho y a encontrar los recursos que vuestro hijo o hija necesita. Con calma, con cercanía y sin papeleo en solitario.</p>
+<p class="hero-lead" style="margin: 0; font-size: 1.25rem; color: #3D5566; max-width: 34em">Os ayudamos a entender el diagnóstico, a pedir las ayudas a las que tenéis derecho y a encontrar los recursos que vuestro hijo o hija necesita. Con calma, con cercanía y sin papeleo en solitario.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px">
 <a href="#contacto" style="background: #407295; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 1.0625rem; padding: 16px 28px; border-radius: 999px">Quiero que me orientéis</a>
 <a href="https://nana-asoc.github.io/AyudasDiscapacidad/" target="_blank" rel="noopener" style="background: #FFFFFF; color: #2F5F80; text-decoration: none; font-weight: 700; font-size: 1.0625rem; padding: 14px 26px; border-radius: 999px; border: 2px solid #407295">¿A qué ayudas tenéis derecho?</a>
