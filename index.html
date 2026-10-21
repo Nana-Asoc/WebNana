@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>N.A.N.A. – Núcleo de Acompañamiento y Necesidades del Autismo</title>
 <meta name="description" content="Asociación de familias con hijos e hijas con autismo en Sant Boi de Llobregat. Os acompañamos con ayudas, trámites y recursos.">
 <link rel="alternate" hreflang="es" href="index.html">
@@ -18,13 +18,32 @@ a{color:#2F5F80}a:hover{color:#1E3F57}
 @media (max-width:720px){.wrap{padding:0 16px}.nav-links{display:none !important}.hero-title{font-size:2.3rem !important}.sec-title{font-size:1.8rem !important}}
 </style>
 <style>button:disabled{opacity:.6;cursor:wait} input:focus,select:focus,textarea:focus{outline:3px solid #8ED8D3;outline-offset:1px}</style>
+<style>
+header{position:sticky;top:0;z-index:40}
+section[id]{scroll-margin-top:96px}
+.barra-movil{display:none}
+@media (max-width:1100px) and (min-width:721px){.marca-texto{display:none !important}}
+@media (max-width:720px){
+header .wrap{flex-wrap:nowrap !important;padding-top:8px !important;padding-bottom:8px !important;gap:12px !important}
+.marca img{height:52px !important}
+.marca-texto{font-size:.75rem !important;max-width:11em !important}
+.cta-cabecera{display:none !important}
+#inicio,#inici{padding:36px 0 56px !important}
+.hero-badge{font-size:.8125rem !important}
+section[id]{scroll-margin-top:80px}
+.barra-movil{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#FFFFFF;border-top:1px solid #E3ECF0;box-shadow:0 -4px 16px rgba(30,52,69,.08);transition:transform .25s}
+.barra-movil.oculta{transform:translateY(110%)}
+.barra-movil a{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border-radius:999px;font-weight:700;text-decoration:none}
+body{padding-bottom:76px}
+}
+</style>
 </head>
 <body>
 <div style="font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; color: #1E3445; background: #F6F9FA; font-size: 1.0625rem; line-height: 1.6">
 
 <header style="background: #FFFFFF; border-bottom: 1px solid #E3ECF0">
 <div class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px">
-<a href="#inicio" style="display: flex; align-items: center" aria-label="N.A.N.A., ir al inicio"><img src="img/logo-nana.jpg" alt="Logotipo de N.A.N.A." style="height: 64px; width: auto; display: block"></a>
+<a href="#inicio" class="marca" style="display: flex; align-items: center; gap: 12px; text-decoration: none; min-width: 0" aria-label="N.A.N.A., ir al inicio"><img src="img/logo-nana-marca.jpg" alt="Logotipo de N.A.N.A." width="268" height="239" style="height: 60px; width: auto; display: block; flex: none"><span class="marca-texto" style="font-family: Nunito, sans-serif; font-weight: 800; font-size: 0.8125rem; line-height: 1.25; color: #2F5F80; max-width: 13em">Núcleo de Acompañamiento y Necesidades del Autismo</span></a>
 <nav class="nav-links" aria-label="Principal" style="display: flex; gap: 28px; font-weight: 700; font-size: 1rem">
 <a href="#primeros-pasos">Primeros pasos</a>
 <a href="#ayudas">Ayudas y trámites</a>
@@ -37,7 +56,7 @@ a{color:#2F5F80}a:hover{color:#1E3F57}
 <a href="index.html" aria-current="page" title="Castellano" style="padding: 10px 14px; background: #407295; color: #FFFFFF; text-decoration: none">ES</a>
 <a href="index-ca.html" hreflang="ca" lang="ca" data-idioma title="Català" style="padding: 10px 14px; color: #1E3445; text-decoration: none">CA</a>
 </div>
-<a href="#contacto" style="background: #407295; color: #FFFFFF; text-decoration: none; font-weight: 700; padding: 12px 22px; border-radius: 999px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Pide orientación</a>
+<a href="#contacto" style="background: #407295; color: #FFFFFF; text-decoration: none; font-weight: 700; padding: 12px 22px; border-radius: 999px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center" class="cta-cabecera">Pide orientación</a>
 </div>
 </div>
 </header>
@@ -45,7 +64,7 @@ a{color:#2F5F80}a:hover{color:#1E3F57}
 <section id="inicio" style="background: #FFFFFF; padding: 72px 0 88px">
 <div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
 <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
-<span style="align-self: flex-start; background: #E3F6F4; color: #1D5F5B; font-weight: 700; font-size: 0.9375rem; padding: 8px 16px; border-radius: 999px">Familias con hijos e hijas con autismo · Sant Boi de Llobregat</span>
+<span class="hero-badge" style="align-self: flex-start; background: #E3F6F4; color: #1D5F5B; font-weight: 700; font-size: 0.9375rem; padding: 8px 16px; border-radius: 999px">Familias con hijos e hijas con autismo · Sant Boi de Llobregat</span>
 <h1 class="hero-title" style="margin: 0; font-family: Nunito, sans-serif; font-weight: 800; font-size: 3.4rem; line-height: 1.1; color: #1E3445">No estáis solos. Os acompañamos en cada paso.</h1>
 <p style="margin: 0; font-size: 1.25rem; color: #3D5566; max-width: 34em">Os ayudamos a entender el diagnóstico, a pedir las ayudas a las que tenéis derecho y a encontrar los recursos que vuestro hijo o hija necesita. Con calma, con cercanía y sin papeleo en solitario.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px">
@@ -216,6 +235,10 @@ a{color:#2F5F80}a:hover{color:#1E3F57}
 </footer>
 
 </div>
+<div class="barra-movil" role="region" aria-label="Contacto rápido">
+<a href="tel:+34694587000" style="flex: 0 0 auto; padding: 0 20px; border: 2px solid #407295; color: #2F5F80"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F5F80" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"></path></svg>Llamar</a>
+<a href="#contacto" style="background: #407295; color: #FFFFFF">Pide orientación</a>
+</div>
 <script>
 (function(){
   var f=document.getElementById('form-contacto'),b=document.getElementById('btn-enviar'),s=document.getElementById('form-estado');
@@ -231,6 +254,11 @@ a{color:#2F5F80}a:hover{color:#1E3F57}
       .catch(function(){s.style.color='#A3352B';s.textContent='No se ha podido enviar. Probad de nuevo o escribidnos a nucli.nana@gmail.com.';})
       .finally(function(){b.disabled=false;b.textContent='Enviar consulta';});
   });
+  // En móvil, la barra de contacto se esconde cuando ya se ve el formulario
+  var barra=document.querySelector('.barra-movil'),form=document.getElementById('form-contacto');
+  if(barra&&form&&'IntersectionObserver' in window){
+    new IntersectionObserver(function(e){barra.classList.toggle('oculta',e[0].isIntersecting);}).observe(form);
+  }
   // En cambiar de idioma, mantiene la sección en la que estaba el visitante
   var secciones={'inicio':'inici','primeros-pasos':'primers-passos','ayudas':'ajuts','que-hacemos':'que-fem','colabora':'col-labora','contacto':'contacte'};
   document.querySelectorAll('[data-idioma]').forEach(function(a){
