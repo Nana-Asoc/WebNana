@@ -26,7 +26,6 @@ Para verla, abre `index.html` en el navegador.
 
 ## Pendiente de completar (en los dos idiomas)
 
-- Clave de Web3Forms en el formulario (`PEGA_AQUI_TU_ACCESS_KEY`)
 - Foto de la portada
 - Eventos en `eventos.js`
 - NIF, nº de registro, domicilio social y fecha en el pie y en las páginas de privacidad
