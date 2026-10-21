@@ -17,5 +17,5 @@ Para verla, abre `index.html` en el navegador.
 
 - Clave de Web3Forms en el formulario (`PEGA_AQUI_TU_ACCESS_KEY`)
 - Plazo de respuesta (`[X] días hábiles` / `[X] dies hàbils`)
-- Fotos de la portada y de "Qué hacemos" / "Què fem"
+- Foto de la portada
 - NIF, nº de registro, domicilio social y fecha en el pie y en las páginas de privacidad
