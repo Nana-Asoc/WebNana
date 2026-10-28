@@ -1,6 +1,6 @@
 # web Nana
 
-Web de N.A.N.A. – Núcleo de Acompañamiento y Necesidades del Autismo (Sant Boi de Llobregat).
+Web de N.A.N.A. – Núcleo de Acompañamiento y Necesidades del Autismo y familias neurodivergentes (Sant Boi de Llobregat).
 
 | Castellano | Catalán | |
 |---|---|---|
