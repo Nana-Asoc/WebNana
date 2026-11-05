@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Botiga solidària – N.A.N.A.</title>
+<meta name="description" content="Materials i aplicacions pensats per a nens i nenes amb autisme. Tot el que es recapta es destina a les activitats de l’associació N.A.N.A. a Sant Boi de Llobregat.">
+<link rel="alternate" hreflang="ca" href="tienda.html">
+<link rel="alternate" hreflang="ca" href="botiga.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tienda.css">
+</head>
+<body>
+
+<header>
+<div class="wrap">
+<a href="index-ca.html" class="marca" aria-label="N.A.N.A., tornar a l’inici"><img src="img/logo-nana-marca.jpg" width="268" height="239" alt="Logotip de N.A.N.A."></a>
+<div class="acciones">
+<a class="volver" href="index-ca.html">← Tornar a l’inici</a>
+<div class="idioma" role="group" aria-label="Idioma">
+<a href="tienda.html" hreflang="es" lang="es" title="Castellano">ES</a>
+<a href="botiga.html" aria-current="page" title="Català">CA</a>
+</div>
+</div>
+</div>
+</header>
+
+<main>
+<section class="intro">
+<div class="wrap">
+<span class="chip">Botiga solidària · Sense ànim de lucre</span>
+<h1>Eines per al dia a dia</h1>
+<p class="lead">Materials i aplicacions que les famílies de N.A.N.A. hem provat i que ens ajuden a casa i a l’escola. <strong>Tot el que es recapta es destina a les activitats de l’associació.</strong></p>
+<ol class="pasos">
+<li><strong>Trieu</strong> els productes i afegiu-los a la cistella.</li>
+<li><strong>Envieu la comanda</strong>: encara no es paga res.</li>
+<li><strong>Us escrivim</strong> per confirmar-la i dir-vos com pagar (Bizum o transferència) i quan recollir-la.</li>
+</ol>
+</div>
+</section>
+
+<section class="bloque">
+<div class="wrap">
+<h2>Productes</h2>
+<div id="catalogo" class="catalogo"></div>
+<p id="aviso-pronto" class="aviso" hidden>Estem preparant els primers productes. Si us n’interessa algun, <a href="index-ca.html#contacte">escriviu-nos</a> i us avisarem quan estigui disponible.</p>
+</div>
+</section>
+
+<section id="pedido" class="bloque bloque-blanco">
+<div class="wrap pedido">
+<div class="cesta">
+<h2>La vostra cistella</h2>
+<ul id="cesta-lista" class="cesta-lista" aria-live="polite"></ul>
+<p class="cesta-total"><span>Total</span><strong id="cesta-total">0,00 €</strong></p>
+<p class="nota">Si trieu enviament a domicili, us direm el cost de l’enviament abans de pagar.</p>
+</div>
+<form id="form-pedido" class="form">
+<input type="hidden" name="access_key" value="d495cd74-33c4-4019-a356-e74dacadebbe">
+<input type="hidden" name="subject" value="Nova comanda de la botiga de N.A.N.A.">
+<input type="hidden" name="from_name" value="Botiga N.A.N.A.">
+<input type="hidden" name="idioma" value="Català">
+<input type="checkbox" name="botcheck" style="display: none" tabindex="-1" autocomplete="off">
+<h2>Dades de la comanda</h2>
+<div class="fila">
+<label>El vostre nom<input type="text" name="nombre" required autocomplete="name"></label>
+<label>Email<input type="email" name="email" required autocomplete="email"></label>
+</div>
+<label>Telèfon (opcional)<input type="tel" name="telefono" autocomplete="tel"></label>
+<fieldset>
+<legend>Com la voleu rebre?</legend>
+<label class="opcion"><input type="radio" name="entrega" value="Recollida a Sant Boi" checked>Recollida a Sant Boi (en una trobada o en una activitat de l’associació)</label>
+<label class="opcion"><input type="radio" name="entrega" value="Enviament a domicili">Enviament a domicili</label>
+</fieldset>
+<label id="campo-direccion" hidden>Adreça d’enviament<textarea name="direccion" rows="3" autocomplete="street-address"></textarea></label>
+<label>Aportació solidària (opcional)
+<select id="aportacion" name="aportacion">
+<option value="0">Sense aportació</option>
+<option value="2">2 €</option>
+<option value="5">5 €</option>
+<option value="10">10 €</option>
+</select>
+<span class="ayuda">Ens ajuda a regalar material a famílies que no el poden pagar.</span>
+</label>
+<label>Comentaris (opcional)<textarea name="mensaje" rows="3"></textarea></label>
+<label class="opcion"><input type="checkbox" name="socio" value="Sí">Som socis de N.A.N.A.</label>
+<label class="opcion"><input type="checkbox" name="privacidad" value="Aceptada" required>He llegit les condicions de la botiga i accepto que N.A.N.A. faci servir aquestes dades només per gestionar la comanda.</label>
+<button type="submit" id="btn-pedido" class="btn">Enviar la comanda</button>
+<p id="pedido-estado" role="status" aria-live="polite" class="estado"></p>
+</form>
+</div>
+</section>
+
+<section class="bloque">
+<div class="wrap texto">
+<h2>On van els diners?</h2>
+<p>N.A.N.A. és una associació sense ànim de lucre. Els productes es venen a un preu ajustat i el marge que queda es destina íntegrament a les nostres activitats: grups de famílies, xerrades, tallers i acompanyament en tràmits. Amb l’aportació solidària regalem material a famílies que no el poden pagar: si és el vostre cas, <a href="index-ca.html#contacte">escriviu-nos</a> amb tota confiança.</p>
+
+<h2 id="condicions">Condicions de la botiga</h2>
+<ul>
+<li><strong>Venedor:</strong> N.A.N.A. – Nucli d’Acompanyament i Necessitats de l’Autisme i famílies neurodivergents, NIF [NIF], [DOMICILI SOCIAL], Sant Boi de Llobregat.</li>
+<li><strong>Preus:</strong> en euros i impostos inclosos. L’enviament a domicili, si el demaneu, es paga a part i us direm el cost abans de pagar.</li>
+<li><strong>Comanda i pagament:</strong> la comanda només és ferma quan us la confirmem per escrit. Es paga per Bizum o transferència un cop confirmada.</li>
+<li><strong>Devolucions:</strong> teniu 14 dies naturals des que rebeu el producte per tornar-lo sense donar explicacions, escrivint a <a href="mailto:nucli.nana@gmail.com">nucli.nana@gmail.com</a>. Us retornarem els diners pel mateix mitjà en un termini màxim de 14 dies.</li>
+<li><strong>Aplicacions:</strong> es descarreguen i, si escau, es paguen a l’App Store o Google Play, amb les condicions de cada botiga.</li>
+<li><strong>Dades personals:</strong> les fem servir només per gestionar la vostra comanda. Més informació a <a href="privacitat.html">Avís legal i privacitat</a>.</li>
+</ul>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+N.A.N.A. – Nucli d’Acompanyament i Necessitats de l’Autisme i famílies neurodivergents · <a href="privacitat.html">Avís legal i privacitat</a>
+</div>
+</footer>
+
+<script src="productos.js"></script>
+<script src="tienda.js"></script>
+</body>
+</html>
