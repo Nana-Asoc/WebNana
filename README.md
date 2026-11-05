@@ -32,7 +32,26 @@ Para verla, abre `index.html` en el navegador.
 | `tienda.html` | `botiga.html` | lista de productos con buscador y categorías |
 | `producto.html?id=…` | `producte.html?id=…` | página de cada producto (fotos, descripción, «Para qué sirve») |
 
-Estilos en `tienda.css` y funcionamiento en `tienda.js` (sirven para las cuatro páginas). Los productos y las categorías se editan en un solo archivo, `productos.js`:
+Estilos en `tienda.css` y funcionamiento en `tienda.js` (sirven para las cuatro páginas). Los productos y las categorías están en un solo archivo, `productos.js`.
+
+### Gestionar los productos sin tocar código: `gestionar.html`
+
+En la web, abrid **`gestionar.html`** (por ejemplo `https://nana-asoc.github.io/WebNana/gestionar.html`). No sale en el menú ni en los buscadores. Desde ahí se puede:
+
+- Añadir un producto, cambiarlo o borrarlo.
+- Subir fotos desde el móvil o el ordenador (se reducen solas), ordenarlas y quitarlas.
+- Poner el precio y el enlace del anuncio de Wallapop.
+- Cambiar el orden en el que salen los productos.
+
+Al pulsar «Guardar y publicar», la página guarda los cambios en GitHub y la web se actualiza en uno o dos minutos.
+
+La primera vez pide una **clave de acceso de GitHub** (la página explica cómo crearla): una clave «fine-grained» con *Resource owner* Nana-Asoc, solo el repositorio WebNana y el permiso *Contents: Read and write*. Cada persona que gestione la tienda necesita su propia cuenta de GitHub con acceso al repositorio y su propia clave. Si la organización pide aprobar las claves, se aprueban en Nana-Asoc → Settings → Personal access tokens → Pending requests. La clave se guarda solo en el navegador de ese dispositivo; con «Desconectar» se borra. Si una clave se pierde o se filtra, borradla en GitHub (Settings → Developer settings → Personal access tokens).
+
+Las categorías no se cambian desde `gestionar.html`: se editan a mano en `productos.js`.
+
+### Editar `productos.js` a mano
+
+Si preferís hacerlo a mano:
 
 1. Guarda las fotos en `img/tienda/` (mejor cuadradas, unos 1000 × 1000 px). En la tienda y en la página del producto se deslizan con el dedo o con las flechas. Sin fotos sale un dibujo de la categoría.
 2. Copia un bloque de `productos.js` y rellénalo: categoría, fotos, precio, enlace del anuncio de Wallapop y textos en castellano y catalán.

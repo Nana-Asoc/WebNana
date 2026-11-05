@@ -22,7 +22,14 @@
 
   var productos=window.NANA_PRODUCTOS||[],categorias=window.NANA_CATEGORIAS||[],cats={};
   categorias.forEach(function(c){cats[c.id]=c;});
-  function txt(p){return p[L]||p.es;}
+  // Textos del producto en el idioma de la página; si falta alguno en catalán, se usa el castellano
+  function txt(p){
+    var es=p.es||{},l=p[L]||{},r={};
+    ['nombre','resumen','descripcion','paraQue'].forEach(function(k){
+      var v=l[k];r[k]=(v&&(!Array.isArray(v)||v.length))?v:es[k];
+    });
+    return r;
+  }
   function euros(n){return n.toLocaleString(L==='ca'?'ca-ES':'es-ES',{style:'currency',currency:'EUR'});}
   function el(tag,cls,t){var e=document.createElement(tag);if(cls)e.className=cls;if(t!=null)e.textContent=t;return e;}
   function normal(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
