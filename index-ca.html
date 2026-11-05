@@ -20,9 +20,13 @@ a{color:#2F5F80}a:hover{color:#1E3F57}
 <style>button:disabled{opacity:.6;cursor:wait} input:focus,select:focus,textarea:focus{outline:3px solid #8ED8D3;outline-offset:1px}</style>
 <style>
 header{position:sticky;top:0;z-index:40}
+header .wrap{max-width:1320px}
 section[id]{scroll-margin-top:96px}
 .barra-movil{display:none}
-@media (max-width:1180px) and (min-width:721px){.marca-texto{display:none !important}}
+@media (max-width:1320px) and (min-width:721px){.marca-texto{display:none !important}}
+@media (max-width:1320px) and (min-width:721px){.nav-links{gap:16px !important}}
+@media (max-width:1000px) and (min-width:721px){.cta-cabecera{display:none !important}}
+@media (max-width:860px) and (min-width:721px){.nav-links{gap:12px !important;font-size:.9375rem !important}.marca img{height:48px !important}}
 @media (max-width:720px){
 header .wrap{flex-wrap:nowrap !important;padding-top:8px !important;padding-bottom:8px !important;gap:12px !important}
 .marca img{height:60px !important}
@@ -56,6 +60,7 @@ body{padding-bottom:76px}
 <a href="#ajuts">Ajuts i tràmits</a>
 <a href="#que-fem">Què fem</a>
 <a href="#col-labora">Col·labora</a>
+<a href="botiga.html">Botiga</a>
 <a href="#contacte">Contacte</a>
 </nav>
 <div style="display: flex; align-items: center; gap: 16px">
@@ -208,6 +213,7 @@ body{padding-bottom:76px}
 <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
 <h2 class="sec-title" style="margin: 0; font-family: Nunito, sans-serif; font-weight: 800; font-size: 2.2rem; line-height: 1.15">Junts arribem a més famílies</h2>
 <p style="margin: 0; font-size: 1.1875rem; color: #E6F0F6">Fes-te’n soci, col·labora com a voluntari o fes un donatiu. Cada aportació es converteix en acompanyament.</p>
+<p style="margin: 0; color: #E6F0F6">També ens podeu donar suport des de la nostra <a href="botiga.html" style="color: #FFFFFF; font-weight: 700">botiga solidària</a>: materials i apps per al dia a dia.</p>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 14px">
 <a href="#contacte" style="background: #8ED8D3; color: #0F3A37; text-decoration: none; font-weight: 700; padding: 16px 28px; border-radius: 999px">Fes-te’n soci</a>
