@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Producte – Botiga N.A.N.A.</title>
+<meta name="description" content="Botiga solidària de N.A.N.A.: materials i aplicacions pensats per a nens i nenes amb autisme.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tienda.css">
+</head>
+<body>
+
+<header class="cabecera">
+<div class="wrap cabecera-fila">
+<a href="botiga.html" class="marca" aria-label="Tornar a la botiga de N.A.N.A."><img src="img/logo-nana-marca.jpg" width="268" height="239" alt="Logotip de N.A.N.A."><span class="marca-tienda">Botiga</span></a>
+<a href="botiga.html" class="volver">← Tots els productes</a>
+<div class="idioma" role="group" aria-label="Idioma">
+<a href="producto.html" hreflang="es" lang="es" data-idioma title="Castellano">ES</a>
+<a href="producte.html" aria-current="page" title="Català">CA</a>
+</div>
+</div>
+</header>
+
+<main id="producto" class="wrap ficha" hidden>
+<nav class="migas" aria-label="Sou aquí"><a href="botiga.html">Botiga</a><span aria-hidden="true">›</span><a id="miga-cat" href="botiga.html"></a></nav>
+<div class="ficha-rejilla">
+<div id="galeria" class="ficha-galeria"></div>
+<div class="ficha-info">
+<a id="ficha-cat" class="chip-cat chip-cat-enlace" href="botiga.html"></a>
+<h1 id="ficha-nombre"></h1>
+<p id="ficha-resumen" class="ficha-resumen"></p>
+<div id="ficha-precio" class="ficha-precio"></div>
+<div id="ficha-botones" class="ficha-botones"></div>
+<ul id="garantias" class="garantias">
+<li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg><span><strong>Pagament protegit</strong> amb els enviaments de Wallapop: els diners no ens arriben fins que rebeu el producte.</span></li>
+<li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg><span><strong>Enviament a casa</strong> o lliurament en mà a Sant Boi.</span></li>
+<li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 1 1 12 6a5 5 0 1 1 7.5 6.6z"/></svg><span><strong>Tot el que es recapta</strong> va a les activitats de l’associació.</span></li>
+</ul>
+</div>
+</div>
+
+<div class="ficha-texto">
+<section>
+<h2>Descripció</h2>
+<div id="ficha-descripcion"></div>
+</section>
+<section id="bloque-paraque">
+<h2>Per a què serveix</h2>
+<ul id="ficha-paraque" class="lista-check"></ul>
+</section>
+<p class="nota">Dubteu si és adequat per al vostre fill o filla? <a href="index-ca.html#contacte">Escriviu-nos</a> i us orientem.</p>
+</div>
+
+<section id="bloque-relacionados" class="relacionados">
+<h2>També us pot interessar</h2>
+<div id="relacionados" class="rejilla"></div>
+</section>
+</main>
+
+<main id="no-encontrado" class="wrap no-encontrado" hidden>
+<h1>No trobem aquest producte</h1>
+<p>Potser ja no està a la venda. <a href="botiga.html">Veure tots els productes</a>.</p>
+</main>
+
+<div id="barra-compra" class="barra-compra" hidden></div>
+
+<footer>
+<div class="wrap">
+N.A.N.A. – Nucli d’Acompanyament i Necessitats de l’Autisme i famílies neurodivergents · <a href="index-ca.html">Inici</a> · <a href="botiga.html#condicions">Condicions de la botiga</a> · <a href="privacitat.html">Avís legal i privacitat</a>
+</div>
+</footer>
+
+<script src="productos.js"></script>
+<script src="tienda.js"></script>
+</body>
+</html>
