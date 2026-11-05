@@ -23,7 +23,7 @@ Mientras la lista esté vacía, se muestran tres recuadros de «Próximamente».
 - El botón ES/CA de la cabecera enlaza cada página con su versión en el otro idioma. En la página principal conserva la sección en la que estaba el visitante (por ejemplo, `#contacto` ↔ `#contacte`).
 - **Si cambias un texto, cámbialo en los dos idiomas.**
 
-Para verla, abre `index.html` en el navegador.
+Para verla, abre `index.html` en el navegador. La página para gestionar la tienda (`gestionar.html`) está enlazada en el pie de la portada y de la tienda.
 
 ## Tienda solidaria
 
