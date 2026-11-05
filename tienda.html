@@ -13,106 +13,85 @@
 </head>
 <body>
 
-<header>
-<div class="wrap">
-<a href="index.html" class="marca" aria-label="N.A.N.A., volver al inicio"><img src="img/logo-nana-marca.jpg" width="268" height="239" alt="Logotipo de N.A.N.A."></a>
-<div class="acciones">
-<a class="volver" href="index.html">← Volver al inicio</a>
+<header class="cabecera">
+<div class="wrap cabecera-fila">
+<a href="index.html" class="marca" aria-label="N.A.N.A., volver al inicio"><img src="img/logo-nana-marca.jpg" width="268" height="239" alt="Logotipo de N.A.N.A."><span class="marca-tienda">Tienda</span></a>
+<form id="form-buscar" class="buscador" role="search">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<input id="buscar" type="search" placeholder="Buscar productos" aria-label="Buscar productos" autocomplete="off" enterkeyhint="search">
+</form>
 <div class="idioma" role="group" aria-label="Idioma">
 <a href="tienda.html" aria-current="page" title="Castellano">ES</a>
-<a href="botiga.html" hreflang="ca" lang="ca" title="Català">CA</a>
+<a href="botiga.html" hreflang="ca" lang="ca" data-idioma title="Català">CA</a>
 </div>
 </div>
-</div>
+<nav class="wrap categorias" id="categorias" aria-label="Categorías"></nav>
 </header>
 
 <main>
-<section class="intro">
+<section class="portada-tienda">
 <div class="wrap">
+<div class="banner">
+<div>
 <span class="chip">Tienda solidaria · Sin ánimo de lucro</span>
 <h1>Herramientas para el día a día</h1>
-<p class="lead">Materiales y aplicaciones que las familias de N.A.N.A. hemos probado y que nos ayudan en casa y en la escuela. <strong>Todo lo que se recauda se destina a las actividades de la asociación.</strong></p>
-<ol class="pasos">
-<li><strong>Elegid</strong> los productos y añadidlos a la cesta.</li>
-<li><strong>Enviad el pedido</strong>: no se paga nada todavía.</li>
-<li><strong>Os escribimos</strong> para confirmarlo y deciros cómo pagar (Bizum o transferencia) y cuándo recogerlo.</li>
-</ol>
+<p>Materiales y apps que las familias de N.A.N.A. hemos probado. <strong>Todo lo recaudado va a la asociación.</strong></p>
+</div>
+<ul class="ventajas">
+<li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>Envíos con pago protegido de Wallapop</li>
+<li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Envío a casa o en mano en Sant Boi</li>
+<li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 1 1 12 6a5 5 0 1 1 7.5 6.6z"/></svg>Cada compra apoya a familias</li>
+</ul>
+</div>
 </div>
 </section>
 
-<section class="bloque">
+<section id="lista" class="lista">
 <div class="wrap">
-<h2>Productos</h2>
-<div id="catalogo" class="catalogo"></div>
-<p id="aviso-pronto" class="aviso" hidden>Estamos preparando los primeros productos. Si os interesa alguno, <a href="index.html#contacto">escribidnos</a> y os avisaremos cuando esté disponible.</p>
+<div class="lista-cabecera">
+<h2 id="titulo-lista">Todos los productos</h2>
+<span id="contador" class="contador" aria-live="polite"></span>
+</div>
+<div id="catalogo" class="rejilla"></div>
+<p id="sin-resultados" class="sin-resultados" hidden><span></span> <button type="button" id="limpiar" class="enlace">Ver todos los productos</button></p>
 </div>
 </section>
 
-<section id="pedido" class="bloque bloque-blanco">
-<div class="wrap pedido">
-<div class="cesta">
-<h2>Vuestra cesta</h2>
-<ul id="cesta-lista" class="cesta-lista" aria-live="polite"></ul>
-<p class="cesta-total"><span>Total</span><strong id="cesta-total">0,00 €</strong></p>
-<p class="nota">Si elegís envío a domicilio, os diremos el coste del envío antes de pagar.</p>
+<section class="info">
+<div class="wrap info-rejilla">
+<div>
+<h2>Cómo comprar</h2>
+<ol class="pasos">
+<li>Entrad en el producto y pulsad <strong>Comprar en Wallapop</strong>.</li>
+<li>Elegid envío a casa o quedad con nosotros para la entrega en mano en Sant Boi.</li>
+<li>Con envío, Wallapop guarda el pago hasta que recibís el producto y comprobáis que todo está bien.</li>
+</ol>
+<p>¿Dudas o preferís otra forma de pago? <a href="index.html#contacto">Escribidnos</a>.</p>
 </div>
-<form id="form-pedido" class="form">
-<input type="hidden" name="access_key" value="d495cd74-33c4-4019-a356-e74dacadebbe">
-<input type="hidden" name="subject" value="Nuevo pedido de la tienda de N.A.N.A.">
-<input type="hidden" name="from_name" value="Tienda N.A.N.A.">
-<input type="hidden" name="idioma" value="Castellano">
-<input type="checkbox" name="botcheck" style="display: none" tabindex="-1" autocomplete="off">
-<h2>Datos del pedido</h2>
-<div class="fila">
-<label>Vuestro nombre<input type="text" name="nombre" required autocomplete="name"></label>
-<label>Email<input type="email" name="email" required autocomplete="email"></label>
-</div>
-<label>Teléfono (opcional)<input type="tel" name="telefono" autocomplete="tel"></label>
-<fieldset>
-<legend>¿Cómo lo queréis recibir?</legend>
-<label class="opcion"><input type="radio" name="entrega" value="Recogida en Sant Boi" checked>Recogida en Sant Boi (en un encuentro o en una actividad de la asociación)</label>
-<label class="opcion"><input type="radio" name="entrega" value="Envío a domicilio">Envío a domicilio</label>
-</fieldset>
-<label id="campo-direccion" hidden>Dirección de envío<textarea name="direccion" rows="3" autocomplete="street-address"></textarea></label>
-<label>Aportación solidaria (opcional)
-<select id="aportacion" name="aportacion">
-<option value="0">Sin aportación</option>
-<option value="2">2 €</option>
-<option value="5">5 €</option>
-<option value="10">10 €</option>
-</select>
-<span class="ayuda">Nos ayuda a regalar material a familias que no pueden pagarlo.</span>
-</label>
-<label>Comentarios (opcional)<textarea name="mensaje" rows="3"></textarea></label>
-<label class="opcion"><input type="checkbox" name="socio" value="Sí">Somos socios de N.A.N.A.</label>
-<label class="opcion"><input type="checkbox" name="privacidad" value="Aceptada" required>He leído las condiciones de la tienda y acepto que N.A.N.A. use estos datos solo para gestionar el pedido.</label>
-<button type="submit" id="btn-pedido" class="btn">Enviar pedido</button>
-<p id="pedido-estado" role="status" aria-live="polite" class="estado"></p>
-</form>
-</div>
-</section>
-
-<section class="bloque">
-<div class="wrap texto">
+<div>
 <h2>¿Adónde va el dinero?</h2>
-<p>N.A.N.A. es una asociación sin ánimo de lucro. Los productos se venden a un precio ajustado y el margen que queda se destina íntegramente a nuestras actividades: grupos de familias, charlas, talleres y acompañamiento en trámites. Con la aportación solidaria regalamos material a familias que no pueden pagarlo: si es vuestro caso, <a href="index.html#contacto">escribidnos</a> con total confianza.</p>
-
-<h2 id="condiciones">Condiciones de la tienda</h2>
+<p>N.A.N.A. es una asociación sin ánimo de lucro. Los productos se venden a un precio ajustado y el margen que queda se destina íntegramente a nuestras actividades: grupos de familias, charlas, talleres y acompañamiento en trámites. Si a vuestra familia le cuesta pagar algún material, <a href="index.html#contacto">escribidnos</a> con total confianza.</p>
+</div>
+</div>
+<div class="wrap">
+<details id="condiciones" class="condiciones">
+<summary>Condiciones de la tienda</summary>
 <ul>
 <li><strong>Vendedor:</strong> N.A.N.A. – Núcleo de Acompañamiento y Necesidades del Autismo y familias neurodivergentes, NIF [NIF], [DOMICILIO SOCIAL], Sant Boi de Llobregat.</li>
-<li><strong>Precios:</strong> en euros e impuestos incluidos. El envío a domicilio, si lo pedís, se paga aparte y os diremos su coste antes de pagar.</li>
-<li><strong>Pedido y pago:</strong> el pedido solo es firme cuando os lo confirmamos por escrito. Se paga por Bizum o transferencia una vez confirmado.</li>
-<li><strong>Devoluciones:</strong> tenéis 14 días naturales desde que recibís el producto para devolverlo sin dar explicaciones, escribiendo a <a href="mailto:nucli.nana@gmail.com">nucli.nana@gmail.com</a>. Os devolveremos el dinero por el mismo medio en un plazo máximo de 14 días.</li>
+<li><strong>Precios:</strong> en euros e impuestos incluidos. Los gastos de envío y la tarifa de protección de Wallapop, si los hay, se muestran en Wallapop antes de pagar.</li>
+<li><strong>Compra y pago:</strong> se hacen en Wallapop, con sus condiciones de uso y su sistema de pago protegido.</li>
+<li><strong>Devoluciones:</strong> tenéis 14 días naturales desde que recibís el producto para devolverlo sin dar explicaciones, escribiendo a <a href="mailto:nucli.nana@gmail.com">nucli.nana@gmail.com</a>. Os devolveremos el dinero en un plazo máximo de 14 días.</li>
 <li><strong>Aplicaciones:</strong> se descargan y, en su caso, se pagan en App Store o Google Play, con las condiciones de cada tienda.</li>
-<li><strong>Datos personales:</strong> los usamos solo para gestionar vuestro pedido. Más información en <a href="privacidad.html">Aviso legal y privacidad</a>.</li>
+<li><strong>Datos personales:</strong> esta web no recoge datos de las compras. Wallapop los trata según su propia política de privacidad. Más información en <a href="privacidad.html">Aviso legal y privacidad</a>.</li>
 </ul>
+</details>
 </div>
 </section>
 </main>
 
 <footer>
 <div class="wrap">
-N.A.N.A. – Núcleo de Acompañamiento y Necesidades del Autismo y familias neurodivergentes · <a href="privacidad.html">Aviso legal y privacidad</a>
+N.A.N.A. – Núcleo de Acompañamiento y Necesidades del Autismo y familias neurodivergentes · <a href="index.html">Inicio</a> · <a href="privacidad.html">Aviso legal y privacidad</a>
 </div>
 </footer>
 
