@@ -262,7 +262,7 @@ body{padding-bottom:76px}
 <div style="display: flex; flex-direction: column; gap: 6px">
 <span>[Nº REGISTRO DE ASOCIACIONES] · [NIF]</span>
 <a href="privacidad.html" style="color: #D5E2EA">Aviso legal y privacidad</a>
-<a href="gestionar.html" style="color: #9FB4C2; font-size: 0.875rem">Gestionar la tienda</a>
+<a href="gestionar.html" class="enlace-gestion" hidden style="color: #9FB4C2; font-size: 0.875rem">Gestionar la tienda</a>
 </div>
 </div>
 </footer>
@@ -318,6 +318,8 @@ body{padding-bottom:76px}
     cuerpo.appendChild(el('span','margin-top: 6px; font-size: 0.9375rem; font-weight: 700; color: #2F5F80',T.ver));
     a.appendChild(img);a.appendChild(cuerpo);cont.appendChild(a);
   });
+  // El enlace a gestionar la tienda solo sale en los dispositivos donde un responsable ha guardado su clave
+  try{if(localStorage.getItem('nana-gh-token'))document.querySelectorAll('.enlace-gestion').forEach(function(a){a.hidden=false;});}catch(e){}
   // En cambiar de idioma, mantiene la sección en la que estaba el visitante
   var secciones={'inicio':'inici','primeros-pasos':'primers-passos','ayudas':'ajuts','que-hacemos':'que-fem','colabora':'col-labora','contacto':'contacte','sant-boi':'sant-boi'};
   document.querySelectorAll('[data-idioma]').forEach(function(a){

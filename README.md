@@ -23,7 +23,7 @@ Mientras la lista esté vacía, se muestran tres recuadros de «Próximamente».
 - El botón ES/CA de la cabecera enlaza cada página con su versión en el otro idioma. En la página principal conserva la sección en la que estaba el visitante (por ejemplo, `#contacto` ↔ `#contacte`).
 - **Si cambias un texto, cámbialo en los dos idiomas.**
 
-Para verla, abre `index.html` en el navegador. La página para gestionar la tienda (`gestionar.html`) está enlazada en el pie de la portada y de la tienda.
+Para verla, abre `index.html` en el navegador. La página para gestionar la tienda (`gestionar.html`) no está enlazada para el público: el enlace «Gestionar la tienda» del pie solo aparece en los navegadores donde un responsable ha conectado su clave de GitHub con «Recordar la clave en este dispositivo».
 
 ## Tienda solidaria
 
@@ -48,6 +48,8 @@ Al pulsar «Guardar y publicar», la página guarda los cambios en GitHub y la w
 La primera vez pide una **clave de acceso de GitHub** (la página explica cómo crearla): una clave «fine-grained» con *Resource owner* Nana-Asoc, solo el repositorio WebNana y el permiso *Contents: Read and write*. Cada persona que gestione la tienda necesita su propia cuenta de GitHub con acceso al repositorio y su propia clave. Si la organización pide aprobar las claves, se aprueban en Nana-Asoc → Settings → Personal access tokens → Pending requests. La clave se guarda solo en el navegador de ese dispositivo; con «Desconectar» se borra. Si una clave se pierde o se filtra, borradla en GitHub (Settings → Developer settings → Personal access tokens).
 
 Las categorías no se cambian desde `gestionar.html`: se editan a mano en `productos.js`.
+
+**Si la web se pasa a otro repositorio** (por ejemplo, para el dominio propio), cambiad `REPO` (y `RAMA` si no es `main`) al principio de `gestionar.js`. Si solo se cambia el dominio y el repositorio sigue siendo el mismo, no hay que tocar nada; eso sí, cada responsable tiene que volver a pegar su clave la primera vez que entre por el dominio nuevo.
 
 ### Editar `productos.js` a mano
 

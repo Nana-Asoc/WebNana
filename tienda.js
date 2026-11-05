@@ -20,6 +20,9 @@
       contacto:'index-ca.html#contacte',titulo:' – Botiga N.A.N.A.'}
   }[L];
 
+  // El enlace a gestionar la tienda solo sale en los dispositivos donde un responsable ha guardado su clave
+  try{if(localStorage.getItem('nana-gh-token'))document.querySelectorAll('.enlace-gestion').forEach(function(a){a.hidden=false;});}catch(e){}
+
   var productos=window.NANA_PRODUCTOS||[],categorias=window.NANA_CATEGORIAS||[],cats={};
   categorias.forEach(function(c){cats[c.id]=c;});
   // Textos del producto en el idioma de la página; si falta alguno en catalán, se usa el castellano
