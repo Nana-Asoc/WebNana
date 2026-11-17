@@ -116,6 +116,14 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 .qs-dato{display:flex;gap:12px;align-items:flex-start}
 </style>
 <style>@media (max-width:1400px){.cta-cabecera{display:none !important}}</style>
+<style>
+/* Cabecera en una sola línea en escritorio: el botón «Pide orientación» ya está como «Contacto» en el menú */
+.cta-cabecera{display:none !important}
+@media (min-width:721px){header .wrap{flex-wrap:nowrap !important;max-width:1200px}.marca-texto{display:none !important}}
+/* Ilustraciones de cada página: más contenidas */
+.foto-pagina{flex:0 1 auto;align-self:center;width:100%;max-width:760px;aspect-ratio:16 / 9;margin-left:auto;margin-right:auto}
+@media (max-width:720px){.foto-pagina{max-width:none;aspect-ratio:4 / 3}}
+</style>
 </head>
 <body>
 <div style="font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; color: #1E3445; background: #F6F9FA; font-size: 1.0625rem; line-height: 1.6">
