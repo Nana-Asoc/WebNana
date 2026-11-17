@@ -15,7 +15,7 @@ La web tiene una página para cada apartado del menú, en castellano y catalán:
 | `colabora.html` | `col-labora.html` | hazte socio, voluntariado, donativos y tienda |
 | `contacto.html` | `contacte.html` | formulario de contacto |
 | `privacidad.html` | `privacitat.html` | aviso legal y privacidad |
-| `tienda.html` | `botiga.html` | tienda solidaria (ver más abajo) |
+| `tienda.html` | `botiga.html` | herramientas: materiales, apps y herramientas online (ver más abajo) |
 
 Cada página lleva su propia cabecera, menú y pie (estilos y script incluidos en el propio archivo). **Si cambias el menú, la cabecera o el pie, cámbialo en todas las páginas.** En el móvil y en pantallas medianas (hasta 1240 px), el menú se abre con el botón ☰ de la cabecera.
 
