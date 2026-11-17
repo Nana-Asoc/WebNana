@@ -102,6 +102,24 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 @media (max-width:560px){.menu-btn span{display:none}.menu-btn{padding:0;width:48px}}
 @media (max-width:440px){.marca-texto{display:none !important}}
 </style>
+<style>
+/* Con «Inicio» y «Quiénes somos» el menú no cabe en pantallas medianas: se usa el botón de menú hasta 1180 px */
+@media (max-width:1180px) and (min-width:721px){
+.nav-links{display:none !important}
+.menu-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:none;min-width:48px;height:48px;padding:0 16px;border:1px solid #CFDDE5;border-radius:999px;background:#FFFFFF;color:#1E3445;font:inherit;font-weight:700;font-size:.9375rem;cursor:pointer}
+#menu-movil:not([hidden]){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid #E3ECF0;background:#FFFFFF;box-shadow:0 12px 24px rgba(30,52,69,.10);padding:8px 24px 16px}
+#menu-movil a{display:flex;align-items:center;min-height:52px;padding:0 16px;font-weight:700;font-size:1.0625rem;color:#1E3445;text-decoration:none;border-bottom:1px solid #EEF3F6}
+#menu-movil a[aria-current="page"]{color:#2F5F80;background:#F0F7F9;box-shadow:inset 5px 0 0 #407295}
+#menu-movil a.menu-cta{grid-column:1 / -1;margin:14px 0 0;justify-content:center;border:0;border-radius:999px;background:#407295;color:#FFFFFF}
+}
+.qs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.qs-dato{display:flex;gap:12px;align-items:flex-start}
+</style>
+<style>
+.foto-pagina{display:block;width:100%;height:auto;flex:1 1 100%;aspect-ratio:2 / 1;object-fit:cover;object-position:center 45%;border-radius:28px;background:#E3F6F4}
+@media (max-width:720px){.foto-pagina{aspect-ratio:4 / 3;border-radius:20px}}
+</style>
+<style>@media (max-width:1400px){.cta-cabecera{display:none !important}}</style>
 </head>
 <body>
 <div style="font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; color: #1E3445; background: #F6F9FA; font-size: 1.0625rem; line-height: 1.6">
@@ -110,6 +128,8 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 <div class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px">
 <a href="index-ca.html" class="marca" style="display: flex; align-items: center; gap: 12px; text-decoration: none; min-width: 0" aria-label="N.A.N.A., anar a l’inici"><img src="img/logo-nana-marca.jpg" alt="Logotip de N.A.N.A." width="268" height="239" style="height: 60px; width: auto; display: block; flex: none"><span class="marca-texto" style="font-family: Nunito, sans-serif; font-weight: 800; font-size: 0.75rem; line-height: 1.25; color: #2F5F80; max-width: 15em">Nucli d’Acompanyament i Necessitats de l’Autisme<span style="display: block; font-weight: 600; font-size: 0.6875rem; color: #407295; margin-top: 2px">Famílies neurodivergents</span></span></a>
 <nav class="nav-links" aria-label="Principal" style="display: flex; gap: 22px; font-weight: 700; font-size: 1rem">
+<a href="index-ca.html">Inici</a>
+<a href="qui-som.html">Qui som</a>
 <a href="primers-passos.html">Primers passos</a>
 <a href="ajuts.html">Ajuts i tràmits</a>
 <a href="que-fem.html" aria-current="page">Què fem</a>
@@ -128,6 +148,7 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 </div>
 <nav id="menu-movil" aria-label="Menú" hidden>
 <a href="index-ca.html">Inici</a>
+<a href="qui-som.html">Qui som</a>
 <a href="primers-passos.html">Primers passos</a>
 <a href="ajuts.html">Ajuts i tràmits</a>
 <a href="que-fem.html" aria-current="page">Què fem</a>
@@ -141,6 +162,7 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 <main>
 <section id="que-fem" style="padding: 88px 0">
 <div class="wrap" style="display: flex; flex-direction: column; gap: 40px">
+<img class="foto-pagina" src="img/secciones/que-hacemos.jpg" width="1600" height="1205" alt="Il·lustració de nens i nenes fent esport adaptat i jocs cooperatius en un poliesportiu, cadascun amb el seu monitor">
 <div style="max-width: 820px; display: flex; flex-direction: column; gap: 18px">
 <h1 class="sec-title" style="margin: 0; font-family: Nunito, sans-serif; font-weight: 800; font-size: 2.4rem; line-height: 1.15">Un nucli de famílies que s’acompanyen</h1>
 <p style="margin: 0; font-size: 1.1875rem; color: #3D5566">N.A.N.A. neix de famílies que han viscut el mateix que vosaltres. Acompanyem les famílies en els tràmits i organitzem activitats perquè els nostres fills i filles gaudeixin, es moguin i facin amics.</p>
@@ -220,7 +242,7 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 <a href="privacitat.html" style="color: #D5E2EA">Avís legal i privacitat</a>
 <a href="gestionar.html" class="enlace-gestion" hidden style="color: #9FB4C2; font-size: 0.875rem">Gestionar la botiga</a>
 </div>
-<nav class="pie-nav" aria-label="Pàgines" style="flex: 1 1 100%; border-top: 1px solid #34506A; padding-top: 18px"><a href="index-ca.html">Inici</a> <a href="primers-passos.html">Primers passos</a> <a href="ajuts.html">Ajuts i tràmits</a> <a href="que-fem.html">Què fem</a> <a href="col-labora.html">Col·labora</a> <a href="botiga.html">Botiga</a> <a href="contacte.html">Contacte</a></nav>
+<nav class="pie-nav" aria-label="Pàgines" style="flex: 1 1 100%; border-top: 1px solid #34506A; padding-top: 18px"><a href="index-ca.html">Inici</a> <a href="qui-som.html">Qui som</a> <a href="primers-passos.html">Primers passos</a> <a href="ajuts.html">Ajuts i tràmits</a> <a href="que-fem.html">Què fem</a> <a href="col-labora.html">Col·labora</a> <a href="botiga.html">Botiga</a> <a href="contacte.html">Contacte</a></nav>
 </div>
 </footer>
 
@@ -285,7 +307,7 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
     function cerrar(){mm.hidden=true;mb.setAttribute('aria-expanded','false');}
     mb.addEventListener('click',function(){var abierto=mm.hidden;mm.hidden=!abierto;mb.setAttribute('aria-expanded',abierto?'true':'false');});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')cerrar();});
-    window.addEventListener('resize',function(){if(window.innerWidth>720)cerrar();});
+    window.addEventListener('resize',function(){if(window.innerWidth>1180)cerrar();});
   }
   // Enlaces antiguos de la web de una sola página (por ejemplo index-ca.html#ajuts)
   var antiguas={'primers-passos':'primers-passos.html','ajuts':'ajuts.html','que-fem':'que-fem.html','col-labora':'col-labora.html','contacte':'contacte.html'},h=location.hash.slice(1);

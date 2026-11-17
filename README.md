@@ -7,6 +7,7 @@ La web tiene una página para cada apartado del menú, en castellano y catalán:
 | Castellano | Catalán | |
 |---|---|---|
 | `index.html` | `index-ca.html` | inicio: presentación, «¿Cómo os podemos ayudar?», N.A.N.A. en Sant Boi (eventos) y colabora |
+| `quienes-somos.html` | `qui-som.html` | quiénes somos: familias, educación infantil y educación especial |
 | `primeros-pasos.html` | `primers-passos.html` | primeros pasos tras el diagnóstico |
 | `ayudas.html` | `ajuts.html` | ayudas y trámites |
 | `que-hacemos.html` | `que-fem.html` | qué hacemos, actividades para tod@s y encuesta de actividades |
@@ -15,7 +16,9 @@ La web tiene una página para cada apartado del menú, en castellano y catalán:
 | `privacidad.html` | `privacitat.html` | aviso legal y privacidad |
 | `tienda.html` | `botiga.html` | tienda solidaria (ver más abajo) |
 
-Cada página lleva su propia cabecera, menú y pie (estilos y script incluidos en el propio archivo). **Si cambias el menú, la cabecera o el pie, cámbialo en todas las páginas.** En el móvil, el menú se abre con el botón ☰ de la cabecera.
+Cada página lleva su propia cabecera, menú y pie (estilos y script incluidos en el propio archivo). **Si cambias el menú, la cabecera o el pie, cámbialo en todas las páginas.** En el móvil y en pantallas medianas (hasta 1180 px), el menú se abre con el botón ☰ de la cabecera.
+
+Las ilustraciones de cada página están en `img/secciones/` (`quienes-somos.jpg`, `primeros-pasos.jpg`, `ayudas.jpg`, `que-hacemos.jpg`, `colabora.jpg`, `contacto.jpg`); se comparten entre castellano y catalán. Para cambiar una, sustituye el archivo manteniendo el nombre.
 
 - El botón ES/CA lleva a la misma página en el otro idioma.
 - `contacto.html?motivo=socio` abre el formulario con el motivo ya elegido (`diagnostico`, `ayuda`, `socio`, `actividades` u `otra`).
