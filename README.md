@@ -19,14 +19,13 @@ La web tiene una página para cada apartado del menú, en castellano y catalán:
 
 Cada página lleva su propia cabecera, menú y pie (estilos y script incluidos en el propio archivo). **Si cambias el menú, la cabecera o el pie, cámbialo en todas las páginas.** En el móvil y en pantallas medianas (hasta 1240 px), el menú se abre con el botón ☰ de la cabecera.
 
-Las ilustraciones de cada página están en `img/secciones/` (`quienes-somos.jpg`, `primeros-pasos.jpg`, `ayudas.jpg`, `que-hacemos.jpg`, `colabora.jpg`, `contacto.jpg`); se comparten entre castellano y catalán. Para cambiar una, sustituye el archivo manteniendo el nombre.
+Las ilustraciones de cada página están en `img/secciones/` (`quienes-somos.jpg`, `primeros-pasos.jpg`, `ayudas.jpg`, `que-hacemos.jpg`, `eventos.jpg`, `colabora-manos.jpg`, `contacto.jpg`); la de la portada es `img/portada.jpg`; se comparten entre castellano y catalán. Para cambiar una, sustituye el archivo manteniendo el nombre.
 
 - El botón ES/CA lleva a la misma página en el otro idioma.
 - `contacto.html?motivo=socio` abre el formulario con el motivo ya elegido (`diagnostico`, `ayuda`, `socio`, `actividades` u `otra`).
 - Los enlaces antiguos de la web de una sola página (por ejemplo `index.html#ayudas`) redirigen solos a la página nueva.
 
 - `img/logo-nana.jpg` — logotipo completo; `img/logo-nana-marca.jpg` — símbolo + NANA (cabecera)
-- `img/sant-boi-ermita.jpg` — foto de la sección «N.A.N.A. en Sant Boi» (Diego Eiras, CC BY-SA 4.0, Wikimedia Commons: hay que mantener la atribución que aparece debajo)
 
 ## Eventos
 
@@ -91,3 +90,12 @@ Antes de poner precios, revisad con la gestoría:
 - Eventos en `eventos.js`
 - NIF, nº de registro, domicilio social y fecha en el pie y en las páginas de privacidad
 - NIF y domicilio social en las condiciones de la tienda; precios, fotos y enlaces de Wallapop en `productos.js`
+
+## Seguridad
+
+- **Política de seguridad (CSP)** en cada página: solo se ejecutan los scripts de la propia web y los que están escritos dentro de cada página tal como están ahora. **Si cambias un `<script>` escrito dentro de una página, ejecuta `python3 herramientas/actualizar-csp.py`**; si no, ese script dejará de funcionar.
+- `seguridad.js` impide que otra web muestre estas páginas dentro de un marco (clickjacking).
+- Los tipos de letra están en `fonts/` (no se conecta con Google Fonts).
+- Los enlaces y fotos de los eventos y de la tienda solo aceptan direcciones `https://` o fotos de `img/`.
+- Formularios: campo trampa contra robots y límites de longitud.
+- Las páginas de gestión no salen en buscadores y usan claves de GitHub con permiso solo sobre este repositorio. Recomendado: activar la verificación en dos pasos en las cuentas de GitHub de quien gestione la web, poner fecha de caducidad a las claves y, en Web3Forms, limitar el formulario al dominio de la web.

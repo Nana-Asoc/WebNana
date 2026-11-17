@@ -2,13 +2,29 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-PDFg55GaQu8lOYb6MChJhRraZ4vpVrzSXGGnRdsz57A=' 'sha256-cEipZClXoarxVT347B4F8RxNmkkyIGXAM7fj6EsVGGU='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self'; connect-src 'self' https://api.web3forms.com; form-action 'self' https://api.web3forms.com; base-uri 'self'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="seguridad.js"></script>
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="theme-color" content="#407295">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="N.A.N.A.">
+<meta property="og:title" content="Ayudas y trámites · N.A.N.A.">
+<meta property="og:description" content="Os orientamos con el certificado de discapacidad, la dependencia, las becas, el CDIAP y las prestaciones para familias.">
+<meta property="og:image" content="https://nana-asoc.github.io/WebNana/img/portada.jpg">
+<meta property="og:image:width" content="1599">
+<meta property="og:image:height" content="1205">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://nana-asoc.github.io/WebNana/ayudas.html">
+<link rel="canonical" href="https://nana-asoc.github.io/WebNana/ayudas.html">
 <title>Ayudas y trámites · N.A.N.A.</title>
 <meta name="description" content="Os orientamos con el certificado de discapacidad, la dependencia, las becas, el CDIAP y las prestaciones para familias.">
 <link rel="alternate" hreflang="es" href="ayudas.html">
 <link rel="alternate" hreflang="ca" href="ajuts.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/fuentes.css">
 <style>
 body{margin:0;background:#F6F9FA}
 a{color:#2F5F80}a:hover{color:#1E3F57}
@@ -317,7 +333,7 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 <span>Núcleo de Acompañamiento y Necesidades del Autismo y familias neurodivergentes<br>Nucli d’Acompanyament i Necessitats de l’Autisme i famílies neurodivergents</span>
 </div>
 <div style="display: flex; flex-direction: column; gap: 6px">
-<span>[Nº REGISTRO DE ASOCIACIONES] · [NIF]</span>
+<span>Fundada en 2026 · Inscripción en el Registre d’Associacions en trámite</span>
 <a href="privacidad.html" style="color: #D5E2EA">Aviso legal y privacidad</a>
 <a href="gestionar.html" class="enlace-gestion" hidden style="color: #9FB4C2; font-size: 0.875rem">Gestionar la tienda</a>
 <a href="gestionar-eventos.html" class="enlace-gestion" hidden style="color: #9FB4C2; font-size: 0.875rem">Gestionar los eventos</a>
@@ -350,34 +366,6 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
   var barra=document.querySelector('.barra-movil'),form=document.getElementById('form-contacto');
   if(barra&&form&&'IntersectionObserver' in window){
     new IntersectionObserver(function(e){barra.classList.toggle('oculta',e[0].isIntersecting);}).observe(form);
-  }
-  // Galería de eventos: los datos están en eventos.js
-  var cont=document.getElementById('eventos');
-  if(cont){
-  var ig=document.getElementById('enlace-instagram');
-  var T={idioma:'es',pronto:'Próximamente',vacio:'Aquí aparecerán las fotos de nuestros eventos.',ver:'Ver en Instagram →'};
-  if(window.NANA_INSTAGRAM){ig.href=NANA_INSTAGRAM;ig.hidden=false;ig.style.display='inline-flex';}
-  var lista=window.NANA_EVENTOS||[];
-  function el(tag,css,txt){var e=document.createElement(tag);if(css)e.style.cssText=css;if(txt)e.textContent=txt;return e;}
-  if(!lista.length){
-    for(var k=0;k<3;k++){
-      var v=el('div','border: 2px dashed #CFDDE5; border-radius: 24px; aspect-ratio: 1 / 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center; padding: 20px; color: #5A7182');
-      v.appendChild(el('strong','font-family: Nunito, sans-serif; font-size: 1.125rem; color: #2F5F80',T.pronto));
-      v.appendChild(el('span','font-size: 0.9375rem',T.vacio));
-      v.className='hueco';cont.appendChild(v);
-    }
-  }
-  lista.forEach(function(ev){
-    var a=el('a','display: flex; flex-direction: column; background: #F6F9FA; border-radius: 24px; overflow: hidden; text-decoration: none; color: #1E3445; border: 1px solid #E3ECF0');
-    a.href=ev.enlace;a.target='_blank';a.rel='noopener';
-    var img=el('img','width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block');
-    img.src=ev.imagen;img.alt=ev[T.idioma]||ev.es||'';img.loading='lazy';
-    var cuerpo=el('div','padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 4px');
-    if(ev.fecha)cuerpo.appendChild(el('span','font-size: 0.875rem; color: #1D5F5B; font-weight: 700',ev.fecha));
-    cuerpo.appendChild(el('strong','font-family: Nunito, sans-serif; font-size: 1.125rem; line-height: 1.3',ev[T.idioma]||ev.es||''));
-    cuerpo.appendChild(el('span','margin-top: 6px; font-size: 0.9375rem; font-weight: 700; color: #2F5F80',T.ver));
-    a.appendChild(img);a.appendChild(cuerpo);cont.appendChild(a);
-  });
   }
   // El enlace a gestionar la tienda solo sale en los dispositivos donde un responsable ha guardado su clave
   try{if(localStorage.getItem('nana-gh-token'))document.querySelectorAll('.enlace-gestion').forEach(function(a){a.hidden=false;});}catch(e){}

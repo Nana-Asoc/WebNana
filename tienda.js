@@ -199,7 +199,7 @@
     var zp=document.getElementById('ficha-precio');zp.appendChild(precio(p,'precio-grande'));
     if(p.agotado)zp.appendChild(el('span','canal canal-agotado',T.agotado));
     var zb=document.getElementById('ficha-botones'),principal;
-    function boton(href,texto,cls){var a=el('a','btn '+(cls||''));a.href=href;a.target='_blank';a.rel='noopener';a.innerHTML=ICONOS.bolsa;a.appendChild(document.createTextNode(texto));return a;}
+    function boton(href,texto,cls){var a=el('a','btn '+(cls||''));a.href=/^https:\/\//i.test(String(href||''))?href:'#';a.target='_blank';a.rel='noopener';a.innerHTML=ICONOS.bolsa;a.appendChild(document.createTextNode(texto));return a;}
     if(p.tipo==='app'){
       if(p.appStore)zb.appendChild(principal=boton(p.appStore,T.appStore));
       if(p.googlePlay){var g=boton(p.googlePlay,T.googlePlay,principal?'btn-borde':'');zb.appendChild(g);principal=principal||g;}
