@@ -116,6 +116,14 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 .qs-dato{display:flex;gap:12px;align-items:flex-start}
 </style>
 <style>@media (max-width:1400px){.cta-cabecera{display:none !important}}</style>
+<style>
+/* Cabecera en una sola línea en escritorio: el botón «Pide orientación» ya está como «Contacto» en el menú */
+.cta-cabecera{display:none !important}
+@media (min-width:721px){header .wrap{flex-wrap:nowrap !important;max-width:1200px}.marca-texto{display:none !important}}
+/* Ilustraciones de cada página: más contenidas */
+.foto-pagina{flex:0 1 auto;align-self:center;width:100%;max-width:760px;aspect-ratio:16 / 9;margin-left:auto;margin-right:auto}
+@media (max-width:720px){.foto-pagina{max-width:none;aspect-ratio:4 / 3}}
+</style>
 </head>
 <body>
 <div style="font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; color: #1E3445; background: #F6F9FA; font-size: 1.0625rem; line-height: 1.6">
@@ -158,7 +166,7 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 <main>
 <section id="inicio" style="background: #FFFFFF; padding: 72px 0 88px">
 <div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
-<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<div style="flex: 1 1 540px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
 <span class="hero-badge" style="align-self: flex-start; background: #E3F6F4; color: #1D5F5B; font-weight: 700; font-size: 0.9375rem; padding: 8px 16px; border-radius: 999px">Asociación N.A.N.A. · Sant Boi de Llobregat</span>
 <h1 class="hero-title" style="margin: 0; font-family: Nunito, sans-serif; font-weight: 800; font-size: 3.4rem; line-height: 1.1; color: #1E3445">No estáis solos. Os acompañamos en cada paso.</h1>
 <p class="hero-lead" style="margin: 0; font-size: 1.25rem; color: #3D5566; max-width: 34em">Os ayudamos a entender el diagnóstico, a pedir las ayudas a las que tenéis derecho y a encontrar los recursos que vuestro hijo o hija necesita. Con calma, con cercanía y sin papeleo en solitario.</p>
