@@ -6,7 +6,7 @@ La web tiene una página para cada apartado del menú, en castellano y catalán:
 
 | Castellano | Catalán | |
 |---|---|---|
-| `index.html` | `index-ca.html` | inicio: presentación, N.A.N.A. en Sant Boi, próximo evento y colabora |
+| `index.html` | `index-ca.html` | inicio: presentación y colabora |
 | `quienes-somos.html` | `qui-som.html` | quiénes somos: familias, educación infantil y educación especial |
 | `primeros-pasos.html` | `primers-passos.html` | primeros pasos tras el diagnóstico |
 | `ayudas.html` | `ajuts.html` | ayudas y trámites |
