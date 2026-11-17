@@ -2,25 +2,37 @@
 
 Web de N.A.N.A. – Núcleo de Acompañamiento y Necesidades del Autismo y familias neurodivergentes (Sant Boi de Llobregat).
 
+La web tiene una página para cada apartado del menú, en castellano y catalán:
+
 | Castellano | Catalán | |
 |---|---|---|
-| `index.html` | `index-ca.html` | página principal (estilos y script incluidos en el propio archivo) |
+| `index.html` | `index-ca.html` | inicio: presentación, «¿Cómo os podemos ayudar?», N.A.N.A. en Sant Boi (eventos) y colabora |
+| `primeros-pasos.html` | `primers-passos.html` | primeros pasos tras el diagnóstico |
+| `ayudas.html` | `ajuts.html` | ayudas y trámites |
+| `que-hacemos.html` | `que-fem.html` | qué hacemos, actividades para tod@s y encuesta de actividades |
+| `colabora.html` | `col-labora.html` | hazte socio, voluntariado, donativos y tienda |
+| `contacto.html` | `contacte.html` | formulario de contacto |
 | `privacidad.html` | `privacitat.html` | aviso legal y privacidad |
 | `tienda.html` | `botiga.html` | tienda solidaria (ver más abajo) |
+
+Cada página lleva su propia cabecera, menú y pie (estilos y script incluidos en el propio archivo). **Si cambias el menú, la cabecera o el pie, cámbialo en todas las páginas.** En el móvil, el menú se abre con el botón ☰ de la cabecera.
+
+- El botón ES/CA lleva a la misma página en el otro idioma.
+- `contacto.html?motivo=socio` abre el formulario con el motivo ya elegido (`diagnostico`, `ayuda`, `socio`, `actividades` u `otra`).
+- Los enlaces antiguos de la web de una sola página (por ejemplo `index.html#ayudas`) redirigen solos a la página nueva.
 
 - `img/logo-nana.jpg` — logotipo completo; `img/logo-nana-marca.jpg` — símbolo + NANA (cabecera)
 - `img/sant-boi-ermita.jpg` — foto de la sección «N.A.N.A. en Sant Boi» (Diego Eiras, CC BY-SA 4.0, Wikimedia Commons: hay que mantener la atribución que aparece debajo)
 
 ## Añadir eventos de Instagram
 
-Los eventos de la sección «N.A.N.A. en Sant Boi» se editan en un solo archivo, `eventos.js`, y salen en las dos versiones de la web:
+Los eventos de la sección «N.A.N.A. en Sant Boi» (página de inicio) se editan en un solo archivo, `eventos.js`, y salen en las dos versiones de la web:
 
 1. Guarda la foto del evento en `img/eventos/` (mejor cuadrada).
 2. En `eventos.js`, copia la línea de ejemplo, quítale las `//` del principio y rellena la foto, el enlace de la publicación de Instagram, la fecha y el título en castellano (`es`) y catalán (`ca`).
 3. Pon el perfil de Instagram en `NANA_INSTAGRAM` para que aparezca el botón «Síguenos en Instagram».
 
 Mientras la lista esté vacía, se muestran tres recuadros de «Próximamente».
-- El botón ES/CA de la cabecera enlaza cada página con su versión en el otro idioma. En la página principal conserva la sección en la que estaba el visitante (por ejemplo, `#contacto` ↔ `#contacte`).
 - **Si cambias un texto, cámbialo en los dos idiomas.**
 
 Para verla, abre `index.html` en el navegador. La página para gestionar la tienda (`gestionar.html`) no está enlazada para el público: el enlace «Gestionar la tienda» del pie solo aparece en los navegadores donde un responsable ha conectado su clave de GitHub con «Recordar la clave en este dispositivo».
