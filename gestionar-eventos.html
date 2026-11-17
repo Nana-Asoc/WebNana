@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gestionar los eventos – N.A.N.A.</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tienda.css">
+<style>
+.admin{padding-top:24px;padding-bottom:64px;display:flex;flex-direction:column;gap:20px;max-width:980px}
+.panel{background:#FFFFFF;border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.panel h1{font-size:1.9rem}
+.panel h2{font-size:1.35rem}
+.panel p{margin:0;color:#3D5566}
+.panel ol{margin:0;padding-left:22px;color:#3D5566;display:flex;flex-direction:column;gap:6px}
+.campo{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:.9375rem;min-width:0}
+.campo small{font-weight:400;color:#5A7182;font-size:.8125rem}
+.campo input[type=text],.campo input[type=url],.campo input[type=password],.campo select,.campo textarea{font:inherit;font-weight:400;padding:11px 13px;min-height:46px;box-sizing:border-box;border:1px solid #B9CCD8;border-radius:12px;background:#FFFFFF;width:100%}
+.campo textarea{resize:vertical;min-height:96px}
+.fila2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.casilla{display:flex;gap:10px;align-items:center;font-weight:400;color:#3D5566}
+.casilla input{width:20px;height:20px;accent-color:#407295;margin:0}
+.botones{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn-peq{min-height:40px;padding:8px 16px;font-size:.9375rem}
+.btn-peligro{background:#FFFFFF;color:#A3352B;border-color:#E5B3AC}
+.btn-peligro:hover{background:#FCE7DF;color:#A3352B;border-color:#A3352B}
+button.btn{cursor:pointer;font:inherit;font-weight:700}
+button.btn:disabled{opacity:.55;cursor:wait}
+.estado{margin:0;font-weight:700;border-radius:12px;padding:12px 16px}
+.estado.ok{background:#E3F6F4;color:#1D5F5B}
+.estado.error{background:#FCE7DF;color:#A3352B}
+.estado.info{background:#DCE9F1;color:#2F5F80}
+.conectado{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.lista-admin{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.item{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;background:#F2F6F8;border-radius:14px;padding:10px 12px}
+.item-foto{width:64px;height:64px;border-radius:10px;overflow:hidden;background:#DCE9F1;display:flex;align-items:center;justify-content:center;color:#407295;font-weight:800}
+.item-foto img{width:100%;height:100%;object-fit:cover}
+.item-nombre{font-weight:700}
+.item-datos{font-size:.875rem;color:#5A7182;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.item-acciones{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.icono{width:40px;height:40px;border-radius:50%;border:1px solid #CFDDE5;background:#FFFFFF;color:#1E3445;cursor:pointer;font:inherit;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0}
+.icono:hover{background:#DCE9F1}
+.icono:disabled{opacity:.35;cursor:default}
+.ok-txt{color:#1D5F5B;font-weight:700}
+.falta-txt{color:#A3352B;font-weight:700}
+.fotos-admin{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.foto-admin{position:relative;border-radius:12px;overflow:hidden;background:#F2F6F8;aspect-ratio:1/1}
+.foto-admin img{width:100%;height:100%;object-fit:cover;display:block}
+.foto-admin .acciones{position:absolute;left:6px;right:6px;bottom:6px;display:flex;justify-content:space-between;gap:4px}
+.foto-admin .icono{width:32px;height:32px;font-size:.875rem;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.foto-admin .nueva{position:absolute;top:6px;left:6px;background:#2E8F89;color:#FFFFFF;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:999px}
+.foto-admin .primera{position:absolute;top:6px;left:6px;background:#1E3445;color:#FFFFFF;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:999px}
+.subir{border:2px dashed #B9CCD8;border-radius:12px;aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#2F5F80;font-weight:700;cursor:pointer;text-align:center;padding:8px;font-size:.875rem}
+.subir:hover{background:#F2F6F8}
+.subir input{position:absolute;width:1px;height:1px;opacity:0}
+.separador{border:none;border-top:1px solid #E3ECF0;margin:4px 0}
+.idioma-tit{font-family:Nunito,sans-serif;font-weight:800;font-size:1rem;color:#2F5F80}
+@media (max-width:720px){
+.panel{padding:18px;border-radius:16px}
+.item{grid-template-columns:52px 1fr}
+.item-foto{width:52px;height:52px}
+.item-acciones{grid-column:1/-1;justify-content:flex-start}
+}
+.grupo-tit{font-family:Nunito,sans-serif;font-weight:800;font-size:1.05rem;color:#2F5F80;margin-top:8px}
+.foto-admin{max-width:260px;aspect-ratio:4/3}
+#foto{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch}
+#foto .subir{width:200px;aspect-ratio:4/3;position:relative}
+</style>
+</head>
+<body>
+
+<header class="cabecera">
+<div class="wrap cabecera-fila">
+<a href="eventos.html" class="marca"><img src="img/logo-nana-marca.jpg" width="268" height="239" alt="Logotipo de N.A.N.A."><span class="marca-tienda">Gestionar los eventos</span></a>
+<a href="eventos.html" class="volver" target="_blank" rel="noopener">Ver los eventos ↗</a>
+</div>
+</header>
+
+<main class="wrap admin">
+
+<!-- 1. Conectar -->
+<section id="paso-conectar" class="panel">
+<h1>Gestionar los eventos</h1>
+<p>Desde aquí podéis añadir, cambiar y borrar los eventos de la web y subir su foto. Al guardar, la web se actualiza sola en uno o dos minutos, en castellano y en catalán.</p>
+<p>Se usa la misma <strong>clave de acceso de GitHub</strong> que para gestionar la tienda. Si ya la tenéis guardada en este dispositivo, se conecta sola. Si no, se crea una vez:</p>
+<ol>
+<li>Entrad en GitHub con vuestra cuenta y abrid <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">esta página para crear una clave</a>.</li>
+<li>En <strong>Token name</strong> poned «Web N.A.N.A.» y en <strong>Expiration</strong> elegid hasta cuándo servirá (por ejemplo, un año).</li>
+<li>En <strong>Resource owner</strong> elegid <strong>Nana-Asoc</strong>. En <strong>Repository access</strong> marcad <strong>Only select repositories</strong> y elegid <strong>WebNana</strong>.</li>
+<li>En <strong>Permissions → Repository permissions → Contents</strong> elegid <strong>Read and write</strong>.</li>
+<li>Pulsad <strong>Generate token</strong>, copiad la clave (empieza por <code>github_pat_</code>) y pegadla aquí.</li>
+</ol>
+<label class="campo">Clave de acceso de GitHub
+<input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
+<small>No la compartáis con nadie: quien la tenga puede cambiar la web.</small>
+</label>
+<label class="casilla"><input id="recordar" type="checkbox" checked>Recordar la clave en este dispositivo</label>
+<div class="botones"><button id="btn-conectar" class="btn" type="button">Conectar</button></div>
+<p id="estado-conectar" class="estado" hidden></p>
+</section>
+
+<!-- 2. Lista de eventos -->
+<section id="paso-lista" class="panel" hidden>
+<div class="conectado">
+<h1>Eventos</h1>
+<div class="botones">
+<span id="usuario" class="item-datos"></span>
+<button id="btn-salir" class="btn btn-borde btn-peq" type="button">Desconectar</button>
+</div>
+</div>
+<p id="estado-lista" class="estado" hidden></p>
+<div class="botones"><button id="btn-nuevo" class="btn" type="button">+ Añadir evento</button><button id="btn-recargar" class="btn btn-borde btn-peq" type="button">Recargar</button></div>
+<ul id="lista-admin" class="lista-admin"></ul>
+<p class="item-datos">Los eventos de hoy en adelante salen en «Próximos eventos» y el más cercano aparece también en la portada. Cuando pasa la fecha, se mueven solos a «Eventos pasados».</p>
+<hr class="separador">
+<label class="campo">Perfil de Instagram de la asociación<input id="f-instagram" type="url" placeholder="https://www.instagram.com/…"><small>Sale en el botón «Síguenos en Instagram». Vacío = no se muestra.</small></label>
+<div class="botones"><button id="btn-instagram" class="btn btn-borde btn-peq" type="button">Guardar perfil</button></div>
+</section>
+
+<!-- 3. Editar un evento -->
+<section id="paso-editar" class="panel" hidden>
+<h1 id="titulo-editar">Nuevo evento</h1>
+<form id="form-evento" novalidate>
+<div style="display:flex;flex-direction:column;gap:16px">
+
+<div class="fila2">
+<label class="campo">Título en castellano *<input id="f-titulo-es" type="text" required placeholder="Por ejemplo: Taller de Navidad en familia"></label>
+<label class="campo">Títol en català<input id="f-titulo-ca" type="text" placeholder="Per exemple: Taller de Nadal en família"><small>Si lo dejáis vacío, se usa el castellano.</small></label>
+</div>
+
+<div class="fila2">
+<label class="campo">Fecha *<input id="f-fecha" type="date" required></label>
+<label class="campo">Hora<input id="f-hora" type="text" placeholder="Por ejemplo: 17:00 o 10:00 a 13:00"></label>
+</div>
+
+<label class="campo">Lugar<input id="f-lugar" type="text" placeholder="Por ejemplo: Poliesportiu Municipal, Sant Boi"></label>
+
+<div class="campo">Foto
+<small>Opcional. Se reduce sola a un tamaño adecuado para la web.</small>
+</div>
+<div id="foto"></div>
+
+<div class="fila2">
+<label class="campo">Descripción en castellano<textarea id="f-desc-es" rows="5"></textarea><small>Separad los párrafos con una línea en blanco.</small></label>
+<label class="campo">Descripció en català<textarea id="f-desc-ca" rows="5"></textarea><small>Separeu els paràgrafs amb una línia en blanc.</small></label>
+</div>
+
+<label class="campo">Enlace (opcional)<input id="f-enlace" type="url" placeholder="https://www.instagram.com/p/…"><small>Publicación de Instagram o página con más información. Si es de Instagram, el botón dice «Ver en Instagram».</small></label>
+
+<p id="estado-editar" class="estado" hidden></p>
+<div class="botones">
+<button id="btn-guardar" class="btn" type="submit">Guardar y publicar</button>
+<button id="btn-cancelar" class="btn btn-borde" type="button">Cancelar</button>
+</div>
+</div>
+</form>
+</section>
+
+</main>
+
+<script src="gestionar-eventos.js"></script>
+</body>
+</html>

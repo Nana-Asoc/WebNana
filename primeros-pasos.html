@@ -128,6 +128,45 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 .foto-pagina{flex:0 1 auto;align-self:center;width:100%;max-width:760px;aspect-ratio:16 / 9;margin-left:auto;margin-right:auto}
 @media (max-width:720px){.foto-pagina{max-width:none;aspect-ratio:4 / 3}}
 </style>
+<style>
+/* Menú con «Eventos»: más compacto en escritorio y botón de menú hasta 1240 px */
+@media (min-width:1241px){.nav-links{gap:16px !important;font-size:.9375rem !important}}
+@media (max-width:1240px) and (min-width:1181px){
+.nav-links{display:none !important}
+.menu-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:none;min-width:48px;height:48px;padding:0 16px;border:1px solid #CFDDE5;border-radius:999px;background:#FFFFFF;color:#1E3445;font:inherit;font-weight:700;font-size:.9375rem;cursor:pointer}
+#menu-movil:not([hidden]){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid #E3ECF0;background:#FFFFFF;box-shadow:0 12px 24px rgba(30,52,69,.10);padding:8px 24px 16px}
+#menu-movil a{display:flex;align-items:center;min-height:52px;padding:0 16px;font-weight:700;font-size:1.0625rem;color:#1E3445;text-decoration:none;border-bottom:1px solid #EEF3F6}
+#menu-movil a[aria-current="page"]{color:#2F5F80;background:#F0F7F9;box-shadow:inset 5px 0 0 #407295}
+#menu-movil a.menu-cta{grid-column:1 / -1;margin:14px 0 0;justify-content:center;border:0;border-radius:999px;background:#407295;color:#FFFFFF}
+}
+/* Eventos */
+.eventos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.evento{background:#FFFFFF;border:1px solid #E3ECF0;border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
+.evento-foto{position:relative;aspect-ratio:16 / 10;background:#E3F6F4}
+.evento-foto img{width:100%;height:100%;object-fit:cover;display:block}
+.evento-foto.sin-foto{aspect-ratio:auto;height:84px;background:linear-gradient(135deg,#E3F6F4,#DCE8F2)}
+.evento-dia{position:absolute;top:14px;left:14px;background:#FFFFFF;border-radius:14px;padding:6px 12px;text-align:center;box-shadow:0 4px 12px rgba(30,52,69,.12);min-width:44px}
+.evento-dia strong{display:block;font-family:Nunito,sans-serif;font-size:1.5rem;line-height:1.1;color:#1E3445}
+.evento-dia span{display:block;font-size:.75rem;font-weight:700;text-transform:uppercase;color:#2E8F89}
+.evento-cuerpo{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px;flex:1}
+.evento-fecha{font-size:.875rem;font-weight:700;color:#1D5F5B}
+.evento-fecha::first-letter{text-transform:uppercase}
+.evento h3{margin:0;font-family:Nunito,sans-serif;font-weight:800;font-size:1.3rem;line-height:1.25}
+.evento-lugar{color:#3D5566;font-size:.9375rem}
+.evento p{margin:0;color:#3D5566}
+.evento-enlace{margin-top:auto;padding-top:6px;font-weight:700;color:#2F5F80}
+.evento.pasado .evento-foto img{filter:saturate(.75)}
+.eventos-vacio{grid-column:1 / -1;background:#FFFFFF;border:2px dashed #CFDDE5;border-radius:20px;padding:28px;color:#5A7182;margin:0}
+.enlace-instagram{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#2F5F80;text-decoration:none;padding:12px 22px;border:2px solid #407295;border-radius:999px;align-self:flex-start;background:#FFFFFF}
+.enlace-instagram[hidden]{display:none}
+.proximo-evento{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px;background:#FFFFFF;border:1px solid #E3ECF0;border-left:6px solid #2E8F89;border-radius:24px;padding:24px 28px}
+.proximo-evento .pe-badge{display:inline-block;background:#E3F6F4;color:#1D5F5B;font-weight:700;font-size:.875rem;padding:4px 12px;border-radius:999px;margin-bottom:8px}
+.proximo-evento strong{display:block;font-family:Nunito,sans-serif;font-weight:800;font-size:1.4rem;line-height:1.25}
+.proximo-evento .pe-fecha{display:block;color:#3D5566;margin-top:4px}
+.proximo-evento .pe-fecha::first-letter{text-transform:uppercase}
+.proximo-evento a{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;background:#407295;color:#FFFFFF;font-weight:700;text-decoration:none}
+@media (max-width:720px){.eventos-grid{grid-template-columns:1fr}.proximo-evento{padding:20px}}
+</style>
 </head>
 <body>
 <div style="font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; color: #1E3445; background: #F6F9FA; font-size: 1.0625rem; line-height: 1.6">
@@ -141,6 +180,7 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 <a href="primeros-pasos.html" aria-current="page">Primeros pasos</a>
 <a href="ayudas.html">Ayudas y trámites</a>
 <a href="que-hacemos.html">Qué hacemos</a>
+<a href="eventos.html">Eventos</a>
 <a href="colabora.html">Colabora</a>
 <a href="tienda.html">Tienda</a>
 <a href="contacto.html">Contacto</a>
@@ -160,6 +200,7 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 <a href="primeros-pasos.html" aria-current="page">Primeros pasos</a>
 <a href="ayudas.html">Ayudas y trámites</a>
 <a href="que-hacemos.html">Qué hacemos</a>
+<a href="eventos.html">Eventos</a>
 <a href="colabora.html">Colabora</a>
 <a href="tienda.html">Tienda</a>
 <a href="contacto.html">Contacto</a>
@@ -221,8 +262,9 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 <span>[Nº REGISTRO DE ASOCIACIONES] · [NIF]</span>
 <a href="privacidad.html" style="color: #D5E2EA">Aviso legal y privacidad</a>
 <a href="gestionar.html" class="enlace-gestion" hidden style="color: #9FB4C2; font-size: 0.875rem">Gestionar la tienda</a>
+<a href="gestionar-eventos.html" class="enlace-gestion" hidden style="color: #9FB4C2; font-size: 0.875rem">Gestionar los eventos</a>
 </div>
-<nav class="pie-nav" aria-label="Páginas" style="flex: 1 1 100%; border-top: 1px solid #34506A; padding-top: 18px"><a href="index.html">Inicio</a> <a href="quienes-somos.html">Quiénes somos</a> <a href="primeros-pasos.html">Primeros pasos</a> <a href="ayudas.html">Ayudas y trámites</a> <a href="que-hacemos.html">Qué hacemos</a> <a href="colabora.html">Colabora</a> <a href="tienda.html">Tienda</a> <a href="contacto.html">Contacto</a></nav>
+<nav class="pie-nav" aria-label="Páginas" style="flex: 1 1 100%; border-top: 1px solid #34506A; padding-top: 18px"><a href="index.html">Inicio</a> <a href="quienes-somos.html">Quiénes somos</a> <a href="primeros-pasos.html">Primeros pasos</a> <a href="ayudas.html">Ayudas y trámites</a> <a href="que-hacemos.html">Qué hacemos</a> <a href="eventos.html">Eventos</a> <a href="colabora.html">Colabora</a> <a href="tienda.html">Tienda</a> <a href="contacto.html">Contacto</a></nav>
 </div>
 </footer>
 
@@ -287,7 +329,7 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
     function cerrar(){mm.hidden=true;mb.setAttribute('aria-expanded','false');}
     mb.addEventListener('click',function(){var abierto=mm.hidden;mm.hidden=!abierto;mb.setAttribute('aria-expanded',abierto?'true':'false');});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')cerrar();});
-    window.addEventListener('resize',function(){if(window.innerWidth>1180)cerrar();});
+    window.addEventListener('resize',function(){if(window.innerWidth>1240)cerrar();});
   }
   // Enlaces antiguos de la web de una sola página (por ejemplo index.html#ayudas)
   var antiguas={'primeros-pasos':'primeros-pasos.html','ayudas':'ayudas.html','que-hacemos':'que-hacemos.html','colabora':'colabora.html','contacto':'contacto.html'},h=location.hash.slice(1);
