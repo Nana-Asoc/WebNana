@@ -167,6 +167,38 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 .proximo-evento a{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;background:#407295;color:#FFFFFF;font-weight:700;text-decoration:none}
 @media (max-width:720px){.eventos-grid{grid-template-columns:1fr}.proximo-evento{padding:20px}}
 </style>
+<style>
+/* Cabecera de cada página: texto a la izquierda e ilustración a la derecha */
+.hero-pagina{background:linear-gradient(180deg,#E3F6F4 0%,#F2FAF9 60%,#F6F9FA 100%) !important;padding:64px 0 72px !important}
+.hero-pagina > .wrap{display:grid !important;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:56px !important;align-items:center}
+.hero-pagina .hp-texto{display:flex;flex-direction:column;gap:20px;min-width:0}
+.hero-pagina .hp-foto{min-width:0;margin:0}
+.hero-pagina .hp-foto img{display:block;width:100%;height:auto;aspect-ratio:4 / 3;object-fit:cover;border-radius:28px !important;box-shadow:0 18px 40px rgba(30,52,69,.14)}
+.hp-etiqueta{align-self:flex-start;background:#FFFFFF;color:#1D5F5B;font-weight:700;font-size:.9375rem;padding:8px 16px;border-radius:999px;box-shadow:0 2px 8px rgba(30,52,69,.06)}
+.hero-pagina h1{margin:0;font-family:Nunito,sans-serif;font-weight:800;font-size:2.6rem;line-height:1.12;color:#1E3445}
+.hp-lead{margin:0;font-size:1.1875rem;color:#3D5566;max-width:34em}
+.hp-botones{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.hp-botones a{display:inline-flex;align-items:center;gap:8px;min-height:50px;padding:0 26px;border-radius:999px;font-weight:700;text-decoration:none;box-sizing:border-box}
+.hp-prim{background:#407295;color:#FFFFFF !important}
+.hp-prim:hover{background:#2F5F80}
+.hp-sec{background:#FFFFFF;color:#2F5F80 !important;border:2px solid #407295}
+.hp-datos{display:flex;flex-direction:column;gap:12px;margin:0;padding:0;list-style:none;font-size:1.0625rem}
+.hp-datos a{font-weight:700}
+@media (max-width:900px){
+.hero-pagina > .wrap{grid-template-columns:1fr;gap:32px !important}
+.hero-pagina .hp-foto{max-width:560px}
+}
+@media (max-width:720px){
+.hero-pagina{padding:32px 0 48px !important}
+.hero-pagina h1{font-size:2rem}
+.hp-lead{font-size:1.0625rem}
+.hero-pagina .hp-foto img{border-radius:20px !important}
+}
+.col-hero .foto img{border-radius:28px !important;aspect-ratio:1 / 1;object-fit:cover}
+.hero-pagina img[src^="img/secciones"]{border-radius:28px;box-shadow:0 18px 40px rgba(30,52,69,.14)}
+.hero-pagina > .wrap:has(> :only-child){grid-template-columns:1fr}
+</style>
+<style>.hero-pagina + section{padding-top:64px !important}@media (max-width:720px){.hero-pagina + section{padding-top:36px !important}}</style>
 </head>
 <body>
 <div style="font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; color: #1E3445; background: #F6F9FA; font-size: 1.0625rem; line-height: 1.6">
@@ -209,18 +241,22 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 </header>
 
 <main>
-<section id="contacto" style="background: #FFFFFF; padding: 88px 0">
-<div class="wrap" style="display: flex; flex-wrap: wrap; gap: 56px">
-<img class="foto-pagina" src="img/secciones/contacto.jpg" width="1600" height="1205" alt="Ilustración de un padre hablando tranquilo por el móvil en casa mientras su hija juega con bloques">
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
-<h1 class="sec-title" style="margin: 0; font-family: Nunito, sans-serif; font-weight: 800; font-size: 2.4rem; line-height: 1.15">Hablemos</h1>
-<p style="margin: 0; font-size: 1.1875rem; color: #3D5566">Escribidnos sin compromiso. Os responderemos con calma y estaremos encantados de ayudaros.</p>
-<div style="display: flex; flex-direction: column; gap: 14px; margin-top: 8px">
-<span style="display: flex; gap: 12px; align-items: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2F5F80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"></path></svg><a href="tel:+34694587000" style="font-weight: 700">694.58.70.00</a></span>
-<span style="display: flex; gap: 12px; align-items: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2F5F80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg><a href="mailto:nucli.nana@gmail.com" style="font-weight: 700">nucli.nana@gmail.com</a></span>
+<section class="hero-pagina">
+<div class="wrap">
+<div class="hp-texto">
+<span class="hp-etiqueta">Contacto</span>
+<h1 class="sec-title">Hablemos</h1>
+<p class="hp-lead">Escribidnos sin compromiso. Os responderemos con calma y estaremos encantados de ayudaros.</p>
+<ul class="hp-datos"><li style="display: flex; gap: 12px; align-items: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2F5F80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"></path></svg><a href="tel:+34694587000" style="font-weight: 700">694.58.70.00</a></li><li style="display: flex; gap: 12px; align-items: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2F5F80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg><a href="mailto:nucli.nana@gmail.com" style="font-weight: 700">nucli.nana@gmail.com</a></li></ul>
 </div>
+<figure class="hp-foto"><img src="img/secciones/contacto.jpg" width="1600" height="1205" alt="Ilustración de un padre hablando tranquilo por el móvil en casa mientras su hija juega con bloques"></figure>
 </div>
-<form id="form-contacto" action="https://api.web3forms.com/submit" method="POST" style="flex: 1 1 480px; min-width: 0; background: #F6F9FA; border-radius: 28px; padding: 36px; display: flex; flex-direction: column; gap: 18px; box-sizing: border-box">
+</section>
+
+<section id="contacto" style="padding: 64px 0 88px">
+<div class="wrap" style="display: flex; justify-content: center">
+<form id="form-contacto" action="https://api.web3forms.com/submit" method="POST" style="flex: 0 1 760px; min-width: 0; background: #FFFFFF; border: 1px solid #E3ECF0; box-shadow: 0 8px 28px rgba(30,52,69,.06); border-radius: 28px; padding: 36px; display: flex; flex-direction: column; gap: 18px; box-sizing: border-box">
+<h2 style="margin: 0 0 4px; font-family: Nunito, sans-serif; font-weight: 800; font-size: 1.6rem; line-height: 1.2">Enviadnos vuestra consulta</h2>
 <input type="hidden" name="access_key" value="d495cd74-33c4-4019-a356-e74dacadebbe">
 <input type="hidden" name="subject" value="Nueva consulta desde la web de N.A.N.A.">
 <input type="hidden" name="from_name" value="Web N.A.N.A.">
