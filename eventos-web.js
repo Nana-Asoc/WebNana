@@ -2,10 +2,14 @@
 (function(){
   var ca=(document.documentElement.lang||'es').indexOf('ca')===0,L=ca?'ca':'es';
   var T=ca?{
-    ver:'Més informació',ig:'Veure a Instagram',sinProx:'Ara mateix no hi ha cap esdeveniment programat. Segueix-nos a Instagram per assabentar-te de les properes activitats.',
+    ver:'Més informació',ig:'Veure a Instagram',sinProx:'Ara mateix no hi ha cap esdeveniment programat',
+    sinProxTxt:'Estem preparant les properes activitats. Mentrestant, digueu-nos què us agradaria fer o descobriu què fem.',
+    enlaces:[['que-fem.html#encuesta-actividades','Respondre l’enquesta','prim'],['que-fem.html','Què fem','sec'],['IG','Segueix-nos a Instagram','sec']],
     sinPas:'Aquí apareixeran els esdeveniments que ja hem fet.',todos:'Veure tots els esdeveniments →',proximo:'Proper esdeveniment'
   }:{
-    ver:'Más información',ig:'Ver en Instagram',sinProx:'Ahora mismo no hay ningún evento programado. Síguenos en Instagram para enterarte de las próximas actividades.',
+    ver:'Más información',ig:'Ver en Instagram',sinProx:'Ahora mismo no hay ningún evento programado',
+    sinProxTxt:'Estamos preparando las próximas actividades. Mientras tanto, decidnos qué os gustaría hacer o descubrid qué hacemos.',
+    enlaces:[['que-hacemos.html#encuesta-actividades','Responder la encuesta','prim'],['que-hacemos.html','Qué hacemos','sec'],['IG','Síguenos en Instagram','sec']],
     sinPas:'Aquí aparecerán los eventos que ya hemos hecho.',todos:'Ver todos los eventos →',proximo:'Próximo evento'
   };
   var lista=(window.NANA_EVENTOS||[]).filter(function(e){return e&&e.fecha;});
@@ -40,10 +44,22 @@
     if(enlace){var a=el('a','evento-enlace',/^https:\/\/(www\.)?instagram\.com\//i.test(enlace)?T.ig:T.ver);a.href=enlace;a.target='_blank';a.rel='noopener';cu.appendChild(a);}
     c.appendChild(cu);return c;
   }
+  var ICONO_CAL='<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1D5F5B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"></path></svg>';
+  function vacioProximos(){
+    var c=el('div','eventos-vacio vacio-rico');
+    var ic=el('span','vacio-icono');ic.setAttribute('aria-hidden','true');ic.innerHTML=ICONO_CAL;c.appendChild(ic);
+    var tx=el('div','vacio-texto');tx.appendChild(el('strong','',T.sinProx));tx.appendChild(el('p','',T.sinProxTxt));
+    var bs=el('div','vacio-botones');
+    T.enlaces.forEach(function(x){
+      var href=x[0]==='IG'?urlSegura(window.NANA_INSTAGRAM):x[0];if(!href)return;
+      var a=el('a','vacio-'+x[2],x[1]);a.href=href;if(x[0]==='IG'){a.target='_blank';a.rel='noopener';}bs.appendChild(a);
+    });
+    tx.appendChild(bs);c.appendChild(tx);return c;
+  }
   function pintar(id,arr,vacio,pasado){
     var cont=document.getElementById(id);if(!cont)return;
     cont.innerHTML='';
-    if(!arr.length){cont.appendChild(el('p','eventos-vacio',vacio));return;}
+    if(!arr.length){cont.appendChild(id==='lista-proximos'?vacioProximos():el('p','eventos-vacio',vacio));return;}
     arr.forEach(function(e){cont.appendChild(tarjeta(e,pasado));});
   }
   pintar('lista-proximos',proximos,T.sinProx,false);
