@@ -124,6 +124,36 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 .foto-pagina{flex:0 1 auto;align-self:center;width:100%;max-width:760px;aspect-ratio:16 / 9;margin-left:auto;margin-right:auto}
 @media (max-width:720px){.foto-pagina{max-width:none;aspect-ratio:4 / 3}}
 </style>
+<style>
+/* Portada */
+.portada{position:relative;overflow:hidden;background:linear-gradient(180deg,#E3F6F4 0%,#F2FAF9 55%,#FFFFFF 100%);padding:56px 0 80px}
+.portada::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:#CDEFEB;opacity:.45;top:-220px;right:-140px}
+.portada::after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:#DCE8F2;opacity:.6;bottom:-160px;left:-120px}
+.portada .wrap{position:relative;z-index:1;display:flex;flex-wrap:wrap;align-items:center;gap:48px}
+.marca-portada{align-self:flex-start;display:flex;align-items:center;gap:18px;background:#FFFFFF;border-radius:24px;padding:16px 24px;border-left:6px solid #2E8F89;box-shadow:0 8px 28px rgba(30,52,69,.10)}
+.marca-portada img{height:84px;width:auto;display:block;border-radius:14px}
+.marca-portada h1{margin:0;font-family:Nunito,sans-serif;line-height:1.15;color:#1E3445}
+.marca-portada .sigla{display:block;font-size:2.3rem;font-weight:800;letter-spacing:.06em;color:#2F5F80}
+.marca-portada .nombre{display:block;font-size:1rem;font-weight:800;color:#1E3445}
+.marca-portada .sub{display:block;font-size:.875rem;font-weight:700;color:#2E8F89;margin-top:2px}
+.lema{margin:0;font-family:Nunito,sans-serif;font-weight:800;font-size:3rem;line-height:1.1;color:#1E3445}
+.portada-foto{position:relative}
+.portada-foto img{width:100%;height:auto;display:block;border-radius:32px;box-shadow:0 18px 40px rgba(30,52,69,.16)}
+.chips-portada{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;padding:0;list-style:none;font-size:.9375rem}
+.chips-portada a{display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border-radius:999px;background:#FFFFFF;border:1px solid #C5EAE6;color:#1D5F5B;font-weight:700;text-decoration:none}
+.chips-portada span{color:#3D5566;margin-right:4px}
+@media (max-width:720px){
+.portada{padding:28px 0 48px !important}
+.portada .wrap{gap:28px}
+.marca-portada{gap:12px;padding:12px 16px;border-radius:18px}
+.marca-portada img{height:60px}
+.marca-portada .sigla{font-size:1.75rem}
+.marca-portada .nombre{font-size:.875rem}
+.marca-portada .sub{font-size:.8125rem}
+.lema{font-size:2rem}
+.portada-foto img{border-radius:22px}
+}
+</style>
 </head>
 <body>
 <div style="font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; color: #1E3445; background: #F6F9FA; font-size: 1.0625rem; line-height: 1.6">
@@ -164,20 +194,22 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 </header>
 
 <main>
-<section id="inici" style="background: #FFFFFF; padding: 72px 0 88px">
-<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
-<div style="flex: 1 1 540px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
-<span class="hero-badge" style="align-self: flex-start; background: #E3F6F4; color: #1D5F5B; font-weight: 700; font-size: 0.9375rem; padding: 8px 16px; border-radius: 999px">Associació N.A.N.A. · Sant Boi de Llobregat</span>
-<h1 class="hero-title" style="margin: 0; font-family: Nunito, sans-serif; font-weight: 800; font-size: 3.4rem; line-height: 1.1; color: #1E3445">No esteu sols. Us acompanyem a cada pas.</h1>
-<p class="hero-lead" style="margin: 0; font-size: 1.25rem; color: #3D5566; max-width: 34em">Us ajudem a entendre el diagnòstic, a demanar els ajuts als quals teniu dret i a trobar els recursos que el vostre fill o filla necessita. Amb calma, amb proximitat i sense paperassa en solitari.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px">
+<section id="inici" class="portada">
+<div class="wrap">
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<div class="marca-portada">
+<h1><span class="sigla">N.A.N.A.</span><span class="nombre">Nucli d’Acompanyament i Necessitats de l’Autisme</span><span class="sub">i famílies neurodivergents · Sant Boi de Llobregat</span></h1>
+</div>
+<p class="lema hero-title">No esteu sols. Us acompanyem a cada pas.</p>
+<p class="hero-lead" style="margin: 0; font-size: 1.1875rem; color: #3D5566; max-width: 34em">Us ajudem a entendre el diagnòstic, a demanar els ajuts als quals teniu dret i a trobar els recursos que el vostre fill o filla necessita. Amb calma, amb proximitat i sense paperassa en solitari.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 4px">
 <a href="contacte.html" style="background: #407295; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 1.0625rem; padding: 16px 28px; border-radius: 999px">Vull que m’orienteu</a>
 <a href="https://nana-asoc.github.io/AyudasDiscapacidad/" target="_blank" rel="noopener" style="background: #FFFFFF; color: #2F5F80; text-decoration: none; font-weight: 700; font-size: 1.0625rem; padding: 14px 26px; border-radius: 999px; border: 2px solid #407295">A quins ajuts teniu dret?</a>
 </div>
+<ul class="chips-portada" aria-label="Qui formem N.A.N.A."><li><a href="qui-som.html">Famílies</a></li><li><a href="qui-som.html">Educació infantil</a></li><li><a href="qui-som.html">Educació especial</a></li></ul>
 </div>
-<div style="flex: 1 1 420px; min-width: 0">
-<!-- Cambiar por una foto real de familias de la asociación cuando la haya -->
-<img src="img/comunitat.jpg" width="539" height="291" alt="Il·lustració de famílies de N.A.N.A. abraçades que ajunten les mans al centre, amb un cor a sobre i el títol «Fer Comunitat / Associació»" style="width: 100%; height: auto; border-radius: 32px; display: block">
+<div class="portada-foto" style="flex: 1 1 440px; min-width: 0">
+<img src="img/portada.jpg" width="1600" height="1205" alt="Il·lustració de famílies, nens i nenes i educadores de N.A.N.A. passejant i jugant junts en un parc de Sant Boi, amb l’ermita al fons i el logotip de N.A.N.A.">
 </div>
 </div>
 </section>
