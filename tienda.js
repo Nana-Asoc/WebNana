@@ -4,20 +4,20 @@
 (function(){
   var L=document.documentElement.lang==='ca'?'ca':'es';
   var T={
-    es:{pronto:'Próximamente',agotado:'Agotado',todo:'Todo',todos:'Todos los productos',
-      producto:'producto',productos:'productos',
+    es:{pronto:'Próximamente',agotado:'Agotado',todo:'Todo',todos:'Todas las herramientas',gratis:'Gratis',abrir:'Abrir la herramienta',canalWeb:'Online',
+      producto:'herramienta',productos:'herramientas',
       wallapop:'Comprar en Wallapop',wallapopPronto:'Muy pronto en Wallapop',canalWallapop:'En Wallapop',canalApp:'App',
       appStore:'Descargar en App Store',googlePlay:'Descargar en Google Play',appPronto:'Próximamente en App Store y Google Play',
-      preguntar:'Preguntar por este producto',anterior:'Foto anterior',siguiente:'Foto siguiente',foto:'Foto',de:'de',
+      preguntar:'Preguntar por esto',anterior:'Foto anterior',siguiente:'Foto siguiente',foto:'Foto',de:'de',
       sinResultados:'No hemos encontrado nada con «%s».',tienda:'tienda.html',ficha:'producto.html',
-      contacto:'index.html#contacto',titulo:' – Tienda N.A.N.A.'},
-    ca:{pronto:'Properament',agotado:'Esgotat',todo:'Tot',todos:'Tots els productes',
-      producto:'producte',productos:'productes',
+      contacto:'contacto.html',titulo:' – Herramientas N.A.N.A.'},
+    ca:{pronto:'Properament',agotado:'Esgotat',todo:'Tot',todos:'Totes les eines',gratis:'Gratis',abrir:'Obrir l’eina',canalWeb:'En línia',
+      producto:'eina',productos:'eines',
       wallapop:'Comprar a Wallapop',wallapopPronto:'Molt aviat a Wallapop',canalWallapop:'A Wallapop',canalApp:'App',
       appStore:'Descarregar a l’App Store',googlePlay:'Descarregar a Google Play',appPronto:'Properament a l’App Store i Google Play',
-      preguntar:'Preguntar per aquest producte',anterior:'Foto anterior',siguiente:'Foto següent',foto:'Foto',de:'de',
+      preguntar:'Preguntar-ne',anterior:'Foto anterior',siguiente:'Foto següent',foto:'Foto',de:'de',
       sinResultados:'No hem trobat res amb «%s».',tienda:'botiga.html',ficha:'producte.html',
-      contacto:'index-ca.html#contacte',titulo:' – Botiga N.A.N.A.'}
+      contacto:'contacte.html',titulo:' – Eines N.A.N.A.'}
   }[L];
 
   // El enlace a gestionar la tienda solo sale en los dispositivos donde un responsable ha guardado su clave
@@ -90,6 +90,7 @@
   }
 
   function precio(p,cls){
+    if(p.precio===0||(p.tipo==='herramienta'&&typeof p.precio!=='number'))return el('span',cls+' '+cls+'-suave',T.gratis);
     if(p.tipo==='app')return el('span',cls+' '+cls+'-suave',typeof p.precio==='number'?euros(p.precio):(p.appStore||p.googlePlay?'':T.pronto));
     if(typeof p.precio!=='number')return el('span',cls+' '+cls+'-suave',T.pronto);
     var s=el('span',cls,euros(p.precio));
@@ -107,6 +108,7 @@
     pie.appendChild(precio(p,'tarjeta-precio'));
     if(p.agotado)pie.appendChild(el('span','canal canal-agotado',T.agotado));
     else if(p.tipo==='app')pie.appendChild(el('span','canal canal-app',T.canalApp));
+    else if(p.tipo==='herramienta')pie.appendChild(el('span','canal canal-app',T.canalWeb));
     else if(comprable(p))pie.appendChild(el('span','canal',T.canalWallapop));
     cu.appendChild(pie);art.appendChild(cu);
     return art;
@@ -204,6 +206,9 @@
       if(p.appStore)zb.appendChild(principal=boton(p.appStore,T.appStore));
       if(p.googlePlay){var g=boton(p.googlePlay,T.googlePlay,principal?'btn-borde':'');zb.appendChild(g);principal=principal||g;}
       if(!principal)zb.appendChild(principal=el('span','btn btn-apagado',T.appPronto));
+      document.getElementById('garantias').hidden=true;
+    }else if(p.tipo==='herramienta'){
+      zb.appendChild(principal=p.web?boton(p.web,T.abrir):el('span','btn btn-apagado',T.pronto));
       document.getElementById('garantias').hidden=true;
     }else if(comprable(p)){
       zb.appendChild(principal=boton(p.wallapop,T.wallapop,'btn-wallapop'));

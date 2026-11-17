@@ -9,7 +9,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <meta name="theme-color" content="#407295">
-<title>Gestionar la tienda – N.A.N.A.</title>
+<title>Gestionar las herramientas – N.A.N.A.</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="fonts/fuentes.css">
 <link rel="stylesheet" href="tienda.css">
@@ -74,8 +74,8 @@ button.btn:disabled{opacity:.55;cursor:wait}
 
 <header class="cabecera">
 <div class="wrap cabecera-fila">
-<a href="tienda.html" class="marca"><img src="img/logo-nana-marca.jpg" width="268" height="239" alt="Logotipo de N.A.N.A."><span class="marca-tienda">Gestionar la tienda</span></a>
-<a href="tienda.html" class="volver" target="_blank" rel="noopener">Ver la tienda ↗</a>
+<a href="tienda.html" class="marca"><img src="img/logo-nana-marca.jpg" width="268" height="239" alt="Logotipo de N.A.N.A."><span class="marca-tienda">Gestionar las herramientas</span></a>
+<a href="tienda.html" class="volver" target="_blank" rel="noopener">Ver las herramientas ↗</a>
 </div>
 </header>
 
@@ -83,12 +83,12 @@ button.btn:disabled{opacity:.55;cursor:wait}
 
 <!-- 1. Conectar -->
 <section id="paso-conectar" class="panel">
-<h1>Gestionar la tienda</h1>
-<p>Desde aquí podéis añadir, cambiar y borrar productos, subir sus fotos y poner el enlace de Wallapop. Al guardar, la web se actualiza sola en uno o dos minutos.</p>
+<h1>Gestionar las herramientas</h1>
+<p>Desde aquí podéis añadir, cambiar y borrar materiales, apps y herramientas, subir sus fotos y poner su enlace (Wallapop, App Store / Google Play o la web de la herramienta). Al guardar, la web se actualiza sola en uno o dos minutos.</p>
 <p>Para guardar hace falta una <strong>clave de acceso de GitHub</strong>. Solo se crea una vez:</p>
 <ol>
 <li>Entrad en GitHub con vuestra cuenta y abrid <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">esta página para crear una clave</a>.</li>
-<li>En <strong>Token name</strong> poned «Tienda N.A.N.A.» y en <strong>Expiration</strong> elegid hasta cuándo servirá (por ejemplo, un año).</li>
+<li>En <strong>Token name</strong> poned «Web N.A.N.A.» y en <strong>Expiration</strong> elegid hasta cuándo servirá (por ejemplo, un año).</li>
 <li>En <strong>Resource owner</strong> elegid <strong>Nana-Asoc</strong>. En <strong>Repository access</strong> marcad <strong>Only select repositories</strong> y elegid <strong>WebNana</strong>.</li>
 <li>En <strong>Permissions → Repository permissions → Contents</strong> elegid <strong>Read and write</strong>.</li>
 <li>Pulsad <strong>Generate token</strong>, copiad la clave (empieza por <code>github_pat_</code>) y pegadla aquí.</li>
@@ -105,16 +105,16 @@ button.btn:disabled{opacity:.55;cursor:wait}
 <!-- 2. Lista de productos -->
 <section id="paso-lista" class="panel" hidden>
 <div class="conectado">
-<h1>Productos</h1>
+<h1>Herramientas</h1>
 <div class="botones">
 <span id="usuario" class="item-datos"></span>
 <button id="btn-salir" class="btn btn-borde btn-peq" type="button">Desconectar</button>
 </div>
 </div>
 <p id="estado-lista" class="estado" hidden></p>
-<div class="botones"><button id="btn-nuevo" class="btn" type="button">+ Añadir producto</button><button id="btn-recargar" class="btn btn-borde btn-peq" type="button">Recargar</button></div>
+<div class="botones"><button id="btn-nuevo" class="btn" type="button">+ Añadir</button><button id="btn-recargar" class="btn btn-borde btn-peq" type="button">Recargar</button></div>
 <ul id="lista-admin" class="lista-admin"></ul>
-<p class="item-datos">Las flechas ↑ ↓ cambian el orden en el que salen los productos en la tienda.</p>
+<p class="item-datos">Las flechas ↑ ↓ cambian el orden en el que salen en la web.</p>
 </section>
 
 <!-- 3. Editar un producto -->
@@ -131,13 +131,17 @@ button.btn:disabled{opacity:.55;cursor:wait}
 <div class="fila2">
 <label class="campo">Categoría<select id="f-categoria"></select></label>
 <label class="campo">Tipo
-<select id="f-tipo"><option value="material">Producto (se vende en Wallapop)</option><option value="app">Aplicación (App Store / Google Play)</option></select>
+<select id="f-tipo"><option value="material">Producto (se vende en Wallapop)</option><option value="app">Aplicación (App Store / Google Play)</option><option value="herramienta">Herramienta online (enlace a una web)</option></select>
 </label>
 </div>
 
 <div class="fila2">
-<label class="campo">Precio en euros<input id="f-precio" type="text" inputmode="decimal" placeholder="Por ejemplo 12,50"><small>Vacío = sale «Próximamente». Poned el mismo precio que en Wallapop.</small></label>
+<label class="campo">Precio en euros<input id="f-precio" type="text" inputmode="decimal" placeholder="Por ejemplo 12,50"><small>Vacío = «Próximamente» (o «Gratis» en las herramientas online). Poned 0 si es gratuito. Para productos, el mismo precio que en Wallapop.</small></label>
 <label class="campo" id="campo-wallapop">Enlace del anuncio en Wallapop<input id="f-wallapop" type="url" placeholder="https://es.wallapop.com/item/…"><small>En la app de Wallapop: abrid el anuncio → Compartir → Copiar enlace.</small></label>
+</div>
+
+<div class="fila2" id="campo-web" hidden>
+<label class="campo">Enlace de la herramienta<input id="f-web" type="url" placeholder="https://…"><small>La página web donde se usa la herramienta (por ejemplo, el cuestionario de ayudas).</small></label>
 </div>
 
 <div class="fila2" id="campos-app" hidden>
@@ -145,11 +149,11 @@ button.btn:disabled{opacity:.55;cursor:wait}
 <label class="campo">Enlace de Google Play<input id="f-googleplay" type="url" placeholder="https://play.google.com/…"></label>
 </div>
 
-<label class="casilla"><input id="f-agotado" type="checkbox">Agotado (sale en la tienda pero no se puede comprar)</label>
+<label class="casilla"><input id="f-agotado" type="checkbox">Agotado (sale en la web pero no se puede comprar)</label>
 
 <hr class="separador">
 <div class="campo">Fotos
-<small>Se pueden subir desde el móvil o el ordenador. La primera es la que sale en la tienda. Se reducen solas a un tamaño adecuado para la web.</small>
+<small>Se pueden subir desde el móvil o el ordenador. La primera es la que sale en la web. Se reducen solas a un tamaño adecuado para la web.</small>
 </div>
 <div id="fotos" class="fotos-admin"></div>
 

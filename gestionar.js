@@ -14,10 +14,11 @@
     '// Si lo editas a mano: cada producto tiene',
     '//   id:         nombre corto sin espacios ni acentos; sale en la dirección de la página del producto',
     '//   categoria:  una de las de NANA_CATEGORIAS',
-    '//   tipo:       "material" (se vende en Wallapop) o "app"',
+    '//   tipo:       "material" (se vende en Wallapop), "app" o "herramienta" (herramienta online, con enlace web)',
     '//   fotos:      lista de fotos (la primera sale primero); vacía = dibujo de la categoría',
     '//   precio:     en euros con punto decimal (12.5); null = «Próximamente»',
     '//   wallapop:   enlace al anuncio en Wallapop',
+    '//   web:        solo para las herramientas online: dirección de la herramienta',
     '//   appStore / googlePlay: solo para las apps',
     '//   agotado:    true si no queda stock',
     '//   es / ca:    nombre, resumen, descripcion (párrafos) y paraQue (lista) en castellano y en catalán',
@@ -75,8 +76,9 @@
   }
 
   function limpiar(p){
-    var o={id:p.id,categoria:p.categoria,tipo:p.tipo==='app'?'app':'material',fotos:(p.fotos||[]).slice(),precio:typeof p.precio==='number'?p.precio:null};
+    var o={id:p.id,categoria:p.categoria,tipo:p.tipo==='app'||p.tipo==='herramienta'?p.tipo:'material',fotos:(p.fotos||[]).slice(),precio:typeof p.precio==='number'?p.precio:null};
     if(o.tipo==='app'){o.appStore=p.appStore||'';o.googlePlay=p.googlePlay||'';}
+    else if(o.tipo==='herramienta')o.web=p.web||'';
     else o.wallapop=p.wallapop||'';
     if(p.agotado)o.agotado=true;
     ['es','ca'].forEach(function(l){var t=p[l]||{};o[l]={nombre:t.nombre||'',resumen:t.resumen||'',descripcion:(t.descripcion||[]).slice(),paraQue:(t.paraQue||[]).slice()};});
@@ -158,6 +160,7 @@
       d.appendChild(el('span',null,nombreCat(p.categoria)));
       d.appendChild(el('span',null,typeof p.precio==='number'?euros(p.precio):'Sin precio'));
       if(p.tipo==='app')d.appendChild(el('span',null,'Aplicación'));
+      else if(p.tipo==='herramienta')d.appendChild(el('span',p.web?'ok-txt':'falta-txt',p.web?'✓ Herramienta online':'Falta el enlace de la herramienta'));
       else d.appendChild(el('span',p.wallapop?'ok-txt':'falta-txt',p.wallapop?'✓ Enlace de Wallapop':'Falta el enlace de Wallapop'));
       d.appendChild(el('span',null,(p.fotos||[]).length+' foto'+((p.fotos||[]).length===1?'':'s')));
       if(p.agotado)d.appendChild(el('span','falta-txt','Agotado'));
@@ -182,13 +185,13 @@
       var i=d.productos.findIndex(function(x){return x.id===id;}),j=i+dir;
       if(i<0||j<0||j>=d.productos.length)return;
       var t=d.productos[i];d.productos[i]=d.productos[j];d.productos[j]=t;
-    },'Tienda: cambia el orden de los productos','Orden guardado. La web se actualiza en uno o dos minutos.');
+    },'Herramientas: cambia el orden','Orden guardado. La web se actualiza en uno o dos minutos.');
   }
   function borrarProducto(p){
     var n=(p.es&&p.es.nombre)||p.id;
-    if(!confirm('¿Borrar «'+n+'» de la tienda? También se borrarán sus fotos.'))return;
+    if(!confirm('¿Borrar «'+n+'» de la web? También se borrarán sus fotos.'))return;
     accionLista(function(d){d.productos=d.productos.filter(function(x){return x.id!==p.id;});},
-      'Tienda: borra «'+n+'»','«'+n+'» se ha borrado. La web se actualiza en uno o dos minutos.');
+      'Herramientas: borra «'+n+'»','«'+n+'» se ha borrado. La web se actualiza en uno o dos minutos.');
   }
 
   // ---------- Editor ----------
@@ -201,7 +204,7 @@
   $('form-producto').addEventListener('input',function(){cambiado=true;});
   window.addEventListener('beforeunload',function(e){if(cambiado&&!$('paso-editar').hidden){e.preventDefault();e.returnValue='';}});
   $('f-tipo').addEventListener('change',tipoCambiado);
-  function tipoCambiado(){var app=$('f-tipo').value==='app';$('campos-app').hidden=!app;$('campo-wallapop').hidden=app;}
+  function tipoCambiado(){var t=$('f-tipo').value;$('campos-app').hidden=t!=='app';$('campo-web').hidden=t!=='herramienta';$('campo-wallapop').hidden=t!=='material';}
 
   function editar(p){
     actual=p;cambiado=false;aviso('estado-editar');
@@ -212,9 +215,9 @@
     var es=p.es||{},ca=p.ca||{};
     $('f-nombre-es').value=es.nombre||'';$('f-nombre-ca').value=ca.nombre||'';
     sel.value=p.categoria||(estado.categorias[0]&&estado.categorias[0].id)||'';
-    $('f-tipo').value=p.tipo==='app'?'app':'material';tipoCambiado();
+    $('f-tipo').value=p.tipo==='app'||p.tipo==='herramienta'?p.tipo:'material';tipoCambiado();
     $('f-precio').value=typeof p.precio==='number'?String(p.precio).replace('.',','):'';
-    $('f-wallapop').value=p.wallapop||'';$('f-appstore').value=p.appStore||'';$('f-googleplay').value=p.googlePlay||'';
+    $('f-wallapop').value=p.wallapop||'';$('f-web').value=p.web||'';$('f-appstore').value=p.appStore||'';$('f-googleplay').value=p.googlePlay||'';
     $('f-agotado').checked=!!p.agotado;
     $('f-resumen-es').value=es.resumen||'';$('f-resumen-ca').value=ca.resumen||'';
     $('f-desc-es').value=(es.descripcion||[]).join('\n\n');$('f-desc-ca').value=(ca.descripcion||[]).join('\n\n');
@@ -292,10 +295,10 @@
       if(!isFinite(precio)||precio<0){aviso('estado-editar','error','El precio no es válido. Escribidlo así: 12,50');$('f-precio').focus();return;}
       precio=Math.round(precio*100)/100;
     }
-    var tipo=$('f-tipo').value,wall=$('f-wallapop').value.trim(),aps=$('f-appstore').value.trim(),gp=$('f-googleplay').value.trim();
+    var tipo=$('f-tipo').value,web=$('f-web').value.trim(),wall=$('f-wallapop').value.trim(),aps=$('f-appstore').value.trim(),gp=$('f-googleplay').value.trim();
     var malos=[[wall,'Wallapop'],[aps,'App Store'],[gp,'Google Play']].filter(function(x){return x[0]&&!/^https?:\/\/\S+$/.test(x[0]);});
     if(malos.length){aviso('estado-editar','error','El enlace de '+malos[0][1]+' no es válido: tiene que empezar por https://');return;}
-    if(tipo!=='app'&&wall&&!/wallapop/i.test(wall)&&!confirm('El enlace no parece de Wallapop. ¿Guardarlo igualmente?'))return;
+    if(tipo==='material'&&wall&&!/wallapop/i.test(wall)&&!confirm('El enlace no parece de Wallapop. ¿Guardarlo igualmente?'))return;
 
     var id=actual?actual.id:slug(nombre);
     if(!actual){var base=id,n=2;while(estado.productos.some(function(x){return x.id===id;}))id=base+'-'+(n++);}
@@ -305,7 +308,7 @@
       var path='img/tienda/'+id+'-'+marca+'-'+(i+1)+'.jpg';nuevas.push({path:path,base64:f.base64});return path;
     });
     var prod={id:id,categoria:$('f-categoria').value,tipo:tipo,fotos:lista,precio:precio,
-      wallapop:wall,appStore:aps,googlePlay:gp,agotado:$('f-agotado').checked,
+      wallapop:wall,web:web,appStore:aps,googlePlay:gp,agotado:$('f-agotado').checked,
       es:{nombre:nombre,resumen:$('f-resumen-es').value.trim(),descripcion:parrafos($('f-desc-es').value),paraQue:lineas($('f-para-es').value)},
       ca:{nombre:$('f-nombre-ca').value.trim(),resumen:$('f-resumen-ca').value.trim(),descripcion:parrafos($('f-desc-ca').value),paraQue:lineas($('f-para-ca').value)}};
     var esNuevo=!actual;
@@ -316,7 +319,7 @@
       if(i>=0)d.productos[i]=prod;
       else if(esNuevo)d.productos.push(prod);
       else throw new Error('Este producto se ha borrado mientras lo editabais.');
-    },nuevas,(esNuevo?'Tienda: añade «':'Tienda: cambia «')+nombre+'»').then(function(){
+    },nuevas,(esNuevo?'Herramientas: añade «':'Herramientas: cambia «')+nombre+'»').then(function(){
       cambiado=false;pintarLista();mostrar('paso-lista');
       var st=$('estado-lista');st.hidden=false;st.className='estado ok';st.textContent='';
       st.appendChild(document.createTextNode('«'+nombre+'» guardado. La web se actualiza en uno o dos minutos: '));
