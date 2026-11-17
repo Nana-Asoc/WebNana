@@ -6,17 +6,18 @@ La web tiene una página para cada apartado del menú, en castellano y catalán:
 
 | Castellano | Catalán | |
 |---|---|---|
-| `index.html` | `index-ca.html` | inicio: presentación, «¿Cómo os podemos ayudar?», N.A.N.A. en Sant Boi (eventos) y colabora |
+| `index.html` | `index-ca.html` | inicio: presentación, N.A.N.A. en Sant Boi, próximo evento y colabora |
 | `quienes-somos.html` | `qui-som.html` | quiénes somos: familias, educación infantil y educación especial |
 | `primeros-pasos.html` | `primers-passos.html` | primeros pasos tras el diagnóstico |
 | `ayudas.html` | `ajuts.html` | ayudas y trámites |
 | `que-hacemos.html` | `que-fem.html` | qué hacemos, actividades para tod@s y encuesta de actividades |
+| `eventos.html` | `esdeveniments.html` | eventos: próximos y pasados (se gestionan en `gestionar-eventos.html`) |
 | `colabora.html` | `col-labora.html` | hazte socio, voluntariado, donativos y tienda |
 | `contacto.html` | `contacte.html` | formulario de contacto |
 | `privacidad.html` | `privacitat.html` | aviso legal y privacidad |
 | `tienda.html` | `botiga.html` | tienda solidaria (ver más abajo) |
 
-Cada página lleva su propia cabecera, menú y pie (estilos y script incluidos en el propio archivo). **Si cambias el menú, la cabecera o el pie, cámbialo en todas las páginas.** En el móvil y en pantallas medianas (hasta 1180 px), el menú se abre con el botón ☰ de la cabecera.
+Cada página lleva su propia cabecera, menú y pie (estilos y script incluidos en el propio archivo). **Si cambias el menú, la cabecera o el pie, cámbialo en todas las páginas.** En el móvil y en pantallas medianas (hasta 1240 px), el menú se abre con el botón ☰ de la cabecera.
 
 Las ilustraciones de cada página están en `img/secciones/` (`quienes-somos.jpg`, `primeros-pasos.jpg`, `ayudas.jpg`, `que-hacemos.jpg`, `colabora.jpg`, `contacto.jpg`); se comparten entre castellano y catalán. Para cambiar una, sustituye el archivo manteniendo el nombre.
 
@@ -27,18 +28,17 @@ Las ilustraciones de cada página están en `img/secciones/` (`quienes-somos.jpg
 - `img/logo-nana.jpg` — logotipo completo; `img/logo-nana-marca.jpg` — símbolo + NANA (cabecera)
 - `img/sant-boi-ermita.jpg` — foto de la sección «N.A.N.A. en Sant Boi» (Diego Eiras, CC BY-SA 4.0, Wikimedia Commons: hay que mantener la atribución que aparece debajo)
 
-## Añadir eventos de Instagram
+## Eventos
 
-Los eventos de la sección «N.A.N.A. en Sant Boi» (página de inicio) se editan en un solo archivo, `eventos.js`, y salen en las dos versiones de la web:
+Los eventos salen en `eventos.html` / `esdeveniments.html` (próximos y pasados, según la fecha) y el más cercano aparece también en la portada.
 
-1. Guarda la foto del evento en `img/eventos/` (mejor cuadrada).
-2. En `eventos.js`, copia la línea de ejemplo, quítale las `//` del principio y rellena la foto, el enlace de la publicación de Instagram, la fecha y el título en castellano (`es`) y catalán (`ca`).
-3. Pon el perfil de Instagram en `NANA_INSTAGRAM` para que aparezca el botón «Síguenos en Instagram».
+La forma fácil de gestionarlos es **`gestionar-eventos.html`** (por ejemplo `https://nana-asoc.github.io/WebNana/gestionar-eventos.html`), que no sale en el menú ni en los buscadores. Usa la misma clave de acceso de GitHub que `gestionar.html` (la tienda) y permite:
 
-Mientras la lista esté vacía, se muestran tres recuadros de «Próximamente».
-- **Si cambias un texto, cámbialo en los dos idiomas.**
+- Añadir, cambiar, duplicar y borrar eventos (título en castellano y catalán, fecha, hora, lugar, descripción, enlace a Instagram u otra página).
+- Subir la foto del evento desde el móvil o el ordenador (se reduce sola y se guarda en `img/eventos/`).
+- Cambiar el perfil de Instagram del botón «Síguenos».
 
-Para verla, abre `index.html` en el navegador. La página para gestionar la tienda (`gestionar.html`) no está enlazada para el público: el enlace «Gestionar la tienda» del pie solo aparece en los navegadores donde un responsable ha conectado su clave de GitHub con «Recordar la clave en este dispositivo».
+Al guardar, la página escribe `eventos.js` en GitHub y la web se actualiza en uno o dos minutos. En los navegadores donde un responsable ha guardado su clave, el pie de la web muestra los enlaces «Gestionar la tienda» y «Gestionar los eventos». También se puede editar `eventos.js` a mano: el formato está explicado al principio del archivo.
 
 ## Tienda solidaria
 
