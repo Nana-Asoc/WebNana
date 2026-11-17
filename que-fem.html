@@ -166,6 +166,7 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 .proximo-evento .pe-fecha::first-letter{text-transform:uppercase}
 .proximo-evento a{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;background:#407295;color:#FFFFFF;font-weight:700;text-decoration:none}
 @media (max-width:720px){.eventos-grid{grid-template-columns:1fr}.proximo-evento{padding:20px}}
+.qh-otros[hidden]{display:none}
 </style>
 </head>
 <body>
@@ -249,7 +250,8 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 <h3 style="margin: 0; font-family: Nunito, sans-serif; font-weight: 800; font-size: 1.75rem; line-height: 1.2">Quines activitats us agradarien?</h3>
 <p style="margin: 0; color: #3D5566">Marqueu les que us interessen i quan us aniria millor. Amb les vostres respostes decidim per on començar i podem demostrar a l’Ajuntament quantes famílies les necessiten.</p>
 </div>
-<fieldset class="qh-fs"><legend>Quines activitats us interessen?</legend><div class="qh-ops"><label class="qh-op"><input type="checkbox" name="actividad" value="Esport adaptat"><span>Esport adaptat</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Psicomotricitat"><span>Psicomotricitat</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Jocs cooperatius"><span>Jocs cooperatius</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Música"><span>Música</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Plàstica i manualitats"><span>Plàstica i manualitats</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Jocs de taula"><span>Jocs de taula</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Sortides i excursions"><span>Sortides i excursions</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Teràpia ocupacional"><span>Teràpia ocupacional</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Habilitats socials"><span>Habilitats socials</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Reconèixer i gestionar emocions"><span>Reconèixer i gestionar emocions</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Autonomia personal"><span>Autonomia personal</span></label></div></fieldset>
+<fieldset class="qh-fs"><legend>Quines activitats us interessen?</legend><div class="qh-ops"><label class="qh-op"><input type="checkbox" name="actividad" value="Esport adaptat"><span>Esport adaptat</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Psicomotricitat"><span>Psicomotricitat</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Jocs cooperatius"><span>Jocs cooperatius</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Música"><span>Música</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Plàstica i manualitats"><span>Plàstica i manualitats</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Jocs de taula"><span>Jocs de taula</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Sortides i excursions"><span>Sortides i excursions</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Teràpia ocupacional"><span>Teràpia ocupacional</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Habilitats socials"><span>Habilitats socials</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Reconèixer i gestionar emocions"><span>Reconèixer i gestionar emocions</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Autonomia personal"><span>Autonomia personal</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Formació en alimentació"><span>Formació en alimentació</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Formacions per a famílies"><span>Formacions per a famílies</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Altres" data-otros><span>Altres</span></label></div></fieldset>
+<label class="qh-campo qh-otros" hidden>Expliqueu-nos què us interessa<input type="text" name="otros" maxlength="200" placeholder="Per exemple: natació, taller de cuina, xerrada sobre el son…"></label>
 <fieldset class="qh-fs"><legend>Quan us aniria millor?</legend><div class="qh-ops"><label class="qh-op"><input type="checkbox" name="cuando" value="Entre setmana, a la tarda"><span>Entre setmana, a la tarda</span></label><label class="qh-op"><input type="checkbox" name="cuando" value="Dissabtes"><span>Dissabtes</span></label><label class="qh-op"><input type="checkbox" name="cuando" value="Diumenges"><span>Diumenges</span></label><label class="qh-op"><input type="checkbox" name="cuando" value="En vacances"><span>En vacances</span></label></div></fieldset>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px">
 <label class="qh-campo">Edat del vostre fill o filla<select name="edad"><option value="">Trieu una opció</option><option>De 0 a 5 anys</option><option>De 6 a 11 anys</option><option>De 12 a 17 anys</option><option>18 anys o més</option></select></label>
@@ -375,24 +377,27 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
   var est=f.querySelector('.qh-estado'),btn=f.querySelector('button[type=submit]');
   var contacto=f.querySelector('input[name=contacto]'),priv=f.querySelector('.qh-priv');
   contacto.addEventListener('input',function(){var v=contacto.value.trim()!=='';priv.hidden=!v;priv.style.display=v?'flex':'none';});
-  f.addEventListener('change',function(){est.textContent='';});
+  var otrosChk=f.querySelector('input[data-otros]'),otrosCampo=f.querySelector('.qh-otros');
+  f.addEventListener('change',function(){est.textContent='';if(otrosChk){otrosCampo.hidden=!otrosChk.checked;if(otrosChk.checked&&document.activeElement===otrosChk)otrosCampo.querySelector('input').focus();}});
   function marcados(n){return Array.prototype.map.call(f.querySelectorAll('input[name='+n+']:checked'),function(i){return i.value;});}
   f.addEventListener('submit',function(e){
     e.preventDefault();
     var act=marcados('actividad');
     if(!act.length){est.style.color='#A3352B';est.textContent='Marqueu almenys una activitat.';return;}
+    var otros=(f.querySelector('input[name=otros]').value||'').trim();
+    if(otrosChk&&otrosChk.checked&&!otros){est.style.color='#A3352B';est.textContent='Expliqueu-nos quina altra cosa us interessa.';otrosCampo.querySelector('input').focus();return;}
     var c=contacto.value.trim();
     if(c&&!f.querySelector('input[name=privacidad]').checked){est.style.color='#A3352B';est.textContent='Per deixar-nos un contacte, accepteu la casella de privacitat.';return;}
     var d=new FormData();
     d.append('access_key','d495cd74-33c4-4019-a356-e74dacadebbe');
     d.append('subject','Enquesta d’activitats des del web de N.A.N.A.');d.append('from_name','Web N.A.N.A.');d.append('idioma','Català');
-    d.append('actividades',act.join(', '));d.append('cuando',marcados('cuando').join(', ')||'-');
+    d.append('actividades',act.join(', '));d.append('otros',(otrosChk&&otrosChk.checked&&otros)||'-');d.append('cuando',marcados('cuando').join(', ')||'-');
     d.append('edad',f.querySelector('select[name=edad]').value||'-');d.append('contacto',c||'-');
     if(c)d.append('privacidad','Aceptada');
     btn.disabled=true;btn.textContent='Enviant…';est.textContent='';
     fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Accept':'application/json'},body:d})
       .then(function(r){return r.json();})
-      .then(function(r){if(!r.success)throw new Error(r.message);f.reset();priv.hidden=true;priv.style.display='none';est.style.color='#1D5F5B';est.textContent='Gràcies! Hem rebut les vostres respostes.';})
+      .then(function(r){if(!r.success)throw new Error(r.message);f.reset();priv.hidden=true;if(otrosCampo)otrosCampo.hidden=true;priv.style.display='none';est.style.color='#1D5F5B';est.textContent='Gràcies! Hem rebut les vostres respostes.';})
       .catch(function(){est.style.color='#A3352B';est.textContent='No s’ha pogut enviar. Torneu-ho a provar o escriviu-nos a nucli.nana@gmail.com.';})
       .finally(function(){btn.disabled=false;btn.textContent='Enviar respostes';});
   });
