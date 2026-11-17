@@ -185,13 +185,13 @@
       var i=d.productos.findIndex(function(x){return x.id===id;}),j=i+dir;
       if(i<0||j<0||j>=d.productos.length)return;
       var t=d.productos[i];d.productos[i]=d.productos[j];d.productos[j]=t;
-    },'Herramientas: cambia el orden','Orden guardado. La web se actualiza en uno o dos minutos.');
+    },'Recursos: cambia el orden','Orden guardado. La web se actualiza en uno o dos minutos.');
   }
   function borrarProducto(p){
     var n=(p.es&&p.es.nombre)||p.id;
     if(!confirm('¿Borrar «'+n+'» de la web? También se borrarán sus fotos.'))return;
     accionLista(function(d){d.productos=d.productos.filter(function(x){return x.id!==p.id;});},
-      'Herramientas: borra «'+n+'»','«'+n+'» se ha borrado. La web se actualiza en uno o dos minutos.');
+      'Recursos: borra «'+n+'»','«'+n+'» se ha borrado. La web se actualiza en uno o dos minutos.');
   }
 
   // ---------- Editor ----------
@@ -319,7 +319,7 @@
       if(i>=0)d.productos[i]=prod;
       else if(esNuevo)d.productos.push(prod);
       else throw new Error('Este producto se ha borrado mientras lo editabais.');
-    },nuevas,(esNuevo?'Herramientas: añade «':'Herramientas: cambia «')+nombre+'»').then(function(){
+    },nuevas,(esNuevo?'Recursos: añade «':'Recursos: cambia «')+nombre+'»').then(function(){
       cambiado=false;pintarLista();mostrar('paso-lista');
       var st=$('estado-lista');st.hidden=false;st.className='estado ok';st.textContent='';
       st.appendChild(document.createTextNode('«'+nombre+'» guardado. La web se actualiza en uno o dos minutos: '));

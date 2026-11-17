@@ -4,20 +4,20 @@
 (function(){
   var L=document.documentElement.lang==='ca'?'ca':'es';
   var T={
-    es:{pronto:'Próximamente',agotado:'Agotado',todo:'Todo',todos:'Todas las herramientas',gratis:'Gratis',abrir:'Abrir la herramienta',canalWeb:'Online',
-      producto:'herramienta',productos:'herramientas',
+    es:{pronto:'Próximamente',agotado:'Agotado',todo:'Todo',todos:'Todos los recursos',gratis:'Gratis',abrir:'Abrir la herramienta',canalWeb:'Online',
+      producto:'recurso',productos:'recursos',
       wallapop:'Comprar en Wallapop',wallapopPronto:'Muy pronto en Wallapop',canalWallapop:'En Wallapop',canalApp:'App',
       appStore:'Descargar en App Store',googlePlay:'Descargar en Google Play',appPronto:'Próximamente en App Store y Google Play',
       preguntar:'Preguntar por esto',anterior:'Foto anterior',siguiente:'Foto siguiente',foto:'Foto',de:'de',
       sinResultados:'No hemos encontrado nada con «%s».',tienda:'tienda.html',ficha:'producto.html',
-      contacto:'contacto.html',titulo:' – Herramientas N.A.N.A.'},
-    ca:{pronto:'Properament',agotado:'Esgotat',todo:'Tot',todos:'Totes les eines',gratis:'Gratis',abrir:'Obrir l’eina',canalWeb:'En línia',
-      producto:'eina',productos:'eines',
+      contacto:'contacto.html',titulo:' – Recursos N.A.N.A.'},
+    ca:{pronto:'Properament',agotado:'Esgotat',todo:'Tot',todos:'Tots els recursos',gratis:'Gratis',abrir:'Obrir l’eina',canalWeb:'En línia',
+      producto:'recurs',productos:'recursos',
       wallapop:'Comprar a Wallapop',wallapopPronto:'Molt aviat a Wallapop',canalWallapop:'A Wallapop',canalApp:'App',
       appStore:'Descarregar a l’App Store',googlePlay:'Descarregar a Google Play',appPronto:'Properament a l’App Store i Google Play',
       preguntar:'Preguntar-ne',anterior:'Foto anterior',siguiente:'Foto següent',foto:'Foto',de:'de',
       sinResultados:'No hem trobat res amb «%s».',tienda:'botiga.html',ficha:'producte.html',
-      contacto:'contacte.html',titulo:' – Eines N.A.N.A.'}
+      contacto:'contacte.html',titulo:' – Recursos N.A.N.A.'}
   }[L];
 
   // El enlace a gestionar la tienda solo sale en los dispositivos donde un responsable ha guardado su clave
