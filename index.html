@@ -48,6 +48,22 @@ body{padding-bottom:76px}
 #eventos .hueco span{font-size:.8125rem !important}
 }
 </style>
+<style>
+/* Qué hacemos · actividades */
+.qh-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+.qh-caja{background:#FFFFFF;border:1px solid #E3ECF0;border-radius:24px;padding:28px;box-sizing:border-box}
+.qh-areas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+@media (max-width:820px){.qh-areas{grid-template-columns:1fr}}
+.qh-area{background:#FFFFFF;border:1px solid #E3ECF0;border-left:6px solid var(--c);border-radius:18px;padding:22px 24px;display:flex;flex-direction:column;gap:12px}
+.qh-area h4{margin:0;font-family:Nunito,sans-serif;font-weight:800;font-size:1.25rem;color:#1E3445}
+.qh-area p{margin:0;color:#3D5566;font-size:1rem}
+.qh-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.qh-chips li{background:var(--f);color:#1E3445;font-weight:700;font-size:.875rem;padding:6px 12px;border-radius:999px}
+.qh-pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:0;padding:0;list-style:none}
+.qh-pasos li{display:flex;gap:14px;align-items:flex-start}
+.qh-num{flex:none;width:40px;height:40px;border-radius:50%;background:#E3F6F4;color:#1D5F5B;font-family:Nunito,sans-serif;font-weight:800;display:flex;align-items:center;justify-content:center}
+@media (max-width:720px){.qh-caja{padding:22px}.qh-grid{gap:20px}}
+</style>
 </head>
 <body>
 <div style="font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; color: #1E3445; background: #F6F9FA; font-size: 1.0625rem; line-height: 1.6">
@@ -167,15 +183,48 @@ body{padding-bottom:76px}
 </section>
 
 <section id="que-hacemos" style="padding: 88px 0">
-<div class="wrap" style="display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
-<div style="flex: 1 1 460px; min-width: 0; max-width: 760px; display: flex; flex-direction: column; gap: 22px">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 40px">
+<div style="max-width: 820px; display: flex; flex-direction: column; gap: 18px">
 <h2 class="sec-title" style="margin: 0; font-family: Nunito, sans-serif; font-weight: 800; font-size: 2.4rem; line-height: 1.15">Un núcleo de familias que se acompañan</h2>
-<p style="margin: 0; font-size: 1.1875rem; color: #3D5566">N.A.N.A. nace de familias que han vivido lo mismo que vosotros. Sabemos lo que cuesta, y por eso compartimos lo aprendido.</p>
-<div style="display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 1.1875rem; color: #3D5566">N.A.N.A. nace de familias que han vivido lo mismo que vosotros. Acompañamos a las familias en los trámites y organizamos actividades para que nuestros hijos e hijas disfruten, se muevan y hagan amigos.</p>
+</div>
+<div class="qh-grid">
+<div class="qh-caja" style="display: flex; flex-direction: column; gap: 16px">
+<h3 style="margin: 0; font-family: Nunito, sans-serif; font-weight: 800; font-size: 1.375rem">Para las familias</h3>
 <div style="display: flex; gap: 14px; align-items: flex-start"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2E8F89" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 3 3 5-6"></path></svg><span><strong>Orientación y acompañamiento</strong> en trámites y recursos.</span></div>
 <div style="display: flex; gap: 14px; align-items: flex-start"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2E8F89" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 3 3 5-6"></path></svg><span><strong>Grupos de familias</strong> para compartir, desahogarse y aprender juntos.</span></div>
-<div style="display: flex; gap: 14px; align-items: flex-start"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2E8F89" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 3 3 5-6"></path></svg><span><strong>Charlas y talleres</strong> con profesionales sobre autismo, escuela y vida diaria.</span></div>
+<div style="display: flex; gap: 14px; align-items: flex-start"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2E8F89" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 3 3 5-6"></path></svg><span><strong>Charlas y formaciones</strong> con profesionales sobre autismo, escuela y vida diaria, y de informática para que podáis hacer las gestiones online vosotros mismos.</span></div>
 <div style="display: flex; gap: 14px; align-items: flex-start"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2E8F89" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 3 3 5-6"></path></svg><span><strong>Defensa de derechos</strong> ante administraciones y centros.</span></div>
+</div>
+<div class="qh-caja" style="display: flex; flex-direction: column; gap: 16px; background: #E3F6F4; border-color: #C5EAE6">
+<h3 style="margin: 0; font-family: Nunito, sans-serif; font-weight: 800; font-size: 1.375rem">Cómo hacemos las actividades</h3>
+<div style="display: flex; gap: 14px; align-items: flex-start"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2E8F89" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 3 3 5-6"></path></svg><span><strong>Siempre el mismo espacio.</strong> Un lugar fijo en Sant Boi, que reconozcan y donde se sientan seguros.</span></div>
+<div style="display: flex; gap: 14px; align-items: flex-start"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2E8F89" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 3 3 5-6"></path></svg><span><strong>Profesionales titulados.</strong> Monitores y profesionales contratados por la asociación.</span></div>
+<div style="display: flex; gap: 14px; align-items: flex-start"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2E8F89" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 3 3 5-6"></path></svg><span><strong>Apoyo a la medida.</strong> Grupos pequeños y ratio 1:1 cuando hace falta.</span></div>
+</div>
+</div>
+<div id="actividades" style="display: flex; flex-direction: column; gap: 22px">
+<div style="max-width: 820px; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-family: Nunito, sans-serif; font-weight: 800; font-size: 1.75rem; line-height: 1.2">Actividades para niños, niñas y jóvenes</h3>
+<p style="margin: 0; color: #3D5566">Queremos montar una programación estable de deporte, ocio y crecimiento personal, adaptada a cada chico y chica. Estas son las áreas en las que estamos trabajando:</p>
+</div>
+<div class="qh-areas">
+<div class="qh-area" style="--c: #2E8F89; --f: #E3F6F4"><h4>Deporte y movimiento</h4><p>Moverse, coordinarse y disfrutar del deporte a su ritmo.</p><ul class="qh-chips"><li>Deporte adaptado</li><li>Psicomotricidad</li><li>Juegos cooperativos</li><li>Expresión corporal y baile</li></ul></div>
+<div class="qh-area" style="--c: #407295; --f: #E6EEF5"><h4>Ocio y creatividad</h4><p>Tiempo libre para crear, jugar y compartir.</p><ul class="qh-chips"><li>Música y ritmo</li><li>Plástica y manualidades</li><li>Juegos de mesa</li><li>Salidas por Sant Boi</li></ul></div>
+<div class="qh-area" style="--c: #C27C3A; --f: #FBEFE3"><h4>Emociones y autonomía</h4><p>Herramientas para el día a día, en casa y fuera.</p><ul class="qh-chips"><li>Habilidades sociales</li><li>Reconocer y gestionar emociones</li><li>Autonomía personal</li></ul></div>
+<div class="qh-area" style="--c: #7A68A6; --f: #EEEAF6"><h4>Casales y fines de semana</h4><p>Más allá del curso escolar, sin dejar a nadie fuera.</p><ul class="qh-chips"><li>Casales adaptados en julio y agosto</li><li>Actividades de fin de semana</li><li>Salidas en familia</li></ul></div>
+</div>
+</div>
+<div class="qh-caja" style="display: flex; flex-direction: column; gap: 20px">
+<h3 style="margin: 0; font-family: Nunito, sans-serif; font-weight: 800; font-size: 1.375rem">Cómo empezamos</h3>
+<ol class="qh-pasos">
+<li><span class="qh-num" aria-hidden="true">1</span><span><strong style="display: block; font-family: Nunito, sans-serif; font-weight: 800">Primero</strong>Dos sesiones por semana en un espacio fijo.</span></li>
+<li><span class="qh-num" aria-hidden="true">2</span><span><strong style="display: block; font-family: Nunito, sans-serif; font-weight: 800">Después</strong>Ampliamos poco a poco hasta cinco días por semana.</span></li>
+<li><span class="qh-num" aria-hidden="true">3</span><span><strong style="display: block; font-family: Nunito, sans-serif; font-weight: 800">Más adelante</strong>Fines de semana y casales adaptados en verano.</span></li>
+</ol>
+<div style="display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; justify-content: space-between; border-top: 1px solid #E3ECF0; padding-top: 18px">
+<p style="margin: 0; color: #3D5566; flex: 1 1 360px">Estamos preparando el calendario y el espacio con el Ayuntamiento. Decidnos qué actividades os interesan y las organizaremos según lo que pidan las familias.</p>
+<a href="#contacto" data-motivo="Me interesan las actividades" class="qh-cta" style="background: #407295; color: #FFFFFF; text-decoration: none; font-weight: 700; padding: 14px 24px; border-radius: 999px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">Me interesan las actividades</a>
 </div>
 </div>
 </div>
@@ -243,7 +292,7 @@ body{padding-bottom:76px}
 <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 0.9375rem">Vuestro nombre<input type="text" name="nombre" required autocomplete="name" style="font: inherit; font-weight: 400; padding: 12px 14px; min-height: 48px; box-sizing: border-box; border: 1px solid #B9CCD8; border-radius: 12px; background: #FFFFFF"></label>
 <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 0.9375rem">Teléfono o email<input type="text" name="contacto" required style="font: inherit; font-weight: 400; padding: 12px 14px; min-height: 48px; box-sizing: border-box; border: 1px solid #B9CCD8; border-radius: 12px; background: #FFFFFF"></label>
 </div>
-<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 0.9375rem">¿En qué os podemos ayudar?<select name="motivo" style="font: inherit; font-weight: 400; padding: 12px 14px; min-height: 48px; box-sizing: border-box; border: 1px solid #B9CCD8; border-radius: 12px; background: #FFFFFF"><option>Acabamos de recibir el diagnóstico</option><option>Quiero pedir una ayuda o hacer un trámite</option><option>Quiero hacerme socio o colaborar</option><option>Otra consulta</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 0.9375rem">¿En qué os podemos ayudar?<select name="motivo" style="font: inherit; font-weight: 400; padding: 12px 14px; min-height: 48px; box-sizing: border-box; border: 1px solid #B9CCD8; border-radius: 12px; background: #FFFFFF"><option>Acabamos de recibir el diagnóstico</option><option>Quiero pedir una ayuda o hacer un trámite</option><option>Quiero hacerme socio o colaborar</option><option>Me interesan las actividades</option><option>Otra consulta</option></select></label>
 <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 0.9375rem">Mensaje (opcional)<textarea name="mensaje" rows="4" style="font: inherit; font-weight: 400; padding: 12px 14px; min-height: 48px; box-sizing: border-box; border: 1px solid #B9CCD8; border-radius: 12px; background: #FFFFFF; resize: vertical"></textarea></label>
 <label style="display: flex; gap: 10px; align-items: flex-start; font-size: 0.9375rem; color: #3D5566"><input type="checkbox" name="privacidad" value="Aceptada" required style="width: 20px; height: 20px; margin-top: 3px; accent-color: #407295">Acepto que N.A.N.A. use estos datos solo para responder a mi consulta.</label>
 <p style="margin: 0; font-size: 0.875rem; line-height: 1.5; color: #3D5566; background: #FFFFFF; border: 1px solid #E3ECF0; border-radius: 14px; padding: 14px 16px"><strong style="color: #1E3445">Protección de datos.</strong> N.A.N.A. usará vuestros datos solo para responder a esta consulta y los tratará con total confidencialidad. No los cederemos ni venderemos a nadie, no los usaremos para otros fines y los guardaremos solo el tiempo necesario. Podéis pedir consultarlos, corregirlos o borrarlos cuando queráis escribiendo a <a href="mailto:nucli.nana@gmail.com">nucli.nana@gmail.com</a>.</p>
@@ -329,6 +378,15 @@ body{padding-bottom:76px}
     });
   });
 })();
+</script>
+<script>
+// Al pulsar «Me interesan las actividades», el formulario de contacto sale con ese motivo ya elegido.
+document.querySelectorAll('.qh-cta').forEach(function(a){
+  a.addEventListener('click',function(){
+    var s=document.querySelector('#form-contacto select[name="motivo"]');
+    if(s){s.value=a.getAttribute('data-motivo');}
+  });
+});
 </script>
 </body>
 </html>
