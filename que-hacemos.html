@@ -166,6 +166,7 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 .proximo-evento .pe-fecha::first-letter{text-transform:uppercase}
 .proximo-evento a{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;background:#407295;color:#FFFFFF;font-weight:700;text-decoration:none}
 @media (max-width:720px){.eventos-grid{grid-template-columns:1fr}.proximo-evento{padding:20px}}
+.qh-otros[hidden]{display:none}
 </style>
 </head>
 <body>
@@ -249,7 +250,8 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 <h3 style="margin: 0; font-family: Nunito, sans-serif; font-weight: 800; font-size: 1.75rem; line-height: 1.2">¿Qué actividades os gustaría?</h3>
 <p style="margin: 0; color: #3D5566">Marcad las que os interesan y cuándo os iría mejor. Con vuestras respuestas decidimos por dónde empezar y podemos demostrar al Ayuntamiento cuántas familias las necesitan.</p>
 </div>
-<fieldset class="qh-fs"><legend>¿Qué actividades os interesan?</legend><div class="qh-ops"><label class="qh-op"><input type="checkbox" name="actividad" value="Deporte adaptado"><span>Deporte adaptado</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Psicomotricidad"><span>Psicomotricidad</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Juegos cooperativos"><span>Juegos cooperativos</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Música"><span>Música</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Plástica y manualidades"><span>Plástica y manualidades</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Juegos de mesa"><span>Juegos de mesa</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Salidas y excursiones"><span>Salidas y excursiones</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Terapia ocupacional"><span>Terapia ocupacional</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Habilidades sociales"><span>Habilidades sociales</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Reconocer y gestionar emociones"><span>Reconocer y gestionar emociones</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Autonomía personal"><span>Autonomía personal</span></label></div></fieldset>
+<fieldset class="qh-fs"><legend>¿Qué actividades os interesan?</legend><div class="qh-ops"><label class="qh-op"><input type="checkbox" name="actividad" value="Deporte adaptado"><span>Deporte adaptado</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Psicomotricidad"><span>Psicomotricidad</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Juegos cooperativos"><span>Juegos cooperativos</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Música"><span>Música</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Plástica y manualidades"><span>Plástica y manualidades</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Juegos de mesa"><span>Juegos de mesa</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Salidas y excursiones"><span>Salidas y excursiones</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Terapia ocupacional"><span>Terapia ocupacional</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Habilidades sociales"><span>Habilidades sociales</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Reconocer y gestionar emociones"><span>Reconocer y gestionar emociones</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Autonomía personal"><span>Autonomía personal</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Formación en alimentación"><span>Formación en alimentación</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Formaciones para familias"><span>Formaciones para familias</span></label><label class="qh-op"><input type="checkbox" name="actividad" value="Otros" data-otros><span>Otros</span></label></div></fieldset>
+<label class="qh-campo qh-otros" hidden>Contadnos qué os interesa<input type="text" name="otros" maxlength="200" placeholder="Por ejemplo: natación, taller de cocina, charla sobre el sueño…"></label>
 <fieldset class="qh-fs"><legend>¿Cuándo os iría mejor?</legend><div class="qh-ops"><label class="qh-op"><input type="checkbox" name="cuando" value="Entre semana, por la tarde"><span>Entre semana, por la tarde</span></label><label class="qh-op"><input type="checkbox" name="cuando" value="Sábados"><span>Sábados</span></label><label class="qh-op"><input type="checkbox" name="cuando" value="Domingos"><span>Domingos</span></label><label class="qh-op"><input type="checkbox" name="cuando" value="En vacaciones"><span>En vacaciones</span></label></div></fieldset>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px">
 <label class="qh-campo">Edad de vuestro hijo o hija<select name="edad"><option value="">Elegid una opción</option><option>0 a 5 años</option><option>6 a 11 años</option><option>12 a 17 años</option><option>18 años o más</option></select></label>
@@ -375,24 +377,27 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
   var est=f.querySelector('.qh-estado'),btn=f.querySelector('button[type=submit]');
   var contacto=f.querySelector('input[name=contacto]'),priv=f.querySelector('.qh-priv');
   contacto.addEventListener('input',function(){var v=contacto.value.trim()!=='';priv.hidden=!v;priv.style.display=v?'flex':'none';});
-  f.addEventListener('change',function(){est.textContent='';});
+  var otrosChk=f.querySelector('input[data-otros]'),otrosCampo=f.querySelector('.qh-otros');
+  f.addEventListener('change',function(){est.textContent='';if(otrosChk){otrosCampo.hidden=!otrosChk.checked;if(otrosChk.checked&&document.activeElement===otrosChk)otrosCampo.querySelector('input').focus();}});
   function marcados(n){return Array.prototype.map.call(f.querySelectorAll('input[name='+n+']:checked'),function(i){return i.value;});}
   f.addEventListener('submit',function(e){
     e.preventDefault();
     var act=marcados('actividad');
     if(!act.length){est.style.color='#A3352B';est.textContent='Marcad al menos una actividad.';return;}
+    var otros=(f.querySelector('input[name=otros]').value||'').trim();
+    if(otrosChk&&otrosChk.checked&&!otros){est.style.color='#A3352B';est.textContent='Contadnos qué otra cosa os interesa.';otrosCampo.querySelector('input').focus();return;}
     var c=contacto.value.trim();
     if(c&&!f.querySelector('input[name=privacidad]').checked){est.style.color='#A3352B';est.textContent='Para dejarnos un contacto, aceptad la casilla de privacidad.';return;}
     var d=new FormData();
     d.append('access_key','d495cd74-33c4-4019-a356-e74dacadebbe');
     d.append('subject','Encuesta de actividades desde la web de N.A.N.A.');d.append('from_name','Web N.A.N.A.');d.append('idioma','Castellano');
-    d.append('actividades',act.join(', '));d.append('cuando',marcados('cuando').join(', ')||'-');
+    d.append('actividades',act.join(', '));d.append('otros',(otrosChk&&otrosChk.checked&&otros)||'-');d.append('cuando',marcados('cuando').join(', ')||'-');
     d.append('edad',f.querySelector('select[name=edad]').value||'-');d.append('contacto',c||'-');
     if(c)d.append('privacidad','Aceptada');
     btn.disabled=true;btn.textContent='Enviando…';est.textContent='';
     fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Accept':'application/json'},body:d})
       .then(function(r){return r.json();})
-      .then(function(r){if(!r.success)throw new Error(r.message);f.reset();priv.hidden=true;priv.style.display='none';est.style.color='#1D5F5B';est.textContent='¡Gracias! Hemos recibido vuestras respuestas.';})
+      .then(function(r){if(!r.success)throw new Error(r.message);f.reset();priv.hidden=true;if(otrosCampo)otrosCampo.hidden=true;priv.style.display='none';est.style.color='#1D5F5B';est.textContent='¡Gracias! Hemos recibido vuestras respuestas.';})
       .catch(function(){est.style.color='#A3352B';est.textContent='No se ha podido enviar. Probad de nuevo o escribidnos a nucli.nana@gmail.com.';})
       .finally(function(){btn.disabled=false;btn.textContent='Enviar respuestas';});
   });
