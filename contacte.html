@@ -2,7 +2,7 @@
 <html lang="ca">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-52IBKBiaVw0Dka/nk1oJ31mK2fE2YdxTL6N6SM/Zqi8=' 'sha256-SPuTgO6lqAqJf4Z7nAx4XqCvWXf1DFFxodxWJoLK+8I='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self'; connect-src 'self' https://api.web3forms.com; form-action 'self' https://api.web3forms.com; base-uri 'self'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-52IBKBiaVw0Dka/nk1oJ31mK2fE2YdxTL6N6SM/Zqi8=' 'sha256-Lrj4PXButG3+7pVF4LyZWUgW1EjEWHkOa/io9fqqHr4='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self'; connect-src 'self' https://api.web3forms.com; form-action 'self' https://api.web3forms.com; base-uri 'self'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <script src="seguridad.js"></script>
@@ -282,7 +282,7 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
 <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 0.9375rem">El vostre nom<input type="text" name="nombre" required maxlength="100" autocomplete="name" style="font: inherit; font-weight: 400; padding: 12px 14px; min-height: 48px; box-sizing: border-box; border: 1px solid #B9CCD8; border-radius: 12px; background: #FFFFFF"></label>
 <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 0.9375rem">Telèfon o correu electrònic<input type="text" name="contacto" required maxlength="120" style="font: inherit; font-weight: 400; padding: 12px 14px; min-height: 48px; box-sizing: border-box; border: 1px solid #B9CCD8; border-radius: 12px; background: #FFFFFF"></label>
 </div>
-<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 0.9375rem">En què us podem ajudar?<select name="motivo" style="font: inherit; font-weight: 400; padding: 12px 14px; min-height: 48px; box-sizing: border-box; border: 1px solid #B9CCD8; border-radius: 12px; background: #FFFFFF"><option>Acabem de rebre el diagnòstic</option><option>Vull demanar un ajut o fer un tràmit</option><option>Vull fer-me’n soci o col·laborar</option><option>M’interessen les activitats</option><option>Una altra consulta</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 0.9375rem">En què us podem ajudar?<select name="motivo" style="font: inherit; font-weight: 400; padding: 12px 14px; min-height: 48px; box-sizing: border-box; border: 1px solid #B9CCD8; border-radius: 12px; background: #FFFFFF"><option>Acabem de rebre el diagnòstic</option><option>Vull demanar un ajut o fer un tràmit</option><option>Vull fer-me’n soci o col·laborar</option><option>M’interessen les activitats</option><option>Tinc una proposta</option><option>Una altra consulta</option></select></label>
 <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 0.9375rem">Missatge (opcional)<textarea name="mensaje" maxlength="3000" rows="4" style="font: inherit; font-weight: 400; padding: 12px 14px; min-height: 48px; box-sizing: border-box; border: 1px solid #B9CCD8; border-radius: 12px; background: #FFFFFF; resize: vertical"></textarea></label>
 <label style="display: flex; gap: 10px; align-items: flex-start; font-size: 0.9375rem; color: #3D5566"><input type="checkbox" name="privacidad" value="Aceptada" required style="width: 20px; height: 20px; margin-top: 3px; accent-color: #407295">Accepto que N.A.N.A. faci servir aquestes dades només per respondre la meva consulta.</label>
 <p style="margin: 0; font-size: 0.875rem; line-height: 1.5; color: #3D5566; background: #FFFFFF; border: 1px solid #E3ECF0; border-radius: 14px; padding: 14px 16px"><strong style="color: #1E3445">Protecció de dades.</strong> N.A.N.A. farà servir les vostres dades només per respondre aquesta consulta i les tractarà amb total confidencialitat. No les cedirem ni les vendrem a ningú, no les farem servir per a altres finalitats i les guardarem només el temps necessari. Podeu demanar consultar-les, corregir-les o esborrar-les quan vulgueu escrivint a <a href="mailto:nucli.nana@gmail.com">nucli.nana@gmail.com</a>.</p>
@@ -349,7 +349,7 @@ a.tarjeta:hover{border-color:#8ED8D3;box-shadow:0 6px 20px rgba(30,52,69,.08);co
   if(antiguas[h]&&document.getElementById('inici'))location.replace(antiguas[h]);
   // contacto.html?motivo=socio elige el motivo del formulario
   var sel=document.querySelector('#form-contacto select[name="motivo"]'),mot=(location.search.match(/motivo=(\w+)/)||[])[1];
-  var motivos=['diagnostico', 'ayuda', 'socio', 'actividades', 'otra'];
+  var motivos=['diagnostico', 'ayuda', 'socio', 'actividades', 'propuesta', 'otra'];
   if(sel&&mot&&motivos.indexOf(mot)>=0&&sel.options[motivos.indexOf(mot)])sel.selectedIndex=motivos.indexOf(mot);
 })();
 </script>
