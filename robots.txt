@@ -1,0 +1,8 @@
+# Web de N.A.N.A. – https://webnana.org
+User-agent: *
+Allow: /
+# Páginas internas de gestión (también llevan «noindex»)
+Disallow: /gestionar.html
+Disallow: /gestionar-eventos.html
+
+Sitemap: https://webnana.org/sitemap.xml
