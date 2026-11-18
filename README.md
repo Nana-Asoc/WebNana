@@ -2,6 +2,22 @@
 
 Web de N.A.N.A. – Núcleo de Acompañamiento y Necesidades del Autismo y familias neurodivergentes (Sant Boi de Llobregat).
 
+## Dominio
+
+La web se publica con GitHub Pages (rama `main`, carpeta raíz) en **https://webnana.org**. El archivo `CNAME` guarda ese dominio: no lo borréis. La dirección antigua, `nana-asoc.github.io/WebNana/`, redirige sola a la nueva, así que los enlaces y el código QR antiguos siguen funcionando.
+
+Los dominios están registrados en Nominalia: `webnana.org`, que es el principal, y `webnana.es` y `webnana.cat`, que redirigen a él. Registros DNS de `webnana.org` en Nominalia:
+
+| Tipo | Nombre | Valor |
+|---|---|---|
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `nana-asoc.github.io` |
+
+Si algún día hay que mover la web a otro sitio, se cambian estos registros y el dominio en Settings → Pages del repositorio. Las direcciones completas de las páginas (enlaces canónicos, imágenes para redes sociales y `sitemap.xml`) usan `https://webnana.org/`.
+
 La web tiene una página para cada apartado del menú, en castellano y catalán:
 
 | Castellano | Catalán | |
@@ -31,7 +47,7 @@ Las ilustraciones de cada página están en `img/secciones/` (`quienes-somos.jpg
 
 Los eventos salen en `eventos.html` / `esdeveniments.html` (próximos y pasados, según la fecha) y el más cercano aparece también en la portada.
 
-La forma fácil de gestionarlos es **`gestionar-eventos.html`** (por ejemplo `https://nana-asoc.github.io/WebNana/gestionar-eventos.html`), que no sale en el menú ni en los buscadores. Usa la misma clave de acceso de GitHub que `gestionar.html` (la tienda) y permite:
+La forma fácil de gestionarlos es **`gestionar-eventos.html`** (por ejemplo `https://webnana.org/gestionar-eventos.html`), que no sale en el menú ni en los buscadores. Usa la misma clave de acceso de GitHub que `gestionar.html` (la tienda) y permite:
 
 - Añadir, cambiar, duplicar y borrar eventos (título en castellano y catalán, fecha, hora, lugar, descripción, enlace a Instagram u otra página).
 - Subir la foto del evento desde el móvil o el ordenador (se reduce sola y se guarda en `img/eventos/`).
@@ -50,7 +66,7 @@ Estilos en `tienda.css` y funcionamiento en `tienda.js` (sirven para las cuatro 
 
 ### Gestionar los productos sin tocar código: `gestionar.html`
 
-En la web, abrid **`gestionar.html`** (por ejemplo `https://nana-asoc.github.io/WebNana/gestionar.html`). No sale en el menú ni en los buscadores. Desde ahí se puede:
+En la web, abrid **`gestionar.html`** (por ejemplo `https://webnana.org/gestionar.html`). No sale en el menú ni en los buscadores. Desde ahí se puede:
 
 - Añadir un producto, cambiarlo o borrarlo.
 - Subir fotos desde el móvil o el ordenador (se reducen solas), ordenarlas y quitarlas.
