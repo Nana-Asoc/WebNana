@@ -8,12 +8,13 @@
 //   fotos:      lista de fotos (la primera sale primero); vacía = dibujo de la categoría
 //   precio:     en euros con punto decimal (12.5); null = «Próximamente»
 //   wallapop:   enlace al anuncio en Wallapop
-//   web:        solo para las herramientas online: dirección de la herramienta
+//   web:        solo para las herramientas online: dirección https:// o página de esta web (p. ej. juegos/mis-viajes/)
 //   appStore / googlePlay: solo para las apps
 //   agotado:    true si no queda stock
 //   es / ca:    nombre, resumen, descripcion (párrafos) y paraQue (lista) en castellano y en catalán
 //
-// Categorías: icono = app, corazon, ondas o reloj; color = fondo del dibujo cuando no hay foto.
+// Categorías: icono = app, corazon, ondas, reloj o juego; color = fondo del dibujo cuando no hay foto.
+// Las herramientas de la categoría «juegos» salen como «Juego web» y con el botón «Jugar ahora».
 
 var NANA_CATEGORIAS = [
   {
@@ -43,10 +44,61 @@ var NANA_CATEGORIAS = [
     "color": "#FFF3D6",
     "es": "Rutinas y organización",
     "ca": "Rutines i organització"
+  },
+  {
+    "id": "juegos",
+    "icono": "juego",
+    "color": "#E6F0F6",
+    "es": "Juegos",
+    "ca": "Jocs"
   }
 ];
 
 var NANA_PRODUCTOS = [
+  {
+    "id": "mis-viajes",
+    "categoria": "juegos",
+    "tipo": "herramienta",
+    "fotos": [
+      "img/tienda/mis-viajes-1.jpg",
+      "img/tienda/mis-viajes-2.jpg",
+      "img/tienda/mis-viajes-3.jpg",
+      "img/tienda/mis-viajes-4.jpg",
+      "img/tienda/mis-viajes-5.jpg"
+    ],
+    "precio": null,
+    "web": "juegos/mis-viajes/",
+    "es": {
+      "nombre": "Mis Viajes",
+      "resumen": "Juego web gratuito: agenda visual con pictogramas, viaje en calma y juegos tranquilos.",
+      "descripcion": [
+        "Mis Viajes es un juego web que hemos creado desde N.A.N.A. para niños y niñas con autismo y sus familias. Funciona en el móvil, la tablet y el ordenador, sin instalar nada, sin anuncios y sin registro.",
+        "El niño o la niña elige en qué viajar (tren, coche, barco o avión) y encuentra cuatro estaciones: «El tren de mi día», una agenda visual con pictogramas de ARASAAC para anticipar lo que va a pasar; el «Viaje en calma», con paisajes de cada estación del año, música suave y respiración guiada; y dos juegos tranquilos para clasificar cosas y colores.",
+        "Las familias pueden preparar el día escribiéndolo con sus palabras («nos levantamos, desayunamos y vamos al cole…») y los pictogramas aparecen solos. Todo se guarda solo en el dispositivo."
+      ],
+      "paraQue": [
+        "Anticipar el día paso a paso con pictogramas",
+        "Bajar el nivel de nervios con el viaje en calma y la respiración",
+        "Practicar clasificar y reconocer colores sin presión",
+        "Preparar la agenda en un minuto escribiendo el día"
+      ]
+    },
+    "ca": {
+      "nombre": "Els meus viatges",
+      "resumen": "Joc web gratuït: agenda visual amb pictogrames, viatge en calma i jocs tranquils.",
+      "descripcion": [
+        "Mis Viajes (Els meus viatges) és un joc web que hem creat des de N.A.N.A. per a nens i nenes amb autisme i les seves famílies. Funciona al mòbil, a la tauleta i a l’ordinador, sense instal·lar res, sense anuncis i sense registre.",
+        "El nen o la nena tria en què viatjar (tren, cotxe, vaixell o avió) i troba quatre estacions: una agenda visual amb pictogrames d’ARASAAC per anticipar què passarà, el viatge en calma amb paisatges de cada estació de l’any, música suau i respiració guiada, i dos jocs tranquils per classificar coses i colors.",
+        "Les famílies poden preparar el dia escrivint-lo amb les seves paraules i els pictogrames apareixen sols. El joc, de moment, està en castellà. Tot es desa només al dispositiu."
+      ],
+      "paraQue": [
+        "Anticipar el dia pas a pas amb pictogrames",
+        "Rebaixar els nervis amb el viatge en calma i la respiració",
+        "Practicar a classificar i reconèixer colors sense pressió",
+        "Preparar l’agenda en un minut escrivint el dia"
+      ]
+    }
+  },
   {
     "id": "volumen-seguro",
     "categoria": "apps",

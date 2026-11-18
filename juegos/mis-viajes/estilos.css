@@ -1,0 +1,711 @@
+/* =========================================================
+   Trenes Tranquilos — estilos
+   Colores suaves, botones grandes, nada de destellos.
+   ========================================================= */
+:root {
+  /* Colores de la web de NANA */
+  --fondo: #F6F9FA;
+  --menta: #E3F6F4;
+  --tinta: #1E3445;
+  --suave: #5A7183;
+  --azul: #407295;
+  --azul-osc: #2F5F80;
+  --verde: #2E8F89;
+  --borde: #D5E2EA;
+  --claro: #E6F0F6;
+  --tarjeta: #FFFFFF;
+  --sombra: 0 6px 18px rgba(30, 52, 69, .12);
+  --via: #8C6E52;
+  --riel: #9FB4C2;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: linear-gradient(180deg, var(--menta) 0%, #F2FAF9 45%, var(--fondo) 100%) fixed;
+  color: var(--tinta);
+  font-family: 'Atkinson Hyperlegible', 'Segoe UI', system-ui, sans-serif;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  overscroll-behavior: none;
+}
+button { font: inherit; color: inherit; }
+input { font: inherit; user-select: text; -webkit-user-select: text; }
+a { color: var(--azul-osc); }
+img { -webkit-user-drag: none; }
+.oculto { display: none !important; }
+
+/* Modo sin animaciones (ajuste de adultos o preferencia del sistema) */
+body.sin-animaciones *,
+body.sin-animaciones *::before,
+body.sin-animaciones *::after { animation: none !important; transition: none !important; }
+body.sin-animaciones .mantener.cargando::after { transition: transform 1s linear !important; }
+
+/* ---------- Pantallas ---------- */
+#app { position: fixed; inset: 0; }
+.pantalla { position: absolute; inset: 0; display: none; flex-direction: column; }
+.pantalla.activa { display: flex; animation: aparecer .6s ease; }
+@keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
+.vista { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+
+/* ---------- Barra superior y botones ---------- */
+.barra { display: flex; align-items: center; gap: 12px; padding: 14px 16px; flex-wrap: wrap; flex: none; }
+.barra.flotante { position: absolute; top: 0; left: 0; right: 0; z-index: 5; justify-content: space-between; }
+.titulo { flex: 1; margin: 0; font-size: clamp(26px, 5vw, 44px); font-weight: 900; color: var(--azul-osc); }
+.titulo-peq { flex: 1; font-size: clamp(18px, 3.5vw, 28px); font-weight: 800; color: var(--azul-osc); }
+
+.btn-redondo {
+  position: relative; overflow: hidden; flex: none;
+  width: 64px; height: 64px; border-radius: 50%; border: none;
+  background: #fff; box-shadow: var(--sombra);
+  font-size: 30px; line-height: 1; cursor: pointer;
+  display: grid; place-items: center;
+  transition: transform .15s;
+}
+.btn-redondo:active { transform: scale(.93); }
+.btn-redondo.elegido { outline: 4px solid var(--azul); outline-offset: 2px; }
+
+/* Botón de "mantener pulsado" (solo adultos): se va llenando */
+.mantener { touch-action: none; -webkit-touch-callout: none; }
+.aviso {
+  position: fixed; z-index: 200; transform: translateX(-50%);
+  top: 80px; left: 50%; max-width: calc(100vw - 24px);
+  background: var(--tinta); color: #fff; font-weight: 800; font-size: 17px;
+  padding: 10px 16px; border-radius: 14px; box-shadow: var(--sombra);
+  pointer-events: none; animation: aparecer .3s ease;
+}
+.mantener::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  background: rgba(64, 114, 149, .45); transform: scale(0); pointer-events: none;
+}
+.mantener.cargando::after { transform: scale(1); transition: transform 1s linear; }
+
+.btn {
+  border: none; border-radius: 20px; padding: 16px 28px;
+  font-size: clamp(18px, 3vw, 24px); font-weight: 800;
+  background: var(--azul); color: #fff; box-shadow: var(--sombra);
+  cursor: pointer; transition: transform .15s;
+}
+.btn:active { transform: scale(.96); }
+.btn-sec { background: #fff; color: var(--azul-osc); }
+.btn:disabled { opacity: .35; }
+.btn-grande { font-size: clamp(22px, 4vw, 32px); padding: 18px 44px; background: var(--verde); }
+.acciones { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; padding: 12px 16px 18px; }
+
+/* ---------- Pictogramas ---------- */
+img.picto { display: block; object-fit: contain; }
+.picto-emoji { display: grid; place-items: center; line-height: 1; }
+
+/* ---------- Vías y trenes (compartido) ---------- */
+.vias {
+  height: 16px;
+  background: repeating-linear-gradient(90deg, var(--via) 0 14px, transparent 14px 34px) 0 5px / 100% 11px no-repeat;
+  border-top: 5px solid var(--riel);
+}
+.locomotora { display: block; flex: none; }
+
+.vagon {
+  --w: min(150px, calc((100vw - var(--loco, 180px) - 24px) / var(--n, 3) - 12px));
+  --rueda: clamp(16px, calc(var(--w) * .22), 30px);
+  position: relative; flex: none;
+  width: var(--w); height: max(calc(var(--w) * .72), 64px);
+  margin: 0 6px 16px;
+  background: var(--c);
+  border-radius: 16px 16px 10px 10px;
+  box-shadow: inset 0 -10px 0 rgba(0, 0, 0, .08);
+  transition: transform .2s, box-shadow .2s;
+}
+.vagon::before, .vagon::after,
+.vagon-cosas .cuerpo::before, .vagon-cosas .cuerpo::after {
+  content: ''; position: absolute; bottom: -16px;
+  width: var(--rueda); height: var(--rueda); border-radius: 50%;
+  background: #c9cfdb; box-shadow: inset 0 0 0 calc(var(--rueda) / 3) #3d4352;
+}
+.vagon::before, .vagon-cosas .cuerpo::before { left: 10%; }
+.vagon::after, .vagon-cosas .cuerpo::after { right: 10%; }
+
+/* ---------- MAPA ---------- */
+.mapa {
+  flex: 1; position: relative; min-height: 0;
+  display: flex; align-items: center; justify-content: center;
+  gap: clamp(14px, 3vw, 36px); padding: 16px; flex-wrap: wrap;
+}
+.via-mapa {
+  position: absolute; left: 0; right: 0; top: 50%; height: 26px; transform: translateY(-50%);
+  background: repeating-linear-gradient(90deg, var(--via) 0 12px, transparent 12px 36px);
+  border-top: 5px solid var(--riel); border-bottom: 5px solid var(--riel);
+  opacity: .5;
+}
+.estacion {
+  position: relative; z-index: 1;
+  width: clamp(170px, 21vw, 250px); aspect-ratio: 1 / 1.05;
+  border: none; border-radius: 26px; background: #fff; box-shadow: var(--sombra);
+  border-top: 16px solid var(--c);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  cursor: pointer; transition: transform .2s;
+}
+.estacion:hover { transform: translateY(-4px); }
+.estacion:active { transform: scale(.97); }
+.estacion .icono { font-size: clamp(56px, 8vw, 90px); line-height: 1; }
+.estacion .nombre { font-size: clamp(18px, 2.3vw, 24px); font-weight: 800; text-align: center; padding: 0 10px; }
+
+.paseo { height: 104px; position: relative; overflow: hidden; flex: none; }
+.paseo .vias { position: absolute; left: 0; right: 0; bottom: 0; }
+.tren-paseo {
+  position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: flex-end;
+  animation: paseo 30s linear infinite;
+}
+@keyframes paseo { from { left: -420px; transform: none; } to { left: 100%; transform: none; } }
+.tren-paseo .vagon { --w: 78px; margin: 0 4px 11px; }
+.tren-paseo .vagon::before, .tren-paseo .vagon::after { width: 22px; height: 22px; bottom: -11px; box-shadow: inset 0 0 0 7px #3d4352; }
+.tren-paseo .locomotora { width: 104px; }
+.pie { text-align: center; color: var(--suave); margin: 6px 16px 12px; font-size: 15px; line-height: 1.5; }
+.pie small { font-size: 12px; }
+
+@media (max-width: 760px) {
+  .mapa { flex-direction: column; flex-wrap: nowrap; justify-content: safe center; gap: 12px; overflow-y: auto; }
+  .via-mapa {
+    left: 50%; right: auto; top: 0; bottom: 0; width: 26px; height: auto; transform: translateX(-50%);
+    background: repeating-linear-gradient(0deg, var(--via) 0 12px, transparent 12px 36px);
+    border: none; border-left: 5px solid var(--riel); border-right: 5px solid var(--riel);
+  }
+  .estacion {
+    width: min(100%, 360px); aspect-ratio: auto; flex: none;
+    flex-direction: row; justify-content: flex-start; padding: 14px 18px; gap: 16px;
+    border-top: none; border-left: 16px solid var(--c);
+  }
+  .estacion .icono { font-size: 48px; }
+  .estacion .nombre { text-align: left; }
+  .btn-redondo { width: 56px; height: 56px; font-size: 26px; }
+  .paseo { height: 84px; }
+}
+
+@media (max-height: 600px) {
+  .paseo { display: none; }
+}
+
+/* Portada: el niño elige en qué viajamos (mismo selector que en ⚙️) */
+.elige-viaje {
+  flex: none; width: min(560px, calc(100% - 32px)); margin: 0 auto 4px; position: relative; z-index: 2;
+  background: #fff; border-radius: 20px; box-shadow: var(--sombra); padding: 10px 14px 12px;
+}
+.elige-titulo { display: block; font: 800 18px 'Nunito', system-ui, sans-serif; color: var(--tinta); }
+.elige-viaje .opciones { margin-top: 8px; }
+.elige-viaje .vehiculos button { font-size: 16px; padding: 10px 4px; border-radius: 14px; }
+.elige-viaje .vehiculos button span { font-size: 34px; }
+.vehiculos button.salta span { display: inline-block; animation: salta .45s ease; }
+@media (max-height: 600px) {
+  .elige-viaje { padding: 6px 10px 8px; }
+  .elige-viaje .vehiculos button span { font-size: 26px; }
+  .elige-titulo { font-size: 15px; }
+}
+
+/* ---------- VIAJE EN CALMA ---------- */
+#calma-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+.escenas { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; flex: 1; }
+.escena { width: 58px; height: 58px; font-size: 28px; }
+/* puntito verde: la estación del año en la que estamos */
+.escena.hoy::after {
+  content: ''; position: absolute; bottom: 5px; left: 50%; width: 8px; height: 8px; margin-left: -4px;
+  border-radius: 50%; background: var(--verde);
+}
+/* botones de fiesta: borde dorado */
+.escena.especial { box-shadow: 0 0 0 4px #F2C94C, var(--sombra); }
+.escena.especial.elegido { outline-color: #E0A82E; }
+.respira {
+  position: absolute; left: 50%; top: 34%; transform: translate(-50%, -50%);
+  display: grid; place-items: center; pointer-events: none; z-index: 4;
+}
+.respira-circulo {
+  grid-area: 1 / 1;
+  width: clamp(150px, 24vw, 220px); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, .8), rgba(255, 255, 255, .3));
+  border: 4px solid rgba(255, 255, 255, .95);
+  transform: scale(.6);
+}
+.respira-texto { grid-area: 1 / 1; position: relative; z-index: 1; font-size: clamp(20px, 3vw, 28px); font-weight: 900; color: var(--tinta); text-align: center; }
+
+/* ---------- CLASIFICAR (colores y cosas) ---------- */
+.estrellas { display: flex; font-size: 24px; gap: 2px; }
+.anden {
+  flex: 1; min-height: 0; overflow-y: auto;
+  display: flex; flex-wrap: wrap; align-content: center; justify-content: center;
+  gap: clamp(10px, 2.2vw, 24px); padding: 10px 16px;
+}
+.hueco { width: clamp(72px, 13vw, 120px); aspect-ratio: 1; }
+.anden.cosas .hueco { width: clamp(74px, 10.5vw, 118px); aspect-ratio: .86; }
+.pieza {
+  width: 100%; height: 100%; cursor: grab; touch-action: none;
+  border-radius: 20px; transition: transform .15s;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, .12));
+}
+.pieza svg { width: 100%; height: 100%; display: block; pointer-events: none; }
+.pieza img { pointer-events: none; }
+.pieza.elegida { transform: scale(1.1); background: rgba(255, 255, 255, .85); box-shadow: 0 0 0 5px var(--azul); }
+.pieza.arrastrando { position: fixed; z-index: 50; pointer-events: none; transform: scale(1.1); cursor: grabbing; }
+.carta {
+  width: 100%; height: 100%; background: #fff; border-radius: 18px;
+  display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8% 8% 6%;
+}
+.carta .picto { width: 100%; flex: 1; min-height: 0; font-size: 44px; }
+.carta span { font-weight: 800; font-size: clamp(11px, 1.5vw, 16px); text-align: center; line-height: 1.1; }
+.vacio { text-align: center; color: var(--suave); font-size: 20px; font-weight: 700; padding: 20px; }
+
+.zona-tren { position: relative; overflow: hidden; flex: none; padding-top: 16px; }
+.tren {
+  --loco: min(180px, 26vw);
+  display: flex; align-items: flex-end; justify-content: center;
+  transition: transform 2.2s cubic-bezier(.2, .7, .3, 1);
+}
+.tren.fuera { transform: translateX(-110vw); transition: none; }
+.tren.sale { transform: translateX(110vw); transition: transform 2.8s ease-in; }
+.tren .locomotora { width: var(--loco); margin-left: -4px; }
+.tren .vagon, .tren .vagon-cosas { cursor: pointer; }
+@media (max-width: 600px) { .tren { --loco: 16vw; } }
+
+/* vagones de colores */
+.vagon .carga {
+  position: absolute; inset: 8px;
+  display: flex; flex-wrap: wrap; align-content: flex-start; justify-content: center; gap: 3px;
+}
+.vagon .mini { width: 30%; aspect-ratio: 1; padding: 3px; background: rgba(255, 255, 255, .75); border-radius: 10px; animation: caer .4s ease; }
+@keyframes caer { from { transform: translateY(-24px); opacity: 0; } }
+.vagon.encima { transform: translateY(-8px) scale(1.04); box-shadow: 0 0 0 6px #fff, 0 0 0 10px var(--c); }
+.vagon.pista { animation: pista 1.4s ease; }
+@keyframes pista { 50% { box-shadow: 0 0 0 7px #fff, 0 0 28px 12px var(--c); transform: translateY(-6px); } }
+.vagon.salta { animation: salta .4s ease; }
+@keyframes salta { 50% { transform: translateY(-7px); } }
+
+/* vagones de cosas: la carga se va apilando encima */
+.vagon-cosas {
+  --w: max(64px, min(150px, calc((100vw - var(--loco) - 24px) / var(--n, 4) - 12px)));
+  --rueda: clamp(16px, calc(var(--w) * .2), 30px);
+  position: relative; flex: none; width: var(--w); margin: 0 6px 16px;
+  display: flex; flex-direction: column;
+}
+.vagon-cosas .pila {
+  min-height: calc(var(--filas, 2) * var(--w) * .48 + 4px);
+  display: flex; flex-wrap: wrap-reverse; align-content: flex-start; justify-content: center;
+  gap: 3px; padding: 0 3px 2px;
+}
+.mini-picto {
+  width: 45%; aspect-ratio: 1; background: #fff; border-radius: 9px; padding: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .16); animation: caer .4s ease;
+}
+.mini-picto .picto { width: 100%; height: 100%; font-size: 24px; }
+.vagon-cosas .cuerpo {
+  position: relative; height: calc(var(--w) * .95);
+  background: var(--c); border-radius: 10px;
+  box-shadow: inset 0 -10px 0 rgba(0, 0, 0, .08), inset 0 7px 0 rgba(0, 0, 0, .12);
+  padding: 9% 8% 14%;
+  transition: transform .2s, box-shadow .2s;
+}
+.placa {
+  width: 100%; height: 100%; background: #fff; border-radius: 10px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 5%;
+}
+.placa .picto { width: 72%; flex: 1; min-height: 0; font-size: 32px; }
+.placa span { font-weight: 900; font-size: clamp(10px, calc(var(--w) * .105), 16px); text-align: center; line-height: 1.05; }
+.vagon-cosas.encima .cuerpo { transform: translateY(-6px); box-shadow: 0 0 0 5px #fff, 0 0 0 9px var(--c); }
+.vagon-cosas.pista .cuerpo { animation: pista 1.4s ease; }
+.vagon-cosas.salta .pila { animation: salta .4s ease; }
+
+/* ---------- EL TREN DE MI DÍA ---------- */
+.escenario {
+  position: relative; flex: 1; min-height: 0; overflow: hidden;
+  container-type: size;
+  background: linear-gradient(var(--menta) 0%, var(--fondo) 85%);
+}
+.escenario > * {
+  /* tamaño del vagón según el espacio disponible; el tren queda centrado en vertical */
+  --wd: min(250px, 30cqw, 52cqh);
+  --suelo: max(0px, calc(50cqh - var(--wd) * .62));
+}
+@media (orientation: portrait) {
+  .escenario > * { --wd: min(250px, 58cqw, 52cqh); }
+}
+.escenario::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0;
+  height: max(0px, calc(50cqh - min(250px, 30cqw, 52cqh) * .62));
+  background: #DCE9E7;
+}
+@media (orientation: portrait) {
+  .escenario::after { height: max(0px, calc(50cqh - min(250px, 58cqw, 52cqh) * .62)); }
+}
+.escenario .vias { position: absolute; left: 0; right: 0; bottom: var(--suelo); z-index: 1; }
+.estacion-poste {
+  position: absolute; left: 50%; top: 4%; bottom: var(--suelo); width: 10px;
+  transform: translateX(-50%); background: rgba(91, 141, 184, .12); border-radius: 6px;
+}
+.tren-dia {
+  position: absolute; left: 0; bottom: calc(var(--suelo) + 16px); z-index: 2;
+  display: flex; align-items: flex-end;
+  will-change: transform;
+}
+.tren-dia .locomotora { width: calc(var(--wd) * 1.15); margin-left: -4px; }
+.vagon-dia {
+  --rueda: calc(var(--wd) * .17);
+  position: relative; flex: none;
+  width: var(--wd); height: calc(var(--wd) * .86);
+  margin: 0 8px calc(var(--rueda) / 2);
+  background: var(--c); border-radius: 18px 18px 12px 12px;
+  box-shadow: inset 0 -12px 0 rgba(0, 0, 0, .08);
+  cursor: pointer; transition: opacity .6s, transform .6s;
+}
+.vagon-dia::before, .vagon-dia::after {
+  content: ''; position: absolute; bottom: calc(var(--rueda) / -2);
+  width: var(--rueda); height: var(--rueda); border-radius: 50%;
+  background: #c9cfdb; box-shadow: inset 0 0 0 calc(var(--rueda) / 3) #3d4352;
+}
+.vagon-dia::before { left: 12%; }
+.vagon-dia::after { right: 12%; }
+.tarjeta-picto {
+  position: absolute; inset: 8% 8% 16%;
+  background: #fff; border-radius: 14px; padding: 5%;
+  display: grid; place-items: center;
+}
+.tarjeta-picto .picto { width: 100%; height: 100%; font-size: calc(var(--wd) * .4); }
+.vagon-dia.hecho { opacity: .45; }
+.vagon-dia.actual { transform: translateY(-6px); box-shadow: 0 0 0 5px #fff, 0 0 0 10px var(--azul), 0 12px 28px rgba(30, 52, 69, .25); }
+.vagon-dia .ok {
+  display: none; position: absolute; top: -12px; right: -10px;
+  width: 36px; height: 36px; border-radius: 50%; background: var(--verde); color: #fff;
+  font-size: 22px; font-style: normal; font-weight: 900; place-items: center;
+}
+.vagon-dia.hecho .ok { display: grid; }
+.globo {
+  display: none; position: absolute; left: 50%; bottom: calc(100% + 14px); transform: translateX(-50%);
+  padding: 6px 14px; border-radius: 14px; white-space: nowrap;
+  font-weight: 900; letter-spacing: .08em; font-size: clamp(13px, calc(var(--wd) * .09), 20px);
+  background: #fff; color: var(--suave); box-shadow: var(--sombra);
+}
+.vagon-dia.actual .g-ahora { display: block; background: var(--azul); color: #fff; }
+.vagon-dia.siguiente .g-despues { display: block; }
+.dia-nombre {
+  flex: none; text-align: center; padding: 10px 16px 0;
+  font-size: clamp(26px, 5vw, 44px); font-weight: 900; color: var(--tinta); min-height: 1.4em;
+}
+.dia-nombre small { display: block; font-size: .45em; color: var(--suave); letter-spacing: .08em; }
+
+/* ---------- Editores (adultos) ---------- */
+.editor { overflow-y: auto; padding: 0 16px 24px; }
+
+/* ---- Escribir el día con palabras ---- */
+.escribe-dia {
+  max-width: 760px; margin: 8px auto 4px; padding: 4px 16px 16px;
+  background: #fff; border-radius: 22px; box-shadow: var(--sombra);
+  border: 3px solid var(--menta);
+}
+.escribe-dia textarea {
+  width: 100%; box-sizing: border-box; resize: vertical; min-height: 110px;
+  font: 600 19px/1.5 'Atkinson Hyperlegible', system-ui, sans-serif; color: var(--tinta);
+  border: 2px solid var(--borde); border-radius: 16px; padding: 12px 14px; background: var(--fondo);
+}
+.escribe-dia textarea:focus { outline: none; border-color: var(--azul); background: #fff; box-shadow: 0 0 0 4px rgba(64,114,149,.15); }
+.estado-escribe { min-height: 22px; margin: 8px 2px 4px; color: var(--verde); font-weight: 700; font-size: 15px; }
+.mini-escenario { position: relative; margin-top: 6px; border-radius: 16px; overflow: hidden; background: linear-gradient(var(--menta), #F2FAF9); }
+.mini-tren {
+  direction: rtl;                       /* la cabeza a la derecha; cada paso nuevo se pone a la cola (izquierda) */
+  display: flex; align-items: flex-end; gap: 10px;
+  overflow-x: auto; overflow-y: hidden; padding: 14px 12px 6px; min-height: 104px;
+  scroll-behavior: smooth; scrollbar-width: thin;
+}
+.mini-tren > * { direction: ltr; flex: none; }
+.mini-tren .locomotora { width: 120px; height: auto; }
+.mini-vagon {
+  width: 76px; display: flex; flex-direction: column; align-items: center; gap: 3px;
+  background: #fff; border: 4px solid var(--c); border-radius: 14px; padding: 5px 4px 4px;
+  position: relative; box-shadow: 0 3px 8px rgba(30,52,69,.12);
+}
+.mini-vagon::after {                   /* enganche con el siguiente */
+  content: ''; position: absolute; right: -14px; top: 50%; width: 14px; height: 4px; border-radius: 2px; background: #9FB4C2;
+}
+.mini-vagon .picto { width: 56px; height: 56px; font-size: 36px; object-fit: contain; }
+.mini-vagon span { font-size: 11.5px; font-weight: 800; line-height: 1.15; text-align: center; color: var(--tinta);
+  max-width: 100%; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.mini-vagon.entra { animation: entra-vagon .55s cubic-bezier(.3,1.6,.5,1); }
+.mini-vagon.buscando .picto { animation: latido 1s ease-in-out infinite; }
+@keyframes entra-vagon { from { transform: translateY(-26px) scale(.6); opacity: 0; } }
+body.sin-animaciones .mini-vagon.entra, body.sin-animaciones .mini-vagon.buscando .picto { animation: none; }
+.mini-vacio { direction: ltr; align-self: center; color: var(--suave); font-weight: 700; font-size: 15px; padding: 0 8px; }
+.mini-suelo { height: 12px; background: repeating-linear-gradient(90deg, var(--via) 0 12px, transparent 12px 28px) 0 3px / 100% 8px no-repeat; border-top: 4px solid var(--riel); }
+body[data-vehiculo="coche"] .mini-suelo { height: 14px; border-top: none; background: repeating-linear-gradient(90deg, #fff 0 18px, transparent 18px 40px) 0 6px / 100% 3px no-repeat, #7A8590; }
+body[data-vehiculo="barco"] .mini-suelo { height: 16px; border-top: 3px solid rgba(255,255,255,.8); background: linear-gradient(#8CC4E4, #5FA8D6); }
+body[data-vehiculo="barco"] .mini-vagon { border-radius: 10px 10px 24px 24px; }
+body[data-vehiculo="barco"] .mini-vagon::after { background: #A57A4F; }
+body[data-vehiculo="avion"] .mini-suelo { height: 14px; border-top: none; background: radial-gradient(circle at 18px 16px, #fff 12px, transparent 13px) 0 0 / 44px 16px repeat-x; }
+body[data-vehiculo="avion"] .mini-tren { padding-bottom: 14px; }
+.editor h2 { text-align: center; color: var(--azul-osc); margin: 16px 0 6px; }
+.ayuda { text-align: center; color: var(--suave); margin: 0 0 12px; font-size: 16px; }
+
+.lista-editar { display: flex; flex-direction: column; gap: 8px; max-width: 680px; margin: 0 auto; }
+.item-editar {
+  display: flex; align-items: center; gap: 12px;
+  background: #fff; border-radius: 16px; padding: 8px 10px 8px 12px;
+  border-left: 12px solid var(--c); box-shadow: var(--sombra);
+}
+.item-editar .num { font-weight: 900; color: var(--suave); width: 24px; text-align: center; }
+.item-editar .picto { width: 52px; height: 52px; font-size: 36px; }
+.item-editar .nombre { flex: 1; font-weight: 800; font-size: 19px; }
+.ctrl { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+.ctrl button { width: 44px; height: 44px; border-radius: 12px; border: none; background: var(--claro); font-size: 18px; cursor: pointer; }
+.ctrl button:disabled { opacity: .3; cursor: default; }
+
+.paleta { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; max-width: 960px; margin: 0 auto; }
+.paleta button {
+  border: none; background: #fff; border-radius: 16px; box-shadow: var(--sombra);
+  padding: 10px 6px; display: flex; flex-direction: column; align-items: center; gap: 4px;
+  cursor: pointer; font-size: 15px; font-weight: 700;
+}
+.paleta button:active { transform: scale(.95); }
+.paleta .picto { width: 64px; height: 64px; font-size: 44px; }
+
+.grid-grupos, .grid-cosas { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; max-width: 980px; margin: 0 auto; }
+.grupo-card, .cosa-card {
+  position: relative; background: #fff; border-radius: 18px; box-shadow: var(--sombra);
+  border: 4px solid transparent;
+  display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 12px 8px;
+  text-align: center; font-weight: 800; font-size: 16px;
+}
+.grupo-card.activa { border-color: var(--verde); }
+.grupo-card:not(.activa) .grupo-toggle { opacity: .55; }
+.grupo-toggle { border: none; background: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; width: 100%; padding: 0; }
+.grupo-card .picto, .cosa-card .picto { width: 84px; height: 84px; font-size: 56px; }
+.grupo-card small { color: var(--suave); font-weight: 700; }
+.grupo-card .ok {
+  position: absolute; top: 8px; left: 8px; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--verde); color: #fff; font-style: normal; font-weight: 900; display: grid; place-items: center;
+}
+.grupo-editar { position: absolute; top: 6px; right: 6px; width: 42px; height: 42px; border-radius: 50%; border: none; background: var(--claro); font-size: 18px; cursor: pointer; }
+.nuevo { cursor: pointer; justify-content: center; color: var(--azul-osc); font-size: 34px; border: 3px dashed #BFD3DF; background: rgba(255, 255, 255, .6); min-height: 150px; }
+.nuevo span { font-size: 16px; }
+.cat-info { display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 10px auto 14px; }
+.cat-info .picto { width: 110px; height: 110px; font-size: 80px; background: #fff; border-radius: 18px; padding: 8px; box-shadow: var(--sombra); }
+.cat-info h2 { margin: 4px 0; }
+.cat-info .ctrl button { width: auto; padding: 0 14px; font-weight: 700; font-size: 16px; }
+.editor .opciones { max-width: 420px; margin: 8px auto 0; }
+.editor .grupo { text-align: center; }
+
+/* ---------- Ventanas ---------- */
+.modal {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(30, 52, 69, .35);
+  display: grid; place-items: center; padding: 16px;
+  animation: aparecer .4s ease;
+}
+.caja {
+  background: #fff; border-radius: 28px; box-shadow: 0 20px 50px rgba(0, 0, 0, .2);
+  padding: 26px; max-width: 520px; width: 100%; text-align: center;
+  max-height: 92vh; overflow: auto;
+}
+.celebra-icono { font-size: 90px; animation: latido 2.4s ease infinite; }
+@keyframes latido { 50% { transform: scale(1.08); } }
+#celebra-texto { font-size: clamp(22px, 4vw, 30px); font-weight: 900; margin: 10px 0 8px; }
+
+.caja-buscador { max-width: 760px; display: flex; flex-direction: column; text-align: left; }
+.caja-buscador h2 { margin: 0 0 12px; color: var(--azul-osc); }
+.busca-form { display: flex; gap: 8px; }
+.busca-form input {
+  flex: 1; min-width: 0; border: 3px solid var(--borde); border-radius: 16px; padding: 12px 14px; font-size: 20px; outline: none;
+}
+.busca-form input:focus { border-color: var(--azul); }
+.busca-form .btn { padding: 12px 20px; }
+.busca-estado { color: var(--suave); margin: 10px 2px; min-height: 1.3em; font-weight: 700; }
+.busca-resultados {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px;
+  overflow-y: auto; max-height: 46vh; padding: 4px;
+}
+.busca-resultados button {
+  border: 3px solid var(--claro); background: #fff; border-radius: 14px; padding: 6px; cursor: pointer; aspect-ratio: 1;
+}
+.busca-resultados button.elegido { border-color: var(--azul); box-shadow: 0 0 0 3px var(--azul); }
+.busca-resultados img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.busca-confirmar { margin-top: 12px; font-weight: 800; }
+.busca-confirmar label { display: block; margin-bottom: 6px; }
+.credito { font-size: 12px; color: var(--suave); margin: 4px 0 0; text-align: center; }
+
+.caja-ajustes { text-align: left; }
+.caja-ajustes h2 { margin: 0 0 8px; color: var(--azul-osc); }
+.interruptor {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 0; border-bottom: 1px solid var(--claro);
+  font-size: 19px; font-weight: 700; cursor: pointer;
+}
+.interruptor input {
+  appearance: none; -webkit-appearance: none; margin: 0; flex: none;
+  width: 58px; height: 34px; border-radius: 20px; background: var(--borde);
+  position: relative; cursor: pointer; transition: background .2s;
+}
+.interruptor input::after {
+  content: ''; position: absolute; top: 4px; left: 4px; width: 26px; height: 26px; border-radius: 50%;
+  background: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, .2); transition: left .2s;
+}
+.interruptor input:checked { background: var(--verde); }
+.interruptor input:checked::after { left: 28px; }
+.grupo { padding: 12px 0; font-size: 19px; font-weight: 700; }
+.opciones { display: flex; gap: 8px; margin-top: 8px; }
+.opciones button { flex: 1; border: none; border-radius: 12px; padding: 12px; font-size: 20px; font-weight: 800; background: var(--claro); cursor: pointer; }
+.opciones button.elegido { background: var(--azul); color: #fff; }
+.campos { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.campos input { flex: 1; min-width: 140px; border: 3px solid var(--borde); border-radius: 12px; padding: 10px 12px; font-size: 17px; outline: none; }
+.campos input:focus { border-color: var(--azul); }
+.ayuda-campo { display: block; color: var(--suave); font-size: 13px; font-weight: 600; margin-top: 6px; }
+.nota { color: var(--suave); font-size: 15px; line-height: 1.5; background: var(--fondo); border-radius: 14px; padding: 12px 14px; }
+
+/* =========================================================
+   Cabecera con el logo de NANA
+   ========================================================= */
+h1, h2, .titulo, .titulo-peq, .estacion .nombre, .dia-nombre, #celebra-texto, .btn { font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif; }
+.cabecera { flex-wrap: nowrap; }
+.logo {
+  flex: none; width: clamp(58px, 8vw, 84px); height: auto;
+  background: #fff; border-radius: 18px; padding: 6px; box-shadow: var(--sombra);
+}
+.titulos { flex: 1; min-width: 0; }
+.titulos .titulo { line-height: 1.05; }
+.subtitulo { margin: 4px 0 0; color: var(--verde); font-weight: 700; font-size: clamp(13px, 1.8vw, 17px); }
+@media (max-width: 480px) { .subtitulo { display: none; } }
+
+/* Selector de vehículo en los ajustes */
+.vehiculos button { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 15px; padding: 10px 4px; }
+.vehiculos button span { font-size: 30px; line-height: 1; }
+
+/* =========================================================
+   Vehículos: coche, barco y avión
+   (el tren es el estilo por defecto)
+   ========================================================= */
+@keyframes flotar { 50% { translate: 0 -4px; } }
+
+/* --- Coche: carretera y remolques --- */
+body[data-vehiculo="coche"] .vias {
+  height: 22px; border-top: none;
+  background: repeating-linear-gradient(90deg, #fff 0 26px, transparent 26px 56px) 0 9px / 100% 4px no-repeat, #7A8590;
+}
+body[data-vehiculo="coche"] :is(.vagon, .vagon-dia) { border-radius: 12px; }
+
+/* --- Barco y avión: sin ruedas; una cuerda o un cable une las piezas --- */
+body[data-vehiculo="barco"] :is(.vagon, .vagon-cosas .cuerpo, .vagon-dia)::before,
+body[data-vehiculo="avion"] :is(.vagon, .vagon-cosas .cuerpo, .vagon-dia)::before { display: none; }
+body[data-vehiculo="barco"] :is(.vagon, .vagon-cosas .cuerpo, .vagon-dia)::after,
+body[data-vehiculo="avion"] :is(.vagon, .vagon-cosas .cuerpo, .vagon-dia)::after {
+  left: auto; right: -14px; top: 50%; bottom: auto;
+  width: 14px; height: 4px; border-radius: 2px; box-shadow: none; background: #9FB4C2;
+}
+body[data-vehiculo="barco"] :is(.vagon, .vagon-cosas .cuerpo, .vagon-dia)::after { background: #A57A4F; }
+
+/* --- Barco: agua; las barcas se hunden un poco en ella --- */
+body[data-vehiculo="barco"] .vias {
+  height: 26px; border-top: 3px solid rgba(255, 255, 255, .8);
+  background: linear-gradient(#8CC4E4, #5FA8D6);
+  z-index: 3; opacity: .9;
+}
+body[data-vehiculo="barco"] .zona-tren .vias { position: relative; }
+body[data-vehiculo="barco"] :is(.vagon, .vagon-cosas .cuerpo, .vagon-dia) { border-radius: 10px 10px 28px 28px; }
+body[data-vehiculo="barco"] .vagon, body[data-vehiculo="barco"] .vagon-cosas { margin-bottom: 0; }
+body[data-vehiculo="barco"] .zona-tren .tren { margin-bottom: -14px; position: relative; z-index: 2; }
+body[data-vehiculo="barco"] .tren-dia { bottom: calc(var(--suelo) + 6px); }
+body[data-vehiculo="barco"] .vagon-dia { margin-bottom: 0; }
+body[data-vehiculo="barco"] .tren-paseo { bottom: 4px; }
+body[data-vehiculo="barco"] .tren-paseo .vagon { margin-bottom: 0; }
+body[data-vehiculo="barco"] .paseo .vias { z-index: 3; }
+
+/* --- Avión: vuela por encima de las nubes --- */
+body[data-vehiculo="avion"] .vias {
+  height: 20px; border-top: none;
+  background: radial-gradient(circle at 24px 22px, #fff 17px, transparent 18px) 0 0 / 58px 22px repeat-x;
+}
+body[data-vehiculo="avion"] .vagon, body[data-vehiculo="avion"] .vagon-cosas { margin-bottom: 26px; border-radius: 14px; }
+body[data-vehiculo="avion"] .vagon-cosas .cuerpo { border-radius: 14px; }
+body[data-vehiculo="avion"] .tren .locomotora { margin-bottom: 18px; }
+body[data-vehiculo="avion"] .tren-dia { bottom: calc(var(--suelo) + 46px); }
+body[data-vehiculo="avion"] .vagon-dia { margin-bottom: 0; border-radius: 18px; }
+body[data-vehiculo="avion"] .tren-paseo { bottom: 26px; }
+body[data-vehiculo="avion"] .tren-paseo .vagon { margin-bottom: 0; }
+
+/* Barco y avión se mecen suavemente */
+body[data-vehiculo="barco"] :is(.zona-tren .tren, .tren-dia),
+body[data-vehiculo="avion"] :is(.zona-tren .tren, .tren-dia) { animation: flotar 3.2s ease-in-out infinite; }
+body[data-vehiculo="barco"] .tren-paseo,
+body[data-vehiculo="avion"] .tren-paseo { animation: paseo 30s linear infinite, flotar 3.2s ease-in-out infinite; }
+
+/* Botón "Escribe el día" en la barra de Mi día (toque normal) */
+.barra-derecha { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.btn-familias {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 800 18px 'Nunito', system-ui, sans-serif; color: var(--azul-osc);
+  background: #fff; border: 2px solid var(--borde); border-radius: 999px;
+  padding: 10px 22px; box-shadow: var(--sombra); cursor: pointer;
+}
+.btn-familias:hover { border-color: var(--azul); }
+.btn-familias:active { transform: scale(.97); }
+.btn-familias { font-size: 17px; padding: 9px 18px; white-space: nowrap; }
+@media (max-width: 520px) { .btn-familias span { display: none; } .btn-familias { padding: 9px 13px; font-size: 22px; } }
+/* Barco y avión: la última pieza no lleva cuerda colgando */
+
+
+/* Editor de Mi día: lista a la izquierda, pictogramas para elegir a la derecha */
+.editor-cols { display: grid; grid-template-columns: 1fr; gap: 8px 24px; max-width: 1180px; margin: 0 auto; align-items: start; }
+@media (min-width: 900px) {
+  .editor-cols { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+  .col-elegir { position: sticky; top: 0; max-height: calc(100vh - 110px); overflow-y: auto; padding: 0 4px 12px; }
+  .col-elegir .paleta { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
+  .col-lista .item-editar .ctrl button { width: 40px; height: 40px; }
+}
+.col-lista .lista-editar { max-width: none; }
+.escribe-dia { max-width: 1180px; }
+
+/* "Listo" dentro del dibujo */
+.mini-escenario .mini-tren { padding-top: 56px; }
+/* Que la vista previa no ensanche la página en el móvil (se desplaza dentro de su caja) */
+.editor > * { min-width: 0; }
+.escribe-dia { box-sizing: border-box; width: 100%; }
+.mini-escenario, .mini-tren { min-width: 0; max-width: 100%; }
+.editor-cols { grid-template-columns: minmax(0, 1fr); }
+.col-lista, .col-elegir { min-width: 0; }
+@media (min-width: 900px) { .editor-cols { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); } }
+
+/* Flechas ▲▼ en las tarjetas del dibujo: cambiar por otro pictograma parecido */
+.mini-tren { padding-bottom: 20px; }
+.mini-escenario .mini-tren { padding-top: 64px; }
+.mini-vagon .alt {
+  position: absolute; left: 50%; transform: translateX(-50%); z-index: 2;
+  width: 34px; height: 24px; border-radius: 12px; border: 2px solid var(--c);
+  background: #fff; color: var(--azul-osc); font-size: 13px; line-height: 1; cursor: pointer;
+  box-shadow: 0 2px 6px rgba(30,52,69,.15); padding: 0;
+}
+.mini-vagon .alt-arriba { top: -15px; }
+.mini-vagon .alt-abajo { bottom: -15px; }
+.mini-vagon .alt:hover { background: var(--claro); }
+.mini-vagon .alt:active { transform: translateX(-50%) scale(.9); }
+.mini-vagon.buscando .alt { opacity: .4; }
+
+/* Flechas ▲▼ en los vagones del viaje de Mi día */
+.vagon-dia .alt-dia {
+  position: absolute; right: 12%; z-index: 3;
+  width: 40px; height: 32px; padding: 0; border-radius: 12px;
+  border: 3px solid var(--c); background: #fff; color: var(--azul-osc);
+  font-size: 15px; line-height: 1; cursor: pointer; box-shadow: 0 3px 8px rgba(30,52,69,.2);
+}
+/* ▲ sobre el borde de arriba, a la derecha · ▼ debajo del vagón */
+.vagon-dia .alt-dia.alt-arriba { top: -17px; }
+.vagon-dia .alt-dia.alt-abajo { bottom: calc(var(--rueda) / -2 - 38px); }
+body[data-vehiculo="avion"] .vagon-dia .alt-dia.alt-abajo { bottom: -22px; }
+body[data-vehiculo="barco"] .vagon-dia .alt-dia.alt-abajo { bottom: 24px; }   /* justo encima del agua */
+.vagon-dia .alt-dia:active { transform: scale(.9); }
+.vagon-dia.buscando .tarjeta-picto { animation: latido 1s ease-in-out infinite; }
+.vagon-dia.cambia .tarjeta-picto { animation: salta .45s ease; }
+body.sin-animaciones .vagon-dia.cambia .tarjeta-picto, body.sin-animaciones .vagon-dia.buscando .tarjeta-picto { animation: none; }
+
+/* Barra del dibujo: Quitar · Vaciar · Listo */
+.mini-barra { position: absolute; top: 10px; right: 12px; z-index: 3; display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.btn-mini { padding: 8px 16px; font-size: 16px; border-radius: 999px; box-shadow: var(--sombra); }
+.btn-mini:disabled { opacity: .45; cursor: default; box-shadow: none; }
+#dia-quitar-mini:not(:disabled) { background: #E57368; color: #fff; }
+/* Tarjeta seleccionada en el dibujo */
+.mini-vagon { cursor: pointer; }
+.mini-vagon.elegida { box-shadow: 0 0 0 3px #fff, 0 0 0 6px #E57368, 0 6px 14px rgba(30,52,69,.2); transform: translateY(-4px); }
+@media (max-width: 520px) { .btn-mini { padding: 7px 12px; font-size: 14px; } .mini-escenario .mini-tren { padding-top: 70px; } }
