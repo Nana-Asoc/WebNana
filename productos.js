@@ -60,6 +60,7 @@ var NANA_PRODUCTOS = [
     "categoria": "juegos",
     "tipo": "herramienta",
     "fotos": [
+      "img/tienda/mis-viajes-portada.jpg",
       "img/tienda/mis-viajes-1.jpg",
       "img/tienda/mis-viajes-2.jpg",
       "img/tienda/mis-viajes-3.jpg",
