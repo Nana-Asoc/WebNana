@@ -145,7 +145,12 @@ var NANA_PRODUCTOS = [
     "id": "volumen-seguro",
     "categoria": "apps",
     "tipo": "app",
-    "fotos": [],
+    "fotos": [
+      "img/tienda/volumen-seguro-mwm8hvcr-1.jpg",
+      "img/tienda/volumen-seguro-mwm8hvcr-2.jpg",
+      "img/tienda/volumen-seguro-mwm8hvcr-3.jpg",
+      "img/tienda/volumen-seguro-mwm8hvcr-4.jpg"
+    ],
     "precio": null,
     "appStore": "",
     "googlePlay": "",
