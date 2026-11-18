@@ -18,6 +18,8 @@ Los dominios están registrados en Nominalia: `webnana.org`, que es el principal
 
 Si algún día hay que mover la web a otro sitio, se cambian estos registros y el dominio en Settings → Pages del repositorio. Las direcciones completas de las páginas (enlaces canónicos, imágenes para redes sociales y `sitemap.xml`) usan `https://webnana.org/`.
 
+**webnana.es y webnana.cat** se publican desde dos repositorios pequeños de GitHub Pages, [KentoGD/webnana-es](https://github.com/KentoGD/webnana-es) y [KentoGD/webnana-cat](https://github.com/KentoGD/webnana-cat). Su única página redirige a `https://webnana.org` conservando la página pedida: `webnana.es/tienda.html` lleva a `webnana.org/tienda.html`, y la portada de `webnana.cat` lleva a `index-ca.html`. En Nominalia, cada uno tiene los mismos 4 registros A que `webnana.org` y un CNAME de `www` a `kentogd.github.io`. Sus registros de correo (MX, SPF, DKIM…) no se han tocado. Se pueden transferir a la organización Nana-Asoc cuando alguien la administre; entonces el CNAME de `www` pasaría a `nana-asoc.github.io`.
+
 La web tiene una página para cada apartado del menú, en castellano y catalán:
 
 | Castellano | Catalán | |
