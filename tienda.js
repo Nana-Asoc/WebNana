@@ -176,6 +176,21 @@
     if(cond&&/^#condici/.test(location.hash))cond.open=true;
   }
 
+  // ---------- SEO de la ficha: enlace canónico, idiomas y migas para Google ----------
+  function seoFicha(p,t,c){
+    var base='https://webnana.org/',q='?id='+encodeURIComponent(p.id),head=document.head;
+    function enlace(rel,href,lang){var l=document.createElement('link');l.rel=rel;l.href=href;if(lang)l.hreflang=lang;head.appendChild(l);}
+    enlace('canonical',base+T.ficha+q);
+    enlace('alternate',base+'producto.html'+q,'es');enlace('alternate',base+'producte.html'+q,'ca');enlace('alternate',base+'producto.html'+q,'x-default');
+    var d=document.querySelector('meta[name="description"]');if(d&&t.resumen)d.setAttribute('content',t.resumen);
+    var ld=document.createElement('script');ld.type='application/ld+json';
+    ld.textContent=JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[
+      {'@type':'ListItem','position':1,'name':L==='ca'?'Inici':'Inicio','item':base+(L==='ca'?'index-ca.html':'')},
+      {'@type':'ListItem','position':2,'name':'Recursos','item':base+T.tienda},
+      {'@type':'ListItem','position':3,'name':t.nombre,'item':base+T.ficha+q}]});
+    head.appendChild(ld);
+  }
+
   // ---------- Página de un producto ----------
   var ficha=document.getElementById('producto');
   if(ficha){
@@ -185,6 +200,7 @@
     var t=txt(p),c=cats[p.categoria]||{};
     ficha.hidden=false;
     document.title=t.nombre+T.titulo;
+    seoFicha(p,t,c);
 
     var mc=document.getElementById('miga-cat');mc.textContent=c[L]||c.es||'';mc.href=T.tienda+'?cat='+encodeURIComponent(p.categoria);
     var fc=document.getElementById('ficha-cat');fc.innerHTML=ICONOS[c.icono]||'';fc.appendChild(document.createTextNode(c[L]||c.es||''));fc.href=mc.href;

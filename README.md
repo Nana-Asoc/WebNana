@@ -118,6 +118,14 @@ Antes de poner precios, revisad con la gestoría:
 - NIF, nº de registro, domicilio social y fecha en el pie y en las páginas de privacidad
 - NIF y domicilio social en las condiciones de la tienda; precios, fotos y enlaces de Wallapop en `productos.js`
 
+## Buscadores (SEO)
+
+- **Títulos**: cada página tiene un `<title>` con lo que buscan las familias (autismo, Sant Boi, ayudas…), de unos 60 caracteres como mucho, que es lo que Google enseña entero.
+- **Idiomas**: cada página enlaza su versión en castellano y en catalán con `hreflang` y direcciones completas (`https://webnana.org/…`), más `x-default` (la castellana). Si creas una página nueva, copia ese bloque.
+- **Datos estructurados** (`<script type="application/ld+json">`, no hace falta actualizar la CSP por ellos): la portada describe la asociación (NGO) y la web; cada sección lleva sus migas (Inicio › Sección). Las fichas de recursos (`tienda.js`) y los próximos eventos (`eventos-web.js`) los generan solos. Se pueden comprobar con la [prueba de resultados enriquecidos de Google](https://search.google.com/test/rich-results).
+- **`sitemap.xml`** se genera con **`python3 herramientas/actualizar-sitemap.py`**: incluye las páginas que no llevan `noindex`, la ficha de cada recurso de `productos.js` en los dos idiomas y los juegos de `juegos/`. Ejecútalo al añadir páginas o recursos (los recursos que se añaden desde `gestionar.html` también los encuentra Google desde Recursos, pero así llegan antes).
+- **`robots.txt`** deja rastrear toda la web menos las páginas de gestión e indica dónde está el sitemap.
+
 ## Seguridad
 
 - **Política de seguridad (CSP)** en cada página: solo se ejecutan los scripts de la propia web y los que están escritos dentro de cada página tal como están ahora. **Si cambias un `<script>` escrito dentro de una página, ejecuta `python3 herramientas/actualizar-csp.py`**; si no, ese script dejará de funcionar.

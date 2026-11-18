@@ -63,6 +63,26 @@
     arr.forEach(function(e){cont.appendChild(tarjeta(e,pasado));});
   }
   pintar('lista-proximos',proximos,T.sinProx,false);
+  // Datos para Google (eventos en los resultados de búsqueda): solo los próximos y solo en la página de eventos
+  if(document.getElementById('lista-proximos')&&proximos.length){
+    var base='https://webnana.org/';
+    // Hora de España: +02:00 entre el último domingo de marzo y el último de octubre, +01:00 el resto
+    var zonaMadrid=function(fecha){var p=String(fecha).split('-'),y=+p[0],t=Date.UTC(y,+p[1]-1,+p[2],12);
+      function ultDom(m){var d=new Date(Date.UTC(y,m+1,0));return Date.UTC(y,m,d.getUTCDate()-d.getUTCDay());}
+      return t>=ultDom(2)&&t<ultDom(9)?'+02:00':'+01:00';};
+    var datos=proximos.map(function(e){
+      var h=(String(e.hora||'').match(/^\s*(\d{1,2}):(\d{2})/)||[]),f=String(e.fecha)+(h[1]?'T'+('0'+h[1]).slice(-2)+':'+h[2]+':00'+zonaMadrid(e.fecha):'');
+      var o={'@context':'https://schema.org','@type':'Event','name':txt(e,'titulo'),'startDate':f,
+        'eventStatus':'https://schema.org/EventScheduled','eventAttendanceMode':'https://schema.org/OfflineEventAttendanceMode',
+        'location':{'@type':'Place','name':e.lugar||'Sant Boi de Llobregat','address':{'@type':'PostalAddress','addressLocality':'Sant Boi de Llobregat','addressCountry':'ES'}},
+        'organizer':{'@type':'Organization','name':'N.A.N.A.','url':base},
+        'url':base+(ca?'esdeveniments.html':'eventos.html')};
+      var d=txt(e,'descripcion');if(d)o.description=d;
+      var ft=fotoSegura(e.foto);if(ft)o.image=/^https:/.test(ft)?ft:base+ft;
+      return o;
+    });
+    var s=document.createElement('script');s.type='application/ld+json';s.textContent=JSON.stringify(datos);document.head.appendChild(s);
+  }
   pintar('lista-pasados',pasados,T.sinPas,true);
   var bloquePasados=document.getElementById('bloque-pasados');
   if(bloquePasados&&!pasados.length)bloquePasados.hidden=true;

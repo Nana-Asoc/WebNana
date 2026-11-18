@@ -1,24 +1,245 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://webnana.org/ajuts.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/ayudas.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/botiga.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/col-labora.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/colabora.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/contacte.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/contacto.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/esdeveniments.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/eventos.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/index-ca.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/juegos/mis-viajes/</loc><lastmod>2026-11-18</lastmod></url>
-  <url><loc>https://webnana.org/</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/primeros-pasos.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/primers-passos.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/privacidad.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/privacitat.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/que-fem.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/que-hacemos.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/qui-som.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/quienes-somos.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://webnana.org/tienda.html</loc><lastmod>2026-11-17</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://webnana.org/ajuts.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/ayudas.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/ajuts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/ayudas.html"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/ayudas.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/ayudas.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/ajuts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/ayudas.html"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/botiga.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/tienda.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/botiga.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/tienda.html"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/col-labora.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/colabora.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/col-labora.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/colabora.html"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/colabora.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/colabora.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/col-labora.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/colabora.html"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/contacte.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/contacte.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/contacto.html"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/contacto.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/contacte.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/contacto.html"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/esdeveniments.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/eventos.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/esdeveniments.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/eventos.html"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/eventos.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/eventos.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/esdeveniments.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/eventos.html"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/index-ca.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/index-ca.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/index-ca.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/primeros-pasos.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/primeros-pasos.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/primers-passos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/primeros-pasos.html"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/primers-passos.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/primeros-pasos.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/primers-passos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/primeros-pasos.html"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/que-fem.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/que-hacemos.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/que-fem.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/que-hacemos.html"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/que-hacemos.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/que-hacemos.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/que-fem.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/que-hacemos.html"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/qui-som.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/quienes-somos.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/qui-som.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/quienes-somos.html"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/quienes-somos.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/quienes-somos.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/qui-som.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/quienes-somos.html"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/tienda.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/tienda.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/botiga.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/tienda.html"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/producto.html?id=mis-viajes</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/producto.html?id=mis-viajes"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/producte.html?id=mis-viajes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/producto.html?id=mis-viajes"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/producte.html?id=mis-viajes</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/producto.html?id=mis-viajes"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/producte.html?id=mis-viajes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/producto.html?id=mis-viajes"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/producto.html?id=juegos-movimiento</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/producto.html?id=juegos-movimiento"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/producte.html?id=juegos-movimiento"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/producto.html?id=juegos-movimiento"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/producte.html?id=juegos-movimiento</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/producto.html?id=juegos-movimiento"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/producte.html?id=juegos-movimiento"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/producto.html?id=juegos-movimiento"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/producto.html?id=volumen-seguro</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/producto.html?id=volumen-seguro"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/producte.html?id=volumen-seguro"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/producto.html?id=volumen-seguro"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/producte.html?id=volumen-seguro</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/producto.html?id=volumen-seguro"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/producte.html?id=volumen-seguro"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/producto.html?id=volumen-seguro"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/producto.html?id=cartas-emociones</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/producto.html?id=cartas-emociones"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/producte.html?id=cartas-emociones"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/producto.html?id=cartas-emociones"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/producte.html?id=cartas-emociones</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/producto.html?id=cartas-emociones"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/producte.html?id=cartas-emociones"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/producto.html?id=cartas-emociones"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/producto.html?id=pelotas-sensoriales</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/producto.html?id=pelotas-sensoriales"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/producte.html?id=pelotas-sensoriales"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/producto.html?id=pelotas-sensoriales"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/producte.html?id=pelotas-sensoriales</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/producto.html?id=pelotas-sensoriales"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/producte.html?id=pelotas-sensoriales"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/producto.html?id=pelotas-sensoriales"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/producto.html?id=agenda-visual</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/producto.html?id=agenda-visual"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/producte.html?id=agenda-visual"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/producto.html?id=agenda-visual"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/producte.html?id=agenda-visual</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/producto.html?id=agenda-visual"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/producte.html?id=agenda-visual"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/producto.html?id=agenda-visual"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/producto.html?id=auriculares-antirruido</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/producto.html?id=auriculares-antirruido"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/producte.html?id=auriculares-antirruido"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/producto.html?id=auriculares-antirruido"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/producte.html?id=auriculares-antirruido</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/producto.html?id=auriculares-antirruido"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/producte.html?id=auriculares-antirruido"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/producto.html?id=auriculares-antirruido"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/producto.html?id=temporizador-visual</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/producto.html?id=temporizador-visual"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/producte.html?id=temporizador-visual"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/producto.html?id=temporizador-visual"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/producte.html?id=temporizador-visual</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webnana.org/producto.html?id=temporizador-visual"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://webnana.org/producte.html?id=temporizador-visual"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webnana.org/producto.html?id=temporizador-visual"/>
+  </url>
+  <url>
+    <loc>https://webnana.org/juegos/mis-viajes/</loc>
+    <lastmod>2026-11-18</lastmod>
+  </url>
 </urlset>
