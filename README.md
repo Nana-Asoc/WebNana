@@ -99,6 +99,7 @@ Los juegos de N.A.N.A. viven dentro de la web, en `juegos/` (por ejemplo `juegos
 
 - **Mis Viajes** (`juegos/mis-viajes/`): agenda visual con pictogramas de ARASAAC, viaje en calma, clasificar y colores. Usa las letras de `fonts/` y solo se conecta con ARASAAC para los pictogramas. Lo que guarda cada familia (agenda, ajustes) se queda en su navegador. Se puede abrir directamente en una pantalla: `?pantalla=dia`, `?pantalla=calma&escena=primavera`, `?pantalla=cosas`, `?pantalla=colores`, y con `&vehiculo=barco` (o `tren`, `coche`, `avion`).
 - Las fotos de su ficha están en `img/tienda/mis-viajes-1.jpg` a `mis-viajes-5.jpg` (la 1 es la portada).
+- **Juegos de Movimiento** (Rompe Muñecos, Machaca Topos y Lee y Atrapa): juegos con la cámara que viven fuera de esta web, en su propio repositorio ([KentoGD/Dancewithyou](https://github.com/KentoGD/Dancewithyou)), y se publican en `https://kentogd.github.io/Dancewithyou/`; la ficha enlaza ahí y se abre en otra pestaña. La cámara no graba: la imagen se procesa solo en el dispositivo. Fotos de la ficha: `img/tienda/juegos-movimiento-1.jpg` y `-2.jpg`.
 
 La compra se hace en Wallapop: el botón «Comprar en Wallapop» abre el anuncio del producto. Con envío, Wallapop cobra al comprador y paga a la asociación cuando le llega el producto; en mano se cobra al entregarlo.
 

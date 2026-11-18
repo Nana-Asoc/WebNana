@@ -100,6 +100,47 @@ var NANA_PRODUCTOS = [
     }
   },
   {
+    "id": "juegos-movimiento",
+    "categoria": "juegos",
+    "tipo": "herramienta",
+    "fotos": [
+      "img/tienda/juegos-movimiento-1.jpg",
+      "img/tienda/juegos-movimiento-2.jpg"
+    ],
+    "precio": null,
+    "web": "https://kentogd.github.io/Dancewithyou/",
+    "es": {
+      "nombre": "Juegos de Movimiento",
+      "resumen": "Juego web gratuito: tres juegos para moverse delante de la cámara con las manos y el cuerpo.",
+      "descripcion": [
+        "Juegos de Movimiento son tres juegos para jugar moviéndose delante de la cámara del móvil, la tablet o el ordenador, sin instalar nada, sin anuncios y sin registro.",
+        "En «Rompe Muñecos» se rompen con la mano abierta los muñecos que caen y, con el puño cerrado, rebotan. En «Machaca Topos» salen topos por los bordes de la pantalla y se machacan con las manos y los pies; se puede jugar de uno o de dos. En «Lee y Atrapa» aparece una palabra y hay que tocar el dibujo que corresponde, sin tiempo ni puntos, con listas de palabras propias.",
+        "La cámara no graba nada: la imagen se analiza en tiempo real solo en el dispositivo, no se guarda ni se envía a ningún servidor, y se apaga al volver al menú."
+      ],
+      "paraQue": [
+        "Moverse y descargar energía jugando",
+        "Trabajar la coordinación ojo-mano",
+        "Practicar la lectura de palabras con dibujos, sin presión",
+        "Jugar en familia, de uno o de dos"
+      ]
+    },
+    "ca": {
+      "nombre": "Jocs de Moviment",
+      "resumen": "Joc web gratuït: tres jocs per moure’s davant de la càmera amb les mans i el cos.",
+      "descripcion": [
+        "Jocs de Moviment són tres jocs per jugar movent-se davant de la càmera del mòbil, la tauleta o l’ordinador, sense instal·lar res, sense anuncis i sense registre.",
+        "A «Rompe Muñecos» es trenquen amb la mà oberta els ninots que cauen i, amb el puny tancat, reboten. A «Machaca Topos» surten talps per les vores de la pantalla i s’aixafen amb les mans i els peus; s’hi pot jugar d’un o de dos. A «Lee y Atrapa» apareix una paraula i cal tocar el dibuix que hi correspon, sense temps ni punts, amb llistes de paraules pròpies. El joc, de moment, està en castellà.",
+        "La càmera no grava res: la imatge s’analitza en temps real només al dispositiu, no es desa ni s’envia a cap servidor, i s’apaga en tornar al menú."
+      ],
+      "paraQue": [
+        "Moure’s i descarregar energia jugant",
+        "Treballar la coordinació ull-mà",
+        "Practicar la lectura de paraules amb dibuixos, sense pressió",
+        "Jugar en família, d’un o de dos"
+      ]
+    }
+  },
+  {
     "id": "volumen-seguro",
     "categoria": "apps",
     "tipo": "app",
