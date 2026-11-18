@@ -73,6 +73,14 @@ Si preferís hacerlo a mano:
 2. Copia un bloque de `productos.js` y rellénalo: categoría, fotos, precio, enlace del anuncio de Wallapop y textos en castellano y catalán.
 3. Mientras falte el precio o el enlace de Wallapop, sale «Muy pronto en Wallapop» y no se puede comprar. Pon `agotado: true` cuando no quede stock.
 4. Las apps (`tipo: 'app'`) enlazan a App Store y Google Play (`appStore`, `googlePlay`).
+5. Las herramientas online (`tipo: 'herramienta'`) llevan su enlace en `web`. Puede ser una dirección `https://` (se abre en otra pestaña) o una página de esta web, como `juegos/mis-viajes/` (se abre en la misma pestaña).
+
+### Juegos web
+
+Los juegos de N.A.N.A. viven dentro de la web, en `juegos/` (por ejemplo `juegos/mis-viajes/`), así que funcionan igual con `nana-asoc.github.io` que con el dominio propio. En `productos.js` son herramientas de la categoría `juegos`: en Recursos salen con el filtro «Juegos» / «Jocs», la etiqueta «Juego web» / «Joc web», «Gratis» y el botón «Jugar ahora».
+
+- **Mis Viajes** (`juegos/mis-viajes/`): agenda visual con pictogramas de ARASAAC, viaje en calma, clasificar y colores. Usa las letras de `fonts/` y solo se conecta con ARASAAC para los pictogramas. Lo que guarda cada familia (agenda, ajustes) se queda en su navegador. Se puede abrir directamente en una pantalla: `?pantalla=dia`, `?pantalla=calma&escena=primavera`, `?pantalla=cosas`, `?pantalla=colores`, y con `&vehiculo=barco` (o `tren`, `coche`, `avion`).
+- Las fotos de su ficha están en `img/tienda/mis-viajes-1.jpg` a `mis-viajes-5.jpg` (la 1 es la portada).
 
 La compra se hace en Wallapop: el botón «Comprar en Wallapop» abre el anuncio del producto. Con envío, Wallapop cobra al comprador y paga a la asociación cuando le llega el producto; en mano se cobra al entregarlo.
 

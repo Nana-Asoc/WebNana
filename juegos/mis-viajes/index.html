@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mis Viajes · NANA</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://static.arasaac.org; font-src 'self'; connect-src 'self' https://api.arasaac.org; form-action 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests">
+<meta name="description" content="Mis Viajes: juego web gratuito de N.A.N.A. para niños y niñas con autismo y sus familias. Agenda visual con pictogramas, viaje en calma, clasificar y colores.">
+<meta name="theme-color" content="#E3F6F4">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<!-- Las mismas letras que el resto de la web de NANA, alojadas en la propia web -->
+<link rel="stylesheet" href="../../fonts/fuentes.css">
+<link rel="stylesheet" href="estilos.css?v=20261118q">
+</head>
+<body>
+<div id="app">
+
+  <!-- ============ MAPA / INICIO ============ -->
+  <section id="pantalla-menu" class="pantalla activa">
+    <header class="barra cabecera">
+      <img class="logo" src="img/logo-nana.jpg" alt="NANA" width="268" height="239">
+      <div class="titulos">
+        <h1 class="titulo">Mis Viajes</h1>
+        <p class="subtitulo">Un juego de NANA para familias neurodivergentes</p>
+      </div>
+      <button id="btn-ajustes" class="btn-redondo mantener" aria-label="Ajustes para adultos (mantén pulsado)">⚙️</button>
+    </header>
+    <div class="mapa">
+      <div class="via-mapa" aria-hidden="true"></div>
+      <button class="estacion" data-ir="calma" style="--c:#9CC3DE">
+        <span class="icono">🌙</span><span class="nombre">Viaje en calma</span>
+      </button>
+      <button class="estacion" data-ir="cosas" style="--c:#8ED8D3">
+        <span class="icono">📦</span><span class="nombre">Estación de clasificar</span>
+      </button>
+      <button class="estacion" data-ir="colores" style="--c:#F2C94C">
+        <span class="icono">🎨</span><span class="nombre">Estación de los colores</span>
+      </button>
+      <button class="estacion" data-ir="dia" style="--c:#2E8F89">
+        <span class="icono">📅</span><span class="nombre" data-v="mi-dia">El tren de mi día</span>
+      </button>
+    </div>
+    <div class="elige-viaje">
+      <span class="elige-titulo">🚦 ¿En qué viajamos?</span>
+      <div class="opciones vehiculos" id="menu-vehiculo">
+        <button data-vh="tren"><span>🚂</span>Tren</button>
+        <button data-vh="coche"><span>🚗</span>Coche</button>
+        <button data-vh="barco"><span>🚢</span>Barco</button>
+        <button data-vh="avion"><span>✈️</span>Avión</button>
+      </div>
+    </div>
+    <div class="paseo" aria-hidden="true">
+      <div class="tren-paseo">
+        <div class="vagon" style="--c:#E8907F"></div>
+        <div class="vagon" style="--c:#F2C94C"></div>
+        <div class="vagon" style="--c:#7CC189"></div>
+      </div>
+      <div class="vias"></div>
+    </div>
+    <p class="pie">Adultos: mantén pulsado ⚙️ o ✏️ para configurar.<br>
+      <small><a href="../../tienda.html">Web de N.A.N.A.</a> · Sant Boi de Llobregat ·
+      Pictogramas: Sergio Palao · <a href="https://arasaac.org" target="_blank" rel="noopener">ARASAAC</a> · Gobierno de Aragón · CC BY-NC-SA</small></p>
+  </section>
+
+  <!-- ============ VIAJE EN CALMA ============ -->
+  <section id="pantalla-calma" class="pantalla">
+    <canvas id="calma-canvas" aria-label="Un tren viaja despacio por el paisaje"></canvas>
+    <header class="barra flotante">
+      <button class="btn-redondo" data-ir="menu" aria-label="Volver al inicio">🏠</button>
+      <div id="calma-escenas" class="escenas"></div>
+      <button class="btn-redondo" id="btn-respirar" aria-label="Respirar con el tren">🌬️</button>
+    </header>
+    <div id="respira" class="respira oculto" aria-live="polite">
+      <div id="respira-circulo" class="respira-circulo"></div>
+      <div id="respira-texto" class="respira-texto"></div>
+    </div>
+  </section>
+
+  <!-- ============ ESTACIÓN DE CLASIFICAR ============ -->
+  <section id="pantalla-cosas" class="pantalla">
+    <header class="barra">
+      <button class="btn-redondo" data-ir="menu" aria-label="Volver al inicio">🏠</button>
+      <div class="titulo-peq">Estación de clasificar</div>
+      <div id="cosas-estrellas" class="estrellas" aria-label="Trenes completados"></div>
+      <button class="btn-redondo" id="cosas-repetir" aria-label="Repetir instrucción">🔊</button>
+      <button id="cosas-preparar" class="btn-redondo mantener" aria-label="Preparar los grupos (adultos, mantén pulsado)">✏️</button>
+    </header>
+    <div id="cosas-juego" class="vista">
+      <div id="cosas-anden" class="anden cosas"></div>
+      <div class="zona-tren">
+        <div id="cosas-tren" class="tren"></div>
+        <div class="vias"></div>
+      </div>
+    </div>
+    <div id="cosas-editar" class="vista editor oculto"></div>
+  </section>
+
+  <!-- ============ ESTACIÓN DE LOS COLORES ============ -->
+  <section id="pantalla-colores" class="pantalla">
+    <header class="barra">
+      <button class="btn-redondo" data-ir="menu" aria-label="Volver al inicio">🏠</button>
+      <div class="titulo-peq">Estación de los colores</div>
+      <div id="colores-estrellas" class="estrellas" aria-label="Trenes completados"></div>
+      <button class="btn-redondo" id="colores-repetir" aria-label="Repetir instrucción">🔊</button>
+    </header>
+    <div id="colores-anden" class="anden"></div>
+    <div class="zona-tren">
+      <div id="colores-tren" class="tren"></div>
+      <div class="vias"></div>
+    </div>
+  </section>
+
+  <!-- ============ EL TREN DE MI DÍA ============ -->
+  <section id="pantalla-dia" class="pantalla">
+    <header class="barra">
+      <button class="btn-redondo" data-ir="menu" aria-label="Volver al inicio">🏠</button>
+      <div class="titulo-peq" data-v="mi-dia">El tren de mi día</div>
+      <div class="barra-derecha">
+        <button id="btn-escribe-dia" class="btn-familias" aria-label="Escribe el día">✍️ <span>Escribe el día</span></button>
+        <button id="dia-preparar" class="btn-redondo mantener" aria-label="Preparar el tren (adultos, mantén pulsado)">✏️</button>
+      </div>
+    </header>
+
+    <div id="dia-viajar" class="vista">
+      <div id="dia-escenario" class="escenario">
+        <div class="estacion-poste" aria-hidden="true"></div>
+        <div id="dia-tren" class="tren-dia"></div>
+        <div class="vias"></div>
+      </div>
+      <div id="dia-nombre" class="dia-nombre" aria-live="polite"></div>
+      <div class="acciones">
+        <button id="dia-atras" class="btn btn-sec" aria-label="Volver un paso atrás">↩</button>
+        <button id="dia-hecho" class="btn btn-grande">✔ ¡Hecho!</button>
+      </div>
+    </div>
+
+    <div id="dia-editar" class="vista editor oculto">
+      <section class="escribe-dia">
+        <h2>✍️ Escribe el día</h2>
+        <p class="ayuda">Cuenta con tus palabras lo que va a pasar hoy, en orden. Los pictogramas aparecen solos mientras escribes.</p>
+        <textarea id="dia-texto" rows="4" spellcheck="true" autocomplete="off"
+          placeholder="Por ejemplo: Nos levantamos, desayunamos y vamos al cole. Por la tarde logopeda y luego parque. Cena, baño, cuento y a dormir."></textarea>
+        <div id="dia-texto-estado" class="estado-escribe" aria-live="polite"></div>
+        <div class="mini-escenario">
+          <div class="mini-barra">
+            <button id="dia-quitar-mini" class="btn btn-sec btn-mini" disabled title="Toca una tarjeta y luego aquí para quitarla">🗑️ Quitar</button>
+            <button id="dia-vaciar-mini" class="btn btn-sec btn-mini">Vaciar</button>
+            <button id="dia-listo-mini" class="btn btn-mini btn-listo-mini">✔ Listo</button>
+          </div>
+          <div id="dia-mini" class="mini-tren" aria-label="Vista previa del viaje"></div>
+          <div class="mini-suelo"></div>
+        </div>
+      </section>
+      <div class="editor-cols">
+        <div class="col-lista">
+          <h2 data-v="vs-hoy">Vagones de hoy</h2>
+          <p class="ayuda">El primero de la lista es el primero que llega a la estación.</p>
+          <div id="dia-lista" class="lista-editar"></div>
+        </div>
+        <div class="col-elegir">
+          <h2 data-v="anadir">Añadir un vagón</h2>
+          <p class="ayuda">Elige a mano un pictograma o búscalo en ARASAAC.</p>
+          <div class="acciones"><button id="dia-buscar" class="btn">🔍 Buscar en ARASAAC</button></div>
+          <div id="dia-paleta" class="paleta"></div>
+        </div>
+      </div>
+      <div class="acciones">
+        <button id="dia-vaciar" class="btn btn-sec" data-v="vaciar">Vaciar tren</button>
+        <button id="dia-listo" class="btn">✔ Listo</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ VENTANAS ============ -->
+<div id="celebra" class="modal oculto" role="dialog" aria-modal="true">
+  <div class="caja">
+    <div class="celebra-icono" aria-hidden="true">🌟</div>
+    <p id="celebra-texto"></p>
+    <div id="celebra-botones" class="acciones"></div>
+  </div>
+</div>
+
+<div id="buscador" class="modal oculto" role="dialog" aria-modal="true" aria-labelledby="busca-titulo">
+  <div class="caja caja-buscador">
+    <h2 id="busca-titulo">Buscar pictograma</h2>
+    <form id="busca-form" class="busca-form">
+      <input id="busca-texto" type="search" placeholder="Escribe una palabra: perro, cole, dormir…" autocomplete="off" enterkeyhint="search">
+      <button class="btn" type="submit" aria-label="Buscar">🔍</button>
+    </form>
+    <div id="busca-estado" class="busca-estado"></div>
+    <div id="busca-resultados" class="busca-resultados"></div>
+    <div id="busca-confirmar" class="busca-confirmar oculto">
+      <label for="busca-nombre">Nombre (lo que dirá la voz)</label>
+      <div class="busca-form">
+        <input id="busca-nombre" type="text" autocomplete="off">
+        <button id="busca-usar" class="btn" type="button">✔ Usar</button>
+      </div>
+    </div>
+    <div class="acciones"><button id="busca-cerrar" class="btn btn-sec" type="button">Cerrar</button></div>
+    <p class="credito">Pictogramas de <a href="https://arasaac.org" target="_blank" rel="noopener">ARASAAC</a>.
+      Autor: Sergio Palao. Propiedad: Gobierno de Aragón. Licencia CC BY-NC-SA.</p>
+  </div>
+</div>
+
+<div id="ajustes" class="modal oculto" role="dialog" aria-modal="true" aria-label="Ajustes para adultos">
+  <div class="caja caja-ajustes">
+    <h2>Ajustes para adultos</h2>
+    <div class="grupo">
+      <span>🚦 ¿En qué viajamos?</span>
+      <div class="opciones vehiculos" id="aj-vehiculo">
+        <button data-vh="tren"><span>🚂</span>Tren</button>
+        <button data-vh="coche"><span>🚗</span>Coche</button>
+        <button data-vh="barco"><span>🚢</span>Barco</button>
+        <button data-vh="avion"><span>✈️</span>Avión</button>
+      </div>
+    </div>
+    <label class="interruptor"><span>🔔 Sonidos</span><input type="checkbox" data-ajuste="sonido"></label>
+    <label class="interruptor"><span>🎵 Música suave</span><input type="checkbox" data-ajuste="musica"></label>
+    <label class="interruptor"><span>🗣️ Voz que lee</span><input type="checkbox" data-ajuste="voz"></label>
+    <label class="interruptor"><span>✨ Animaciones</span><input type="checkbox" data-ajuste="animaciones"></label>
+    <div class="grupo">
+      <span>🎂 Cumpleaños del niño o la niña</span>
+      <div class="campos">
+        <input type="date" id="aj-cumple" aria-label="Fecha de cumpleaños">
+        <input type="text" id="aj-nombre" placeholder="Nombre (opcional)" maxlength="30" autocomplete="off" aria-label="Nombre">
+      </div>
+      <small class="ayuda-campo">Esa semana el Viaje en calma tendrá un paisaje de cumpleaños 🎂 y la voz le felicitará.</small>
+    </div>
+    <label class="interruptor"><span>🎉 Ver siempre los paisajes de fiesta<br><small class="ayuda-campo">Si está apagado, 🎄 🎃 🎭 🎂 solo salen en su fecha</small></span><input type="checkbox" data-ajuste="eventosSiempre"></label>
+    <div class="grupo">
+      <span>🎨 Colores en la estación de colores</span>
+      <div class="opciones" data-ajuste-num="colores">
+        <button data-v="2">2</button><button data-v="3">3</button><button data-v="4">4</button><button data-v="5">5</button>
+      </div>
+    </div>
+    <div class="grupo">
+      <span>🎨 Piezas por tren de colores</span>
+      <div class="opciones" data-ajuste-num="piezas">
+        <button data-v="3">3</button><button data-v="6">6</button><button data-v="9">9</button>
+      </div>
+    </div>
+    <p class="nota">En este juego no se pierde nunca: no hay tiempo límite, vidas ni sonidos de error.
+      Los grupos de la <b>Estación de clasificar</b> y los vagones de <b>El tren de mi día</b> se configuran
+      dentro de cada estación manteniendo pulsado ✏️. Todo se guarda solo en este dispositivo.</p>
+    <div class="acciones"><button class="btn" id="ajustes-cerrar">Cerrar</button></div>
+  </div>
+</div>
+
+<div id="aviso" class="aviso oculto" role="status" aria-live="polite"></div>
+
+<script src="juego.js?v=20261118q"></script>
+</body>
+</html>

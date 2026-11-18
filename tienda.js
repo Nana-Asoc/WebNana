@@ -5,6 +5,7 @@
   var L=document.documentElement.lang==='ca'?'ca':'es';
   var T={
     es:{pronto:'Próximamente',agotado:'Agotado',todo:'Todo',todos:'Todos los recursos',gratis:'Gratis',abrir:'Abrir la herramienta',canalWeb:'Online',
+      canalJuego:'Juego web',jugar:'Jugar ahora',
       producto:'recurso',productos:'recursos',
       wallapop:'Comprar en Wallapop',wallapopPronto:'Muy pronto en Wallapop',canalWallapop:'En Wallapop',canalApp:'App',
       appStore:'Descargar en App Store',googlePlay:'Descargar en Google Play',appPronto:'Próximamente en App Store y Google Play',
@@ -12,6 +13,7 @@
       sinResultados:'No hemos encontrado nada con «%s».',tienda:'tienda.html',ficha:'producto.html',
       contacto:'contacto.html',titulo:' – Recursos N.A.N.A.'},
     ca:{pronto:'Properament',agotado:'Esgotat',todo:'Tot',todos:'Tots els recursos',gratis:'Gratis',abrir:'Obrir l’eina',canalWeb:'En línia',
+      canalJuego:'Joc web',jugar:'Jugar ara',
       producto:'recurs',productos:'recursos',
       wallapop:'Comprar a Wallapop',wallapopPronto:'Molt aviat a Wallapop',canalWallapop:'A Wallapop',canalApp:'App',
       appStore:'Descarregar a l’App Store',googlePlay:'Descarregar a Google Play',appPronto:'Properament a l’App Store i Google Play',
@@ -38,6 +40,11 @@
   function normal(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
   function enlaceFicha(p){return T.ficha+'?id='+encodeURIComponent(p.id);}
   function comprable(p){return p.tipo!=='app'&&p.wallapop&&typeof p.precio==='number'&&!p.agotado;}
+  // Los juegos son herramientas online de la categoría «juegos»: salen como «Juego web» y con el botón «Jugar ahora»
+  function esJuego(p){return p.tipo==='herramienta'&&p.categoria==='juegos';}
+  // Enlace seguro: una dirección https:// o una página de la propia web (por ejemplo «juegos/mis-viajes/»)
+  function enlaceSeguro(h){h=String(h||'');return /^https:\/\//i.test(h)||/^[a-z0-9][a-z0-9_\-\/]*(\.html)?\/?$/i.test(h);}
+  function esInterno(h){return !/^https:\/\//i.test(String(h||''));}
 
   var svg='<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">';
   var ICONOS={
@@ -45,6 +52,7 @@
     corazon:svg+'<path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 1 1 12 6a5 5 0 1 1 7.5 6.6z"/></svg>',
     ondas:svg+'<circle cx="12" cy="12" r="3"/><path d="M12 3a9 9 0 0 1 0 18M12 3a9 9 0 0 0 0 18" opacity=".5"/><circle cx="12" cy="12" r="6.5"/></svg>',
     reloj:svg+'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>',
+    juego:svg+'<path d="M7 8h10a4 4 0 0 1 4 4v2.5a2.5 2.5 0 0 1-4.6 1.4L15 14H9l-1.4 1.9A2.5 2.5 0 0 1 3 14.5V12a4 4 0 0 1 4-4z"/><path d="M7.5 10.5v3M6 12h3"/><circle cx="15.5" cy="11" r=".6" fill="currentColor"/><circle cx="17.5" cy="13" r=".6" fill="currentColor"/></svg>',
     izq:svg+'<path d="m15 18-6-6 6-6"/></svg>',
     der:svg+'<path d="m9 18 6-6-6-6"/></svg>',
     bolsa:svg+'<path d="M6 7h12l1 14H5L6 7z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>'
@@ -108,7 +116,7 @@
     pie.appendChild(precio(p,'tarjeta-precio'));
     if(p.agotado)pie.appendChild(el('span','canal canal-agotado',T.agotado));
     else if(p.tipo==='app')pie.appendChild(el('span','canal canal-app',T.canalApp));
-    else if(p.tipo==='herramienta')pie.appendChild(el('span','canal canal-app',T.canalWeb));
+    else if(p.tipo==='herramienta')pie.appendChild(el('span','canal canal-app',esJuego(p)?T.canalJuego:T.canalWeb));
     else if(comprable(p))pie.appendChild(el('span','canal',T.canalWallapop));
     cu.appendChild(pie);art.appendChild(cu);
     return art;
@@ -201,14 +209,15 @@
     var zp=document.getElementById('ficha-precio');zp.appendChild(precio(p,'precio-grande'));
     if(p.agotado)zp.appendChild(el('span','canal canal-agotado',T.agotado));
     var zb=document.getElementById('ficha-botones'),principal;
-    function boton(href,texto,cls){var a=el('a','btn '+(cls||''));a.href=/^https:\/\//i.test(String(href||''))?href:'#';a.target='_blank';a.rel='noopener';a.innerHTML=ICONOS.bolsa;a.appendChild(document.createTextNode(texto));return a;}
+    // Los enlaces de fuera se abren en otra pestaña; las páginas de la propia web (como los juegos), en la misma
+    function boton(href,texto,cls,icono){var a=el('a','btn '+(cls||''));a.href=enlaceSeguro(href)?href:'#';if(!esInterno(href)){a.target='_blank';a.rel='noopener';}a.innerHTML=icono||ICONOS.bolsa;a.appendChild(document.createTextNode(texto));return a;}
     if(p.tipo==='app'){
       if(p.appStore)zb.appendChild(principal=boton(p.appStore,T.appStore));
       if(p.googlePlay){var g=boton(p.googlePlay,T.googlePlay,principal?'btn-borde':'');zb.appendChild(g);principal=principal||g;}
       if(!principal)zb.appendChild(principal=el('span','btn btn-apagado',T.appPronto));
       document.getElementById('garantias').hidden=true;
     }else if(p.tipo==='herramienta'){
-      zb.appendChild(principal=p.web?boton(p.web,T.abrir):el('span','btn btn-apagado',T.pronto));
+      zb.appendChild(principal=p.web?(esJuego(p)?boton(p.web,T.jugar,'',ICONOS.juego):boton(p.web,T.abrir)):el('span','btn btn-apagado',T.pronto));
       document.getElementById('garantias').hidden=true;
     }else if(comprable(p)){
       zb.appendChild(principal=boton(p.wallapop,T.wallapop,'btn-wallapop'));

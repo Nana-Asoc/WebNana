@@ -18,12 +18,13 @@
     '//   fotos:      lista de fotos (la primera sale primero); vacía = dibujo de la categoría',
     '//   precio:     en euros con punto decimal (12.5); null = «Próximamente»',
     '//   wallapop:   enlace al anuncio en Wallapop',
-    '//   web:        solo para las herramientas online: dirección de la herramienta',
+    '//   web:        solo para las herramientas online: dirección https:// o página de esta web (p. ej. juegos/mis-viajes/)',
     '//   appStore / googlePlay: solo para las apps',
     '//   agotado:    true si no queda stock',
     '//   es / ca:    nombre, resumen, descripcion (párrafos) y paraQue (lista) en castellano y en catalán',
     '//',
-    '// Categorías: icono = app, corazon, ondas o reloj; color = fondo del dibujo cuando no hay foto.',
+    '// Categorías: icono = app, corazon, ondas, reloj o juego; color = fondo del dibujo cuando no hay foto.',
+    '// Las herramientas de la categoría «juegos» salen como «Juego web» y con el botón «Jugar ahora».',
     ''].join('\n');
 
   // ---------- Utilidades ----------
