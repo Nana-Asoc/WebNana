@@ -106,8 +106,7 @@ var NANA_PRODUCTOS = [
     "tipo": "herramienta",
     "fotos": [
       "img/tienda/juegos-movimiento-portada.jpg",
-      "img/tienda/juegos-movimiento-1.jpg",
-      "img/tienda/juegos-movimiento-2.jpg"
+      "img/tienda/juegos-movimiento-1.jpg"
     ],
     "precio": null,
     "web": "https://kentogd.github.io/Dancewithyou/",
