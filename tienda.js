@@ -180,7 +180,8 @@
   function seoFicha(p,t,c){
     var base='https://webnana.org/',q='?id='+encodeURIComponent(p.id),head=document.head;
     function enlace(rel,href,lang){var l=document.createElement('link');l.rel=rel;l.href=href;if(lang)l.hreflang=lang;head.appendChild(l);}
-    enlace('canonical',base+T.ficha+q);
+    var can=head.querySelector('link[rel="canonical"]');
+    if(can)can.href=base+T.ficha+q;else enlace('canonical',base+T.ficha+q);
     enlace('alternate',base+'producto.html'+q,'es');enlace('alternate',base+'producte.html'+q,'ca');enlace('alternate',base+'producto.html'+q,'x-default');
     var d=document.querySelector('meta[name="description"]');if(d&&t.resumen)d.setAttribute('content',t.resumen);
     var ld=document.createElement('script');ld.type='application/ld+json';
